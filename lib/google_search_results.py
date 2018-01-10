@@ -34,8 +34,8 @@ class GoogleSearchResults(object):
         self.params_dict["output"] = "json_with_images"
         return self.get_results()
 
-    def get_hash(self):
+    def get_dictionary(self):
         return json.loads(dict(get_json))
 
-    def get_hash_with_images(self):
+    def get_dictionary_with_images(self):
         return json.loads(dict(get_json_with_images))
