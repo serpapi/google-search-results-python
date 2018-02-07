@@ -35,7 +35,7 @@ query_params = {
   "serp_api_key": "Your SERP API Key"
 }
 
-query = GoogleSearchResults[query_params]
+query = GoogleSearchResults(query_params)
 query.params_dict["location"] = "Portland"
 
 html_results = query.get_html()
