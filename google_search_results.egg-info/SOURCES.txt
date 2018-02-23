@@ -3,4 +3,9 @@ setup.py
 google_search_results.egg-info/PKG-INFO
 google_search_results.egg-info/SOURCES.txt
 google_search_results.egg-info/dependency_links.txt
+google_search_results.egg-info/requires.txt
 google_search_results.egg-info/top_level.txt
+lib/__init__.py
+lib/google_search_results.py
+tests/__init__.py
+tests/testwrapper.py
