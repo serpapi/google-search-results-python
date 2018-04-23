@@ -20,7 +20,7 @@ class GoogleSearchResults(object):
         try:
             self.construct_url()
         except requests.HTTPError as e:
-            print e, e.response.status_code
+            print(e, e.response.status_code)
         return self.construct_url()
 
     def get_html(self):
