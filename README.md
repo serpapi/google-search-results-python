@@ -5,8 +5,8 @@ This Python package is meant to scrape and parse Google results using [SERP API]
 ## Simple Example
 ```python
 from lib.google_search_results import GoogleSearchResults
-query = GoogleSearchResults({"q": "coffee"})
-html_results = query.get_html()
+query = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
+json_results = query.get_json()
 ```
 
 ## Set SERP API key
