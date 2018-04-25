@@ -35,14 +35,17 @@ query_params = {
   "serp_api_key": "Your SERP API Key"
 }
 
-query = GoogleSearchResults(query_params)
+query = GoogleSearchResults[query_params]
 query.params_dict["location"] = "Portland"
 
 html_results = query.get_html()
-dictionary_results = query.get_dictionary()
-dictionary_results_with_images = query.get_dictionary_with_images()
 json_results = query.get_json()
 json_results_with_images = query.get_json_with_images()
 ```
 
 ## Example of Python Dictionary Output (GoogleSearchResults#get_dictionary)
+
+```python
+dictionary_results = query.get_dictionary()
+dictionary_results_with_images = query.get_dictionary_with_images()
+```
