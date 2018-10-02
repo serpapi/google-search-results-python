@@ -20,5 +20,5 @@ setup(name='google_search_results',
     python_requires='>=2.6, !=3.0.*, !=3.1.*, !=3.2.*',
     install_requires = ["requests"],
     packages=['lib'],
-    long_description=open('README').read()
+    long_description=open('README.md').read()
 )
