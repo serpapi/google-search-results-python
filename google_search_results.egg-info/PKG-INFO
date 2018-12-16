@@ -1,60 +1,73 @@
 Metadata-Version: 1.2
 Name: google-search-results
-Version: 1.1.2
+Version: 1.2.3
 Summary: this pip package is meant to scrape and parse Google results using SERP API. Feel free to fork this repository to add more backends.
 Home-page: https://github.com/serpapi/google-search-results-python
 Author: lf2225
 Author-email: lf2225@gmail.com
 License: UNKNOWN
 Description-Content-Type: UNKNOWN
-Description: # Google Search Results in Python
+Description: Google Search Results in Python
+        ===============================
         
-        This Python package is meant to scrape and parse Google results using [SERP API](https://serpapi.com). Feel free to fork this repository to add more backends.
+        This Python package is meant to scrape and parse Google results using
+        `SERP API <https://serpapi.com>`__. Feel free to fork this repository to
+        add more backends.
         
-        ## Simple Example
-        ```python
-        from lib.google_search_results import GoogleSearchResults
-        query = GoogleSearchResults({"q": "coffee"})
-        html_results = query.get_html()
-        ```
+        Simple Example
+        --------------
         
-        ## Set SERP API key
+        .. code:: python
         
-        ```python
-        GoogleSearchResults.SERP_API_KEY = "Your Private Key"
-        ```
+            from lib.google_search_results import GoogleSearchResults
+            query = GoogleSearchResults({"q": "coffee"})
+            html_results = query.get_html()
+        
+        Set SERP API key
+        ----------------
+        
+        .. code:: python
+        
+            GoogleSearchResults.SERP_API_KEY = "Your Private Key"
+        
         Or
-        ```python
-        query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
-        ```
         
-        ## Example with all params and all outputs
+        .. code:: python
         
-        ```python
-        query_params = {
-          "q": "query",
-          "google_domain": "Google Domain",
-          "location": "Location Requested",
-          "device": device,
-          "hl": "Google UI Language",
-          "gl": "Google Country",
-          "safe": "Safe Search Flag",
-          "num": "Number of Results",
-          "start": "Pagination Offset",
-          "serp_api_key": "Your SERP API Key"
-        }
+            query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
         
-        query = GoogleSearchResults[query_params]
-        query.params_dict["location"] = "Portland"
+        Example with all params and all outputs
+        ---------------------------------------
         
-        html_results = query.get_html()
-        dictionary_results = query.get_dictionary()
-        dictionary_results_with_images = query.get_dictionary_with_images()
-        json_results = query.get_json()
-        json_results_with_images = query.get_json_with_images()
-        ```
+        .. code:: python
         
-        ## Example of Python Dictionary Output (GoogleSearchResults#get_dictionary)
+            query_params = {
+              "q": "query",
+              "google_domain": "Google Domain",
+              "location": "Location Requested",
+              "device": device,
+              "hl": "Google UI Language",
+              "gl": "Google Country",
+              "safe": "Safe Search Flag",
+              "num": "Number of Results",
+              "start": "Pagination Offset",
+              "serp_api_key": "Your SERP API Key"
+            }
+        
+            query = GoogleSearchResults[query_params]
+            query.params_dict["location"] = "Portland"
+        
+            html_results = query.get_html()
+            json_results = query.get_json()
+            json_results_with_images = query.get_json_with_images()
+        
+        Example of Python Dictionary Output (GoogleSearchResults#get_dictionary)
+        ------------------------------------------------------------------------
+        
+        .. code:: python
+        
+            dictionary_results = query.get_dictionary()
+            dictionary_results_with_images = query.get_dictionary_with_images()
         
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License

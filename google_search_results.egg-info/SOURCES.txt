@@ -1,3 +1,4 @@
+README
 README.md
 setup.py
 google_search_results.egg-info/PKG-INFO
