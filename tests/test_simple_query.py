@@ -7,10 +7,10 @@ class TestSimpleQuery(unittest.TestCase):
     def setUp(self):
         GoogleSearchResults.SERP_API_KEY = "demo"
 
-    def test_sample(self):
+    def test_get_json(self):
         query = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
         results = query.get_json()
-        self.assertEqual(results["local_results"][0]["title"], "Houndstooth Coffee")
+        self.assertEqual(results["local_results"][0]["title"], "Coffee 101")
 
 if __name__ == '__main__':
     unittest.main()

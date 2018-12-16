@@ -2,6 +2,16 @@ import requests
 import json
 
 class GoogleSearchResults(object):
+    """GoogleSearchResults enables to search google and parse the result.
+    ```python
+    from lib.google_search_results import GoogleSearchResults
+    query = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
+    data = query.get_json()
+    ```
+
+    https://github.com/serpapi/google-search-results-python
+    """
+
     VERSION = "1.0.0"
     BACKEND = "https://serpapi.com/search"
     SERP_API_KEY = None
@@ -27,15 +37,14 @@ class GoogleSearchResults(object):
         return self.get_results()
 
     def get_json(self):
+        """Returns:
+            JSON with the formatted response content
+        """
         self.params_dict["output"] = "json"
         return json.loads(self.get_results())
 
-    def get_json_with_images(self):
-        self.params_dict["output"] = "json_with_images"
-        return json.loads(self.get_results())
-
     def get_dictionary(self):
+        """Returns:
+            Dict with the formatted response content
+        """
         return dict(self.get_json())
-
-    def get_dictionary_with_images(self):
-        return dict(self.get_json_with_images())
