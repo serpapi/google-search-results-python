@@ -1,1 +1,1 @@
-requests==2.11.1
+requests==requests-2.21.0
