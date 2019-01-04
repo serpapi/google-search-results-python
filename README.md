@@ -1,6 +1,9 @@
 # Google Search Results in Python
 
-This Python package is meant to scrape and parse Google results using [SERP API](https://serpapi.com). Feel free to fork this repository to add more backends.
+[![Build Status](https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-python)
+
+This Python package is meant to scrape and parse Google results using [SERP API](https://serpapi.com). 
+Feel free to fork this repository to add more backends.
 
 ## Simple Example
 ```python
@@ -40,12 +43,10 @@ query.params_dict["location"] = "Portland"
 
 html_results = query.get_html()
 json_results = query.get_json()
-json_results_with_images = query.get_json_with_images()
 ```
 
 ## Example of Python Dictionary Output (GoogleSearchResults#get_dictionary)
 
 ```python
 dictionary_results = query.get_dictionary()
-dictionary_results_with_images = query.get_dictionary_with_images()
 ```
