@@ -23,7 +23,7 @@ class GoogleSearchResults(object):
         self.params_dict['source'] = 'python'
         if self.SERP_API_KEY:
             self.params_dict['serp_api_key'] = self.SERP_API_KEY
-        response = requests.get(self.BACKEND, self.params_dict, timeout=6000)
+        response = requests.get(self.BACKEND, self.params_dict, timeout=600)
         return response.text
 
     def get_results(self):
