@@ -12,7 +12,7 @@ class GoogleSearchResults(object):
     https://github.com/serpapi/google-search-results-python
     """
 
-    VERSION = "1.2.0"
+    VERSION = "1.4.0"
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
@@ -37,11 +37,14 @@ class GoogleSearchResults(object):
             raise e
 
     def get_html(self):
+        """Returns:
+            Raw HTML search result from Gooogle
+        """
         return self.get_results()
 
     def get_json(self):
         """Returns:
-            JSON with the formatted response content
+            Formatted JSON search result
         """
         self.params_dict["output"] = "json"
         return json.loads(self.get_results())
@@ -70,7 +73,7 @@ class GoogleSearchResults(object):
         """Retrieve search result from the Search Archive API
         Parameters:
             search_id (int): unique identifier for the search provided by metadata.id 
-            format (string): search format: json or html
+            format (string): search format: json or html [optional]
         Returns:
             dict|string: search result from the archive
         """

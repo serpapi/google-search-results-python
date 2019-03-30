@@ -8,6 +8,7 @@ release:
 	pip3 install -U setuptools
 	python setup.py sdist
 
+# run test
 test:
 	pytest
 
