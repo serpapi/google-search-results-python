@@ -55,6 +55,12 @@ class GoogleSearchResults(object):
         """
         return dict(self.get_json())
 
+    def get_dict(self):
+        """Returns:
+            Dict with the formatted response content
+        """
+        return self.get_dictionary()
+
     def get_location(self, q, limit = 5):
         """Get location using Location API
         Parameters:

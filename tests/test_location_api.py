@@ -1,5 +1,6 @@
 import random
 import unittest
+import pprint
 import os
 from lib.google_search_results import GoogleSearchResults
 
@@ -9,10 +10,11 @@ class TestLocationApi(unittest.TestCase):
         GoogleSearchResults.SERP_API_KEY = os.getenv("API_KEY","demo")
 
     def test_get_location(self):
-        gsr = GoogleSearchResults({})
-        location_list = gsr.get_location("Austin", 3)
-        print(type(location_list))
+        client = GoogleSearchResults({})
+        location_list = client.get_location("Austin", 3)
         self.assertIsNotNone(location_list[0].get("id"))
+        pp = pprint.PrettyPrinter(indent=2)
+        pp.pprint(location_list)
 
 if __name__ == '__main__':
     unittest.main()
