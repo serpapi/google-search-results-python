@@ -1,8 +1,10 @@
 import random
 import unittest
 import os
-import wget
 from lib.google_search_results import GoogleSearchResults
+
+# download file with wget
+#import wget
 
 class TestExample(unittest.TestCase):
 
