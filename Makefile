@@ -1,5 +1,6 @@
 # current version
 version=`grep version setup.py | cut -d"'" -f2`
+path=dist/google_search_results-$(version).tar.gz
 
 all: install test
 
@@ -15,5 +16,8 @@ release:
 	pip3 install -U setuptools
 	python setup.py sdist
 
-publish:
-	twine upload dist/google_search_results-$(version).tar.gz
+check: release
+	twine check $(path)
+
+publish: release check
+	twine upload $(path)
