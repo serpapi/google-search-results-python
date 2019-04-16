@@ -26,8 +26,8 @@ pip install google-search-results
 
 ```python
 from lib.google_search_results import GoogleSearchResults
-query = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
-json_results = query.get_json()
+client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
+result = client.get_dict()
  ```
 
 This example runs a search about "coffee" using your secret api key.
@@ -85,19 +85,19 @@ client_params = {
 }
 
 # define the search client
-query = GoogleSearchResults[query_params]
+client = GoogleSearchResults[query_params]
 
 # override an existing parameter
-query.params_dict["location"] = "Portland"
+client.params_dict["location"] = "Portland"
 
 # search format return as raw html
-html_results = query.get_html()
+html_results = client.get_html()
 
 # search as raw JSON format
-json_results = query.get_json()
+json_results = client.get_json()
 
 # search as raw Dictionary format
-json_results = query.get_dict()
+json_results = client.get_dict()
 ```
 
 (the full documentation)[https://serpapi.com/search-api]
