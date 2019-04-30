@@ -8,7 +8,7 @@ import os
 import re
 
 # safe queue 
-from queue import SimpleQueue
+from queue import Queue
 
 # Time utility
 import time
@@ -39,7 +39,7 @@ class TestExample(unittest.TestCase):
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_async(self):
         # store searches
-        search_queue = SimpleQueue()
+        search_queue = Queue()
         
         # Serp API client
         client = GoogleSearchResults({
