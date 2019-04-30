@@ -10,6 +10,10 @@ install:
 test:
 	pytest
 
+# run example only
+example:
+  pytest -s "tests/test_example.py::TestExample::test_async"
+
 # https://packaging.python.org/tutorials/packaging-projects/
 release:
 	pip3 install -U setuptools

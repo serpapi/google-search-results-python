@@ -249,9 +249,74 @@ We do offer two ways to boost your searches thanks to `async` parameter.
  - Blocking - async=false - it's more compute intensive because the client would need to hold many connections. (default) 
   - Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
 
-TODO add example in python
+```python
+# Operating system
+import os
 
-This code shows a simple implementation to run a batch of asynchronously searches.
+# regular expression library
+import re
+
+# safe queue 
+from queue import SimpleQueue
+
+# Time utility
+import time
+
+# Serp API client
+from lib.google_search_results import GoogleSearchResults
+
+# Serp API client
+client = GoogleSearchResults({
+    "location": "Austin,Texas",
+    "async": True
+})
+
+# loop through a list of companies
+for company in ['amd','nvidia','intel']:
+  print("execute async search: q = " + company)
+  client.params_dict["q"] = company
+  search = client.get_dict()
+  print("add search to the queue where id: " + search['search_metadata']['id'])
+  # add search to the search_queue
+  search_queue.put(search)
+
+print("wait until all search statuses are cached or success")
+
+# Create regular client
+client = GoogleSearchResults({"async": True})
+while not search_queue.empty():
+  search = search_queue.get()
+  search_id = search['search_metadata']['id']
+
+  # retrieve search from the archive - blocker
+  print(search_id + ": get search from archive")
+  search_archived =  client.get_search_archive(search_id)
+  print(search_id + ": status = " + search_archived['search_metadata']['status'])
+  
+  # check status
+  if re.search('Cached|Success', search_archived['search_metadata']['status']):
+    print(search_id + ": search done with q = " + search_archived['search_parameters']['q'])
+  else:
+    # requeue search_queue
+    print(search_id + ": requeue search")
+    search_queue.put(search)
+    
+    # wait 1s
+    time.sleep(1)
+
+# self.assertIsNotNone(results["local_results"][0]["title"])
+print('all searches completed')
+```
+
+This code shows how to run searches asynchronously.
+The search parameters must have {async: True}. This indicates that the client shouldn't wait for the search to be completed.
+The current thread that executes the search is now non-blocking which allows to execute thousand of searches in seconds. The Serp API backend will do the processing work.
+The actual search result is defer to a later call from the search archive using get_search_archive(search_id).
+In this example the non-blocking searches are persisted in a queue: search_queue.
+A loop through the search_queue allows to fetch individual search result.
+This process can be easily multithreaded to allow a large number of concurrent search requests.
+To keep thing simple, this example does only explore search result one at a time (single threaded).
+
 
 ## Conclusion
 SerpAPI supports Google Images, News, Shopping and more..

@@ -1,6 +1,19 @@
-import random
+# Unit testing
 import unittest
+
+# Operating system
 import os
+
+# regular expression library
+import re
+
+# safe queue 
+from queue import SimpleQueue
+
+# Time utility
+import time
+
+# Serp API client
 from lib.google_search_results import GoogleSearchResults
 
 # download file with wget
@@ -23,15 +36,52 @@ class TestExample(unittest.TestCase):
                 pass
             # https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training/blob/master/fetch.py
 
-    # @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
-    # def test_async(self):
-    #     client = GoogleSearchResults({
-    #         "q": "Coffee", 
-    #         "location": "Austin,Texas", 
-    #         "async": True
-    #     })
-    #     results = client.get_json()
-    #     self.assertIsNotNone(results["local_results"][0]["title"])
+    @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+    def test_async(self):
+        # store searches
+        search_queue = SimpleQueue()
+        
+        # Serp API client
+        client = GoogleSearchResults({
+            "location": "Austin,Texas",
+            "async": True
+        })
+        
+        # loop through companies
+        for company in ['amd','nvidia','intel']:
+          print("execute async search: q = " + company)
+          client.params_dict["q"] = company
+          search = client.get_dict()
+          print("add search to the queue where id: " + search['search_metadata']['id'])
+          # add search to the search_queue
+          search_queue.put(search)
+        
+        print("wait until all search statuses are cached or success")
+        
+        # Create regular client
+        client = GoogleSearchResults({"async": True})
+        while not search_queue.empty():
+          search = search_queue.get()
+          search_id = search['search_metadata']['id']
+
+          # retrieve search from the archive - blocker
+          print(search_id + ": get search from archive")
+          search_archived =  client.get_search_archive(search_id)
+          print(search_id + ": status = " + search_archived['search_metadata']['status'])
+          
+          # check status
+          if re.search('Cached|Success', search_archived['search_metadata']['status']):
+            print(search_id + ": search done with q = " + search_archived['search_parameters']['q'])
+          else:
+            # requeue search_queue
+            print(search_id + ": requeue search")
+            search_queue.put(search)
+            
+            # wait 1s
+            time.sleep(1)
+        
+        # self.assertIsNotNone(results["local_results"][0]["title"])
+        print('all searches completed')
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_google_news(self):
