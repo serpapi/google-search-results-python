@@ -8,8 +8,12 @@ import os
 import re
 
 # safe queue 
-from queue import Queue
-
+import sys
+if (sys.version_info > (3, 0)):
+  from queue import Queue
+else:
+  from Queue import Queue
+  
 # Time utility
 import time
 
@@ -79,9 +83,10 @@ class TestExample(unittest.TestCase):
             
             # wait 1s
             time.sleep(1)
-        
-        # self.assertIsNotNone(results["local_results"][0]["title"])
+            
         print('all searches completed')
+        
+        
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_google_news(self):

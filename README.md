@@ -53,7 +53,7 @@ Et voila..
  * [Search Google News](#search-google-news)
  * [Search Google Shopping](#search-google-shopping)
  * [Google Search By Location](#google-search-by-location)
- * [Batch Asynchronous search](#batch-asynchronous-search)
+ * [Batch Asynchronous searches](#batch-asynchronous-searches)
 
 ### How to set SERP API key
 The Serp API key can be set globally using a singleton pattern.
@@ -243,21 +243,24 @@ for city in ["new york", "paris", "berlin"]:
   top_result = data["organic_results"][0]["title"]
 ```
 
-### Batch Asynchronous search
+### Batch Asynchronous Searches
 
 We do offer two ways to boost your searches thanks to `async` parameter.
  - Blocking - async=false - it's more compute intensive because the client would need to hold many connections. (default) 
   - Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
 
 ```python
+# Python 3.6+
+#
+
 # Operating system
 import os
 
 # regular expression library
 import re
 
-# safe queue 
-from queue import SimpleQueue
+# safe queue (named Queue in python2)
+from queue import Queue
 
 # Time utility
 import time
@@ -265,6 +268,9 @@ import time
 # Serp API client
 from lib.google_search_results import GoogleSearchResults
 
+# store searches
+search_queue = Queue()
+        
 # Serp API client
 client = GoogleSearchResults({
     "location": "Austin,Texas",
@@ -316,6 +322,8 @@ In this example the non-blocking searches are persisted in a queue: search_queue
 A loop through the search_queue allows to fetch individual search result.
 This process can be easily multithreaded to allow a large number of concurrent search requests.
 To keep thing simple, this example does only explore search result one at a time (single threaded).
+
+[See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
 
 ## Conclusion
