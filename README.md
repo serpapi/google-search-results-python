@@ -78,10 +78,11 @@ client_params = {
   "num": "Number of Results",
   "start": "Pagination Offset",
   "serp_api_key": "Your SERP API Key",
-  "tbm": "nws|isch|shop"
-  "tbs": "custom to be search criteria"
-  "async": true|false # allow async 
-  "output": "json|html" # output format
+  "tbm": "nws|isch|shop",  # To be match
+  "tbs": "custom to be search criteria" # To be search
+  "async": true|false, # allow async request
+  "output": "json|html", # output format
+  "engine": "google|bing|baidu" # set search engine
 }
 
 # define the search client
@@ -325,6 +326,10 @@ To keep thing simple, this example does only explore search result one at a time
 
 [See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
+## Change log
+
+2019-06-25
+ - New search engine supported: Baidu and Bing
 
 ## Conclusion
 SerpAPI supports Google Images, News, Shopping and more..
