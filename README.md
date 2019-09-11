@@ -4,10 +4,10 @@
 
 This Python package is meant to scrape and parse Google, Bing, Baidu results using [SERP API](https://serpapi.com). 
 The following services are provided:
- * [Search API](https://serpapi.com/search-api)
- * [Search Archive API](https://serpapi.com/search-archive-api)
- * [Account API](https://serpapi.com/account-api)
- * [Location API](https://serpapi.com/locations-api) (Google Only)
+- [Search API](https://serpapi.com/search-api)
+- [Search Archive API](https://serpapi.com/search-archive-api)
+- [Account API](https://serpapi.com/account-api)
+- [Location API](https://serpapi.com/locations-api) (Google Only)
 
 SerpApi provides a [script builder](https://serpapi.com/demo) to get you started quickly.
 
@@ -28,75 +28,76 @@ pip install google-search-results
 from lib.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
 result = client.get_dict()
- ```
+```
 
 This example runs a search about "coffee" using your secret api key.
 
 The Serp API service (backend)
- - searches on Google using the client: q = "coffee"
- - parses the messy HTML responses
- - return a standardizes JSON response
+- searches on Google using the client: q = "coffee"
+- parses the messy HTML responses
+- return a standardizes JSON response
 The GoogleSearchResults class
- - Format the request
- - Execute GET http request against Serp API service
- - Parse JSON response into a dictionary
+- Format the request
+- Execute GET http request against Serp API service
+- Parse JSON response into a dictionary
 Et voila..
 
 Alternatively, you can search:
- - Bing using BingSearchResults class
- - Baidu using BaiduSearchResults class
+- Bing using BingSearchResults class
+- Baidu using BaiduSearchResults class
 
 See the [playground to generate your code.](https://serpapi.com/playground)
 
 ## Example
- * [Search API capability](#search-api-capability)
- * [How to set SERP API key](#how-to-set-serp-api-key)
- * [Example by specification](#example-by-specification)
- * [Location API](#location-api)
- * [Search Archive API](#search-archive-api)
- * [Account API](#account-api)
- * [Search Google Images](#search-google-images)
- * [Search Google News](#search-google-news)
- * [Search Google Shopping](#search-google-shopping)
- * [Google Search By Location](#google-search-by-location)
- * [Batch Asynchronous searches](#batch-asynchronous-searches)
+- [Search API capability](#search-api-capability)
+- [How to set SERP API key](#how-to-set-serp-api-key)
+- [Example by specification](#example-by-specification)
+- [Location API](#location-api)
+- [Search Archive API](#search-archive-api)
+- [Account API](#account-api)
+- [Search Google Images](#search-google-images)
+- [Search Google News](#search-google-news)
+- [Search Google Shopping](#search-google-shopping)
+- [Google Search By Location](#google-search-by-location)
+- [Batch Asynchronous searches](#batch-asynchronous-searches)
 
 ### Search API capability
-```python
+Source code.
+```
 client_params = {
-  "q": "client",
-  "google_domain": "Google Domain", 
-  "location": "Location Requested", 
-  "device": "desktop|mobile|tablet",
-  "hl": "Google UI Language",
-  "gl": "Google Country",
-  "safe": "Safe Search Flag",
-  "num": "Number of Results",
-  "start": "Pagination Offset",
-  "serp_api_key": "Your SERP API Key",
-  "tbm": "nws|isch|shop",  # To be match
-  "tbs": "custom to be search criteria" # To be search
-  "async": true|false, # allow async request
-  "output": "json|html", # output format
-  "engine": "google|bing|baidu" # set search engine
+"q": "client",
+"google_domain": "Google Domain", 
+"location": "Location Requested", 
+"device": "desktop|mobile|tablet",
+"hl": "Google UI Language",
+"gl": "Google Country",
+"safe": "Safe Search Flag",
+"num": "Number of Results",
+"start": "Pagination Offset",
+"serp_api_key": "Your SERP API Key", 
+# To be match
+"tbm": "nws|isch|shop", 
+# To be search
+"tbs": "custom to be search criteria",
+# allow async request
+"async": "true|false",
+# output format
+"output": "json|html",
+# set search engine
+"engine": "google|bing|baidu"
 }
 
 # define the search client
-client = GoogleSearchResults[query_params]
-
+client = GoogleSearchResults(query_params)
 # override an existing parameter
 client.params_dict["location"] = "Portland"
-
 # search format return as raw html
 html_results = client.get_html()
 
-# search as raw JSON format
+# parse results
+dict_results = client.get_dict()
 json_results = client.get_json()
-
-# search as raw Dictionary format
-json_results = client.get_dict()
 ```
-
 (the full documentation)[https://serpapi.com/search-api]
 
 see below for more hands on examples.
