@@ -10,7 +10,7 @@ class TestLocationApi(unittest.TestCase):
         GoogleSearchResults.SERP_API_KEY = os.getenv("API_KEY","demo")
 
     def test_get_location(self):
-        client = GoogleSearchResults({})
+        client = GoogleSearchResults({'q':'none'})
         location_list = client.get_location("Austin", 3)
         self.assertIsNotNone(location_list[0].get("id"))
         pp = pprint.PrettyPrinter(indent=2)
