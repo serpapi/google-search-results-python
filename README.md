@@ -2,14 +2,14 @@
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-python)
 
-This Python package is meant to scrape and parse Google results using [SERP API](https://serpapi.com). 
+This Python package is meant to scrape and parse Google, Bing, Baidu results using [SERP API](https://serpapi.com). 
 The following services are provided:
  * [Search API](https://serpapi.com/search-api)
- * [Location API](https://serpapi.com/locations-api)
  * [Search Archive API](https://serpapi.com/search-archive-api)
  * [Account API](https://serpapi.com/account-api)
+ * [Location API](https://serpapi.com/locations-api) (Google Only)
 
-Serp API provides a [script builder](https://serpapi.com/demo) to get you started quickly.
+SerpApi provides a [script builder](https://serpapi.com/demo) to get you started quickly.
 
 Feel free to fork this repository to add more backends.
 
@@ -36,15 +36,21 @@ The Serp API service (backend)
  - searches on Google using the client: q = "coffee"
  - parses the messy HTML responses
  - return a standardizes JSON response
-The Ruby class GoogleSearchResults
- - Format the request to Serp API server
- - Execute GET http request
- - Parse JSON into Ruby Hash using JSON standard library provided by Ruby
+The GoogleSearchResults class
+ - Format the request
+ - Execute GET http request against Serp API service
+ - Parse JSON response into a dictionary
 Et voila..
 
+Alternatively, you can search:
+ - Bing using BingSearchResults class
+ - Baidu using BaiduSearchResults class
+
+See the [playground to generate your code.](https://serpapi.com/playground)
+
 ## Example
- * [How to set SERP API key](#how-to-set-serp-api-key)
  * [Search API capability](#search-api-capability)
+ * [How to set SERP API key](#how-to-set-serp-api-key)
  * [Example by specification](#example-by-specification)
  * [Location API](#location-api)
  * [Search Archive API](#search-archive-api)
@@ -54,16 +60,6 @@ Et voila..
  * [Search Google Shopping](#search-google-shopping)
  * [Google Search By Location](#google-search-by-location)
  * [Batch Asynchronous searches](#batch-asynchronous-searches)
-
-### How to set SERP API key
-The Serp API key can be set globally using a singleton pattern.
-```python
-GoogleSearchResults.SERP_API_KEY = "Your Private Key"
-```
-The Serp API key can be provided for each client.
-```python
-query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
-```
 
 ### Search API capability
 ```python
@@ -105,10 +101,20 @@ json_results = client.get_dict()
 
 see below for more hands on examples.
 
+### How to set SERP API key
+The Serp API key can be set globally using a singleton pattern.
+```python
+GoogleSearchResults.SERP_API_KEY = "Your Private Key"
+```
+The Serp API key can be provided for each client.
+```python
+query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
+```
+
 ### Example by specification
 
 We love true open source, continuous integration and Test Drive Development (TDD). 
- We are using RSpec to test [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-ruby) to achieve the best QoS (Quality Of Service).
+ We are using RSpec to test [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-python) to achieve the best QoS (Quality Of Service).
  
 The directory test/ includes specification/examples.
 

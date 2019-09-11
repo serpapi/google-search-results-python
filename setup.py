@@ -8,11 +8,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(name='google_search_results',
-      version='1.4.0',
+      version='1.5.0',
       description='this pip package is meant to scrape and parse Google results using SERP API. Feel free to fork this repository to add more backends.',
       url='https://github.com/serpapi/google-search-results-python',
-      author='lf2225',
-      author_email='lf2225@gmail.com',
+      author='vikoky',
+      author_email='victor@serpapi.com'',
       classifiers=[
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',

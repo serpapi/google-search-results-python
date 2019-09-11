@@ -1,5 +1,5 @@
 # current version
-version=`grep version setup.py | cut -d"'" -f2`
+version=$(shell grep version setup.py | cut -d"'" -f2)
 
 all: install test
 
@@ -15,7 +15,7 @@ example:
 	pytest -s "tests/test_example.py::TestExample::test_async"
 
 # https://packaging.python.org/tutorials/packaging-projects/
-release:
+build:
 	pip3 install -U setuptools
 	python setup.py sdist
 
