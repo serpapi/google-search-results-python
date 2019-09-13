@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from lib.baidu_search_results import BaiduSearchResults
+from serpapi.baidu_search_results import BaiduSearchResults
 
 class TestBaiduSearchApi(unittest.TestCase):
 

@@ -25,7 +25,7 @@ pip install google-search-results
 ## Quick start
 
 ```python
-from lib.google_search_results import GoogleSearchResults
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
 result = client.get_dict()
 ```
@@ -55,6 +55,8 @@ See the [playground to generate your code.](https://serpapi.com/playground)
 - [Location API](#location-api)
 - [Search Archive API](#search-archive-api)
 - [Account API](#account-api)
+- [Search Bing](#search-bing)
+- [Search Baidu](#search-baidu)
 - [Search Google Images](#search-google-images)
 - [Search Google News](#search-google-news)
 - [Search Google Shopping](#search-google-shopping)
@@ -132,6 +134,7 @@ make test
 ### Location API
 
 ```python
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({})
 location_list = client.get_location("Austin", 3)
 print(location_list)
@@ -158,6 +161,7 @@ The search result are stored in temporary cached.
 The previous search can be retrieve from the the cache for free.
 
 ```python
+from serp.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
 search_result = client.get_dictionary()
 search_id = search_result.get("search_metadata").get("id")
@@ -174,14 +178,39 @@ it prints the search result from the archive.
 
 ### Account API
 ```python
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({})
 account = client.get_account()
 ```
 it prints your account information.
 
+### Search Bing
+```python
+import pprint
+from serpapi.bing_search_results import BingSearchResults
+client = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
+data = client.get_json()
+pp = pprint.PrettyPrinter(indent=2)
+pp.pprint(data)
+```
+this code prints baidu search results for coffee as JSON. 
+
+
+### Search Baidu
+```python
+import pprint
+from serpapi.baidu_search_results import BaiduSearchResults
+client = BaiduSearchResults({"q": "Coffee"})
+data = client.get_json()
+pp = pprint.PrettyPrinter(indent=2)
+pp.pprint(data)
+```
+this code prints baidu search results for coffee as JSON. 
+
 ### Search Google Images
 
 ```python
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({"q": "coffe", "tbm": "isch"})
 for image_result in client.get_json()['images_results']:
     link = image_result["original"]
@@ -201,6 +230,7 @@ https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training
 ### Search Google News
 
 ```python
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({
     "q": "coffe",   # search client
     "tbm": "nws",  # news
@@ -219,6 +249,7 @@ this script prints the first 3 pages of the news title for the last 24h.
 ### Search Google Shopping
 
 ```python
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({
     "q": "coffe",   # search client
     "tbm": "shop",  # news
@@ -239,6 +270,7 @@ With Serp API, we can build Google search from anywhere in the world.
 This code is looking for the best coffee shop per city.
 
 ```python
+from serpapi.google_search_results import GoogleSearchResults
 for city in ["new york", "paris", "berlin"]:
   location = GoogleSearchResults({}).get_location(city, 1)[0]["canonical_name"]
   client = GoogleSearchResults({
@@ -274,7 +306,7 @@ from queue import Queue
 import time
 
 # Serp API client
-from lib.google_search_results import GoogleSearchResults
+from serpapi.google_search_results import GoogleSearchResults
 
 # store searches
 search_queue = Queue()
@@ -335,6 +367,9 @@ To keep thing simple, this example does only explore search result one at a time
 
 ## Change log
 
+2019-09-12 
+ - Change  namespace "from lib." instead: "from serpapi.google_search_results import GoogleSearchResults"
+ - Support for Bing and Baidu
 2019-06-25
  - New search engine supported: Baidu and Bing
 

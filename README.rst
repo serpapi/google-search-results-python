@@ -33,7 +33,7 @@ Quick start
 
 .. code-block:: python
 
-    from lib.google_search_results import GoogleSearchResults
+    from serpapi.google_search_results import GoogleSearchResults
     client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas", "api_key": "secretKey"})
     result = client.get_dict()
 

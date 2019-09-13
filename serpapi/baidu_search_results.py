@@ -1,4 +1,4 @@
-from lib.serp_api_client import *
+from serpapi.serp_api_client import *
 
 class BaiduSearchResults(SerpApiClient):
     """GoogleSearchResults enables to search google and parse the result.

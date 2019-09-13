@@ -1,7 +1,7 @@
 import random
 import unittest
 import os
-from lib.google_search_results import GoogleSearchResults
+from serpapi.google_search_results import GoogleSearchResults
 
 class TestSearchArchiveApi(unittest.TestCase):
 

@@ -18,7 +18,7 @@ else:
 import time
 
 # Serp API client
-from lib.google_search_results import GoogleSearchResults
+from serpapi.google_search_results import GoogleSearchResults
 
 # download file with wget
 #import wget

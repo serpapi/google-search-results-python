@@ -1,4 +1,4 @@
-from lib.serp_api_client import *
+from serpapi.serp_api_client import *
 
 class BingSearchResults(SerpApiClient):
     """BingSearchResults enables to search google and parse the result.

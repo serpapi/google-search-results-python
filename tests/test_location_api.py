@@ -2,7 +2,7 @@ import random
 import unittest
 import pprint
 import os
-from lib.google_search_results import GoogleSearchResults
+from serpapi.google_search_results import GoogleSearchResults
 
 class TestLocationApi(unittest.TestCase):
 

@@ -8,7 +8,7 @@ BAIDU_ENGINE = 'baidu'
 class SerpApiClient(object):
     """GoogleSearchResults enables to search google and parse the result.
     ```python
-    from lib.google_search_results import GoogleSearchResults
+    from serpapi.google_search_results import GoogleSearchResults
     query = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
     data = query.get_json()
     ```

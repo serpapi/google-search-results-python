@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from lib.bing_search_results import BingSearchResults
+from serpapi.bing_search_results import BingSearchResults
 
 class TestBingSearchApi(unittest.TestCase):
 
