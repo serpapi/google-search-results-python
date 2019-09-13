@@ -23,11 +23,10 @@ example:
 
 build_dep:
 	pip3 install -U setuptools
-	pip install readme_renderer
 
 # https://packaging.python.org/tutorials/packaging-projects/
 build:
-	python setup.py sdist
+	python3 setup.py sdist
 
 check: build
 	twine check dist/google_search_results-$(version).tar.gz
