@@ -4,14 +4,18 @@ version=$(shell grep version setup.py | cut -d"'" -f2)
 
 .PHONY: build
 
-all: install test
+all: install test test2
 
 install:
 	pip3 install -r requirements.txt
 
-# run test
+# Test with Python 3
 test:
 	pytest
+
+# Test with python 2.7
+test2:
+	py.test-2.7
 
 # run example only
 example:
@@ -21,12 +25,8 @@ build_dep:
 	pip3 install -U setuptools
 	pip install readme_renderer
 
-readme:
-	@head -n 50 README.md > SHORT_README.md
-	@echo "\nFor more [README](https://github.com/serpapi/google-search-results-python/blob/master/README.md)" >> SHORT_README.md
-
 # https://packaging.python.org/tutorials/packaging-projects/
-build: readme
+build:
 	python setup.py sdist
 
 check: build

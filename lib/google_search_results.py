@@ -12,4 +12,4 @@ class GoogleSearchResults(SerpApiClient):
     """
 
     def __init__(self, params_dict):
-        super().__init__(params_dict, GOOGLE_ENGINE)
+        super(GoogleSearchResults, self).__init__(params_dict, GOOGLE_ENGINE)

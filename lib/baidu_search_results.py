@@ -12,7 +12,7 @@ class BaiduSearchResults(SerpApiClient):
     """
 
     def __init__(self, params_dict):
-        super().__init__(params_dict, BAIDU_ENGINE)
+        super(BaiduSearchResults, self).__init__(params_dict, BAIDU_ENGINE)
 
     def get_location(self, q, limit = 5):
         raise "location is not supported by Baidu search engine at this time"

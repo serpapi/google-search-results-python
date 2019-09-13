@@ -12,5 +12,4 @@ class BingSearchResults(SerpApiClient):
     """
 
     def __init__(self, params_dict):
-        super().__init__(params_dict, BING_ENGINE)
-
+        super(BingSearchResults, self).__init__(params_dict, BING_ENGINE)
