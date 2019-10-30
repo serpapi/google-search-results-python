@@ -25,7 +25,7 @@ pip install google-search-results
 ## Quick start
 
 ```python
-from lib.google_search_results import GoogleSearchResults
+from serpapi.google_search_results import GoogleSearchResults
 client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
 result = client.get_dict()
 ```
