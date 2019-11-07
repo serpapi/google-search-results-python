@@ -17,7 +17,6 @@ class SerpApiClient(object):
     https://github.com/serpapi/google-search-results-python
     """
 
-    VERSION = "1.5.0"
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
