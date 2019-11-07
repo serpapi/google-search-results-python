@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-python)
 
-This Python package is meant to scrape and parse Google, Bing, Baidu results using [SERP API](https://serpapi.com). 
+This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu results using [SERP API](https://serpapi.com). 
 The following services are provided:
 - [Search API](https://serpapi.com/search-api)
 - [Search Archive API](https://serpapi.com/search-archive-api)
