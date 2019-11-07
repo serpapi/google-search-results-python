@@ -1,9 +1,9 @@
 from serpapi.serp_api_client import *
 
 class BaiduSearchResults(SerpApiClient):
-    """GoogleSearchResults enables to search google and parse the result.
+    """BaiduSearchResults enables to search baidu and parse the result.
     ```python
-    from lib.baidu_search_results import BaiduSearchResults
+    from serpapi.baidu_search_results import BaiduSearchResults
     query = BaiduSearchResults({"q": "coffee"})
     data = query.get_json()
     ```

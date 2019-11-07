@@ -207,6 +207,18 @@ pp.pprint(data)
 ```
 this code prints baidu search results for coffee as JSON. 
 
+### Search Google Scholar
+```python
+import pprint
+from serpapi.google_scholar_search_results import GoogleScholarSearchResults
+client = GoogleScholarSearchResults({"q": "Coffee"})
+data = client.get_json()
+pp = pprint.PrettyPrinter(indent=2)
+pp.pprint(data)
+```
+this code prints Google Scholar search results.
+
+
 ### Search Google Images
 
 ```python

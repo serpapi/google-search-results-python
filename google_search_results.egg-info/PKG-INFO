@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: google-search-results
-Version: 1.5.4
+Version: 1.6.0
 Summary: Scrape and search localized results from Google, Bing, Baidu at scale using SerpApi.com
 Home-page: https://github.com/serpapi/google-search-results-python
 Author: vikoky

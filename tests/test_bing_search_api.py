@@ -17,6 +17,5 @@ class TestBingSearchApi(unittest.TestCase):
 				pp = pprint.PrettyPrinter(indent=2)
 				pp.pprint(data)
 
-
 if __name__ == '__main__':
 		unittest.main()

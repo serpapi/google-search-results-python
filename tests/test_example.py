@@ -121,11 +121,11 @@ class TestExample(unittest.TestCase):
             client = GoogleSearchResults({
                 "q": "best coffee shop",   # search client
                 "location": location,
-                "num": 1,
+                "num": 10,
                 "start": 0
             })
             data = client.get_json()
-            top_result = data["organic_results"][0]["title"]
+            top_result = data['organic_results'][0]["title"]
             print("top coffee result for " + location + " is: " + top_result)
 
 

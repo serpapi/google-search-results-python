@@ -4,6 +4,9 @@ import os
 import pprint
 from serpapi.serp_api_client import SerpApiClient
 
+# This test shows how to extends SerpApiClient
+#  without using search engine wrapper.
+# 
 class TestSerpSearchApi(unittest.TestCase):
 
 		def setUp(self):

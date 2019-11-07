@@ -4,6 +4,7 @@ import json
 GOOGLE_ENGINE = 'google'
 BING_ENGINE = 'bing'
 BAIDU_ENGINE = 'baidu'
+GOOGLE_SCHOLAR_ENGINE = 'google_scholar'
 
 class SerpApiClient(object):
     """GoogleSearchResults enables to search google and parse the result.

@@ -13,9 +13,10 @@ class TestSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				client = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
 				data = client.get_json()
-				self.assertIsNotNone(data["local_results"][0]["title"])
-				pp = pprint.PrettyPrinter(indent=2)
-				pp.pprint(data)
+				# pp = pprint.PrettyPrinter(indent=2)
+				# pp.pprint(data['local_results'])
+				self.assertIsNotNone(data['local_results']['places'][0])
+
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_dict(self):
@@ -28,7 +29,6 @@ class TestSearchApi(unittest.TestCase):
 				client = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
 				data = client.get_dictionary()
 				self.assertIsNotNone(data.get('local_results'))
-
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_html(self):
