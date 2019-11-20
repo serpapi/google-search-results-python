@@ -379,10 +379,12 @@ To keep thing simple, this example does only explore search result one at a time
 
 ## Change log
 
-2019-09-12 
+2019-11-10 @ 1.7.1
+ - increase engine parameter priority over engine value set in the class
+2019-09-12 @ 1.7
  - Change  namespace "from lib." instead: "from serpapi.google_search_results import GoogleSearchResults"
  - Support for Bing and Baidu
-2019-06-25
+2019-06-25 @ 1.6
  - New search engine supported: Baidu and Bing
 
 ## Conclusion

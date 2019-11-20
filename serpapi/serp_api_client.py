@@ -29,7 +29,8 @@ class SerpApiClient(object):
         if self.SERP_API_KEY:
             self.params_dict['serp_api_key'] = self.SERP_API_KEY
         if self.engine:
-            self.params_dict['engine'] = self.engine
+            if not 'engine' in self.params_dict:
+                self.params_dict['engine'] = self.engine
         return self.BACKEND + path, self.params_dict
 
     def get_results(self, path = '/search'):

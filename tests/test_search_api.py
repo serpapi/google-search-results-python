@@ -17,6 +17,11 @@ class TestSearchApi(unittest.TestCase):
 				# pp.pprint(data['local_results'])
 				self.assertIsNotNone(data['local_results']['places'][0])
 
+		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+		def test_get_json(self):
+				client = GoogleSearchResults({"q": "Coffee", "engine": "google_scholar"})
+				data = client.get_json()
+				self.assertIsNotNone(data["organic_results"][0]["title"])
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_dict(self):
