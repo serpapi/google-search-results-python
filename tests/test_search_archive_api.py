@@ -15,6 +15,7 @@ class TestSearchArchiveApi(unittest.TestCase):
         search_id = search_result.get("search_metadata").get("id")
         archived_search_result = GoogleSearchResults({}).get_search_archive(search_id, 'json')
         self.assertEqual(archived_search_result.get("search_metadata").get("id"), search_id)
+        GoogleSearchResults({}).get_search_archive(search_id, 'html')
 
 if __name__ == '__main__':
     unittest.main()
