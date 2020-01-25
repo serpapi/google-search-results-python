@@ -4,3 +4,4 @@ build/
 dist/
 .pytest_cache/
 SHORT_README.md
+.Python
