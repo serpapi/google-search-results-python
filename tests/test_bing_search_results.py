@@ -13,9 +13,12 @@ class TestBingSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				client = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
 				data = client.get_json()
+				self.assertEqual(data["search_metadata"]["status"], "Success")
+				self.assertIsNotNone(data["search_metadata"]["bing_url"])
+				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])
-				pp = pprint.PrettyPrinter(indent=2)
-				pp.pprint(data)
+				# pp = pprint.PrettyPrinter(indent=2)
+				# pp.pprint(data)
 
 if __name__ == '__main__':
 		unittest.main()

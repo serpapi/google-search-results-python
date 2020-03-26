@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-python)
 
-This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu results using [SERP API](https://serpapi.com). 
+This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using [SERP API](https://serpapi.com). 
 The following services are provided:
 - [Search API](https://serpapi.com/search-api)
 - [Search Archive API](https://serpapi.com/search-archive-api)
@@ -10,8 +10,6 @@ The following services are provided:
 - [Location API](https://serpapi.com/locations-api) (Google Only)
 
 SerpApi provides a [script builder](https://serpapi.com/demo) to get you started quickly.
-
-Feel free to fork this repository to add more backends.
 
 ## Installation
 
@@ -32,36 +30,47 @@ result = client.get_dict()
 
 This example runs a search about "coffee" using your secret api key.
 
-The Serp API service (backend)
+The SerpApi service (backend)
 - searches on Google using the client: q = "coffee"
 - parses the messy HTML responses
 - return a standardizes JSON response
 The GoogleSearchResults class
 - Format the request
-- Execute GET http request against Serp API service
+- Execute GET http request against SerpApi service
 - Parse JSON response into a dictionary
 Et voila..
 
 Alternatively, you can search:
 - Bing using BingSearchResults class
 - Baidu using BaiduSearchResults class
+- Yahoo using YahooSearchResults class
+- Ebay using EbaySearchResults class
+- Yandex using YandexSearchResults class
+- GoogleScholar using GoogleScholarSearchResults class
 
 See the [playground to generate your code.](https://serpapi.com/playground)
 
 ## Example
-- [Search API capability](#search-api-capability)
-- [How to set SERP API key](#how-to-set-serp-api-key)
-- [Example by specification](#example-by-specification)
-- [Location API](#location-api)
-- [Search Archive API](#search-archive-api)
-- [Account API](#account-api)
-- [Search Bing](#search-bing)
-- [Search Baidu](#search-baidu)
-- [Search Google Images](#search-google-images)
-- [Search Google News](#search-google-news)
-- [Search Google Shopping](#search-google-shopping)
-- [Google Search By Location](#google-search-by-location)
-- [Batch Asynchronous searches](#batch-asynchronous-searches)
+- [Google Search Results in Python](#google-search-results-in-python)
+  - [Installation](#installation)
+  - [Quick start](#quick-start)
+  - [Example](#example)
+    - [Search API capability](#search-api-capability)
+    - [How to set SERP API key](#how-to-set-serp-api-key)
+    - [Example by specification](#example-by-specification)
+    - [Location API](#location-api)
+    - [Search Archive API](#search-archive-api)
+    - [Account API](#account-api)
+    - [Search Bing](#search-bing)
+    - [Search Baidu](#search-baidu)
+    - [Search Google Scholar](#search-google-scholar)
+    - [Search Google Images](#search-google-images)
+    - [Search Google News](#search-google-news)
+    - [Search Google Shopping](#search-google-shopping)
+    - [Google Search By Location](#google-search-by-location)
+    - [Batch Asynchronous Searches](#batch-asynchronous-searches)
+  - [Change log](#change-log)
+  - [Conclusion](#conclusion)
 
 ### Search API capability
 Source code.
@@ -105,11 +114,11 @@ json_results = client.get_json()
 see below for more hands on examples.
 
 ### How to set SERP API key
-The Serp API key can be set globally using a singleton pattern.
+The SerpApi api_key can be set globally using a singleton pattern.
 ```python
 GoogleSearchResults.SERP_API_KEY = "Your Private Key"
 ```
-The Serp API key can be provided for each client.
+The SerpApi api_key can be provided for each client.
 ```python
 query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
 ```
@@ -278,7 +287,7 @@ this script prints all the shopping results order by review order.
 
 ### Google Search By Location
 
-With Serp API, we can build Google search from anywhere in the world.
+With SerpApi, we can build Google search from anywhere in the world.
 This code is looking for the best coffee shop per city.
 
 ```python
@@ -317,13 +326,13 @@ from queue import Queue
 # Time utility
 import time
 
-# Serp API client
+# SerpApi client
 from serpapi.google_search_results import GoogleSearchResults
 
 # store searches
 search_queue = Queue()
         
-# Serp API client
+# SerpApi client
 client = GoogleSearchResults({
     "location": "Austin,Texas",
     "async": True
@@ -368,7 +377,7 @@ print('all searches completed')
 
 This code shows how to run searches asynchronously.
 The search parameters must have {async: True}. This indicates that the client shouldn't wait for the search to be completed.
-The current thread that executes the search is now non-blocking which allows to execute thousand of searches in seconds. The Serp API backend will do the processing work.
+The current thread that executes the search is now non-blocking which allows to execute thousand of searches in seconds. The SerpApi backend will do the processing work.
 The actual search result is defer to a later call from the search archive using get_search_archive(search_id).
 In this example the non-blocking searches are persisted in a queue: search_queue.
 A loop through the search_queue allows to fetch individual search result.
@@ -378,7 +387,9 @@ To keep thing simple, this example does only explore search result one at a time
 [See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
 ## Change log
-
+2020-03-25 @ 1.8
+ - add support for Yandex, Yahoo, Ebay
+ - clean-up test
 2019-11-10 @ 1.7.1
  - increase engine parameter priority over engine value set in the class
 2019-09-12 @ 1.7
@@ -388,7 +399,7 @@ To keep thing simple, this example does only explore search result one at a time
  - New search engine supported: Baidu and Bing
 
 ## Conclusion
-SerpAPI supports Google Images, News, Shopping and more..
+SerpApi supports Google Images, News, Shopping and more..
 To enable a type of search, the field tbm (to be matched) must be set to:
 
  * isch: Google Images API.

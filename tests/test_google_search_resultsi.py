@@ -13,6 +13,9 @@ class TestSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				client = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
 				data = client.get_json()
+				self.assertEqual(data["search_metadata"]["status"], "Success")
+				self.assertIsNotNone(data["search_metadata"]["google_url"])
+				self.assertIsNotNone(data["search_metadata"]["id"])
 				# pp = pprint.PrettyPrinter(indent=2)
 				# pp.pprint(data['local_results'])
 				self.assertIsNotNone(data['local_results']['places'][0])

@@ -4,7 +4,11 @@ version=$(shell grep version setup.py | cut -d"'" -f2)
 
 .PHONY: build
 
-all: install test test2
+all: clean install test test2
+
+clean:
+	find . -name '*.pyc' -delete
+	find . -type d -name "__pycache__" -delete
 
 install:
 	pip3 install -r requirements.txt

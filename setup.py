@@ -8,8 +8,8 @@ with open('README.rst') as fp:
     README = fp.read()
 
 setup(name='google_search_results',
-      version='1.7.1',
-      description='Scrape and search localized results from Google, Bing, Baidu at scale using SerpApi.com',
+      version='1.8.0',
+      description='Scrape and search localized results from Google, Bing, Baidu, Yahoo, Yandex, Ebay at scale using SerpApi.com',
       url='https://github.com/serpapi/google-search-results-python',
       author='vikoky',
       author_email='victor@serpapi.com',

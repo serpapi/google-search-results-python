@@ -5,12 +5,15 @@ GOOGLE_ENGINE = 'google'
 BING_ENGINE = 'bing'
 BAIDU_ENGINE = 'baidu'
 GOOGLE_SCHOLAR_ENGINE = 'google_scholar'
+YANDEX_ENGINE = 'yandex'
+EBAY_ENGINE = 'ebay'
+YAHOO_ENGINE = 'yahoo'
 
 class SerpApiClient(object):
     """GoogleSearchResults enables to search google and parse the result.
     ```python
     from serpapi.google_search_results import GoogleSearchResults
-    query = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas"})
+    query = SerpApiClient({"q": "coffee", "location": "Austin,Texas"}, "google")
     data = query.get_json()
     ```
 

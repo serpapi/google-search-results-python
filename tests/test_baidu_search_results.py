@@ -13,6 +13,9 @@ class TestBaiduSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				client = BaiduSearchResults({"q": "Coffee"})
 				data = client.get_json()
+				self.assertEqual(data["search_metadata"]["status"], "Success")
+				self.assertIsNotNone(data["search_metadata"]["baidu_url"])
+				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])
 				pp = pprint.PrettyPrinter(indent=2)
 				pp.pprint(data)
