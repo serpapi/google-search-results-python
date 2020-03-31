@@ -54,8 +54,12 @@ Et voila..
 
 Alternatively, you can search:
 
-* Bing using BingSearchResults class
-* Baidu using BaiduSearchResults class
+- Bing using BingSearchResults class
+- Baidu using BaiduSearchResults class
+- Yahoo using YahooSearchResults class
+- Ebay using EbaySearchResults class
+- Yandex using YandexSearchResults class
+- GoogleScholar using GoogleScholarSearchResults class
 
 See the `playground to generate your code. <https://serpapi.com/playground>`_
 

@@ -26,7 +26,7 @@ setup(name='google_search_results',
     license="MIT",
     install_requires = ["requests"],
     packages=['serpapi'],
-    keywords='scrape,serp,api,json,search,localized,rank,google,bing,baidu,scale,datamining,training,machine',
+    keywords='scrape,serp,api,json,search,localized,rank,google,bing,baidu,yandex,yahoo,ebay,scale,datamining,training,machine,ml',
     long_description=README,
     long_description_content_type="text/x-rst",
 )

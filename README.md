@@ -1,5 +1,6 @@
 # Google Search Results in Python
 
+[![PyPI version](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-python)
 
 This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using [SERP API](https://serpapi.com). 
