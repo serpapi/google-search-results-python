@@ -64,7 +64,11 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Account API](#account-api)
     - [Search Bing](#search-bing)
     - [Search Baidu](#search-baidu)
+    - [Search Yandex](#search-yandex)
+    - [Search Yahoo](#search-yahoo)
+    - [Search Ebay](#search-ebay)
     - [Search Google Scholar](#search-google-scholar)
+    - [Generic search with SerpApiClient](#generic-search-with-serpapiclient)
     - [Search Google Images](#search-google-images)
     - [Search Google News](#search-google-news)
     - [Search Google Shopping](#search-google-shopping)
@@ -196,38 +200,61 @@ it prints your account information.
 
 ### Search Bing
 ```python
-import pprint
 from serpapi.bing_search_results import BingSearchResults
 client = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
 data = client.get_json()
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint(data)
 ```
 this code prints baidu search results for coffee as JSON. 
-
 
 ### Search Baidu
 ```python
-import pprint
 from serpapi.baidu_search_results import BaiduSearchResults
 client = BaiduSearchResults({"q": "Coffee"})
 data = client.get_json()
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint(data)
 ```
 this code prints baidu search results for coffee as JSON. 
 
+### Search Yandex
+```python
+from serpapi.yandex_search_results import YandexSearchResults
+client = YandexSearchResults({"q": "Coffee"})
+data = client.get_json()
+```
+this code prints yandex search results for coffee as JSON. 
+
+### Search Yahoo
+```python
+from serpapi.yahoo_search_results import YahooSearchResults
+client = YahooSearchResults({"q": "Coffee"})
+data = client.get_json()
+```
+this code prints yahoo search results for coffee as JSON. 
+
+### Search Ebay
+```python
+from serpapi.ebay_search_results import EbaySearchResults
+client = EbaySearchResults({"q": "Coffee"})
+data = client.get_json()
+```
+this code prints ebay search results for coffee as JSON. 
+
 ### Search Google Scholar
 ```python
-import pprint
 from serpapi.google_scholar_search_results import GoogleScholarSearchResults
 client = GoogleScholarSearchResults({"q": "Coffee"})
 data = client.get_json()
-pp = pprint.PrettyPrinter(indent=2)
-pp.pprint(data)
 ```
 this code prints Google Scholar search results.
 
+### Generic search with SerpApiClient
+```python
+from serpapi.serp_api_client import SerpApiClient
+query = {"q": "Coffee", "location": "Austin,Texas"}
+engine = "google"
+client = SerpApiClient(query, engine)
+data = client.get_json()
+```
+This class enables to interact with any search engine supported by SerpApi.com 
 
 ### Search Google Images
 
