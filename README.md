@@ -52,11 +52,11 @@ Alternatively, you can search:
 
 See the [playground to generate your code.](https://serpapi.com/playground)
 
-## Example
+## Summary
 - [Google Search Results in Python](#google-search-results-in-python)
   - [Installation](#installation)
   - [Quick start](#quick-start)
-  - [Example](#example)
+  - [Summary](#summary)
     - [Google Search API capability](#google-search-api-capability)
     - [How to set SERP API key](#how-to-set-serp-api-key)
     - [Example by specification](#example-by-specification)
@@ -112,7 +112,7 @@ html_results = client.get_html()
 dict_results = client.get_dict()
 json_results = client.get_json()
 ```
-(the full documentation)[https://serpapi.com/search-api]
+[Link to the full documentation](https://serpapi.com/search-api)
 
 see below for more hands on examples.
 
@@ -425,7 +425,7 @@ To keep thing simple, this example does only explore search result one at a time
  - New search engine supported: Baidu and Bing
 
 ## Conclusion
-SerpApi supports Google Images, News, Shopping and more..
+SerpApi supports all the major search engines. Google has the more advance support with all the major services available: Images, News, Shopping and more..
 To enable a type of search, the field tbm (to be matched) must be set to:
 
  * isch: Google Images API.
