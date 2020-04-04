@@ -3,7 +3,8 @@
 [![PyPI version](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build Status](https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master)](https://travis-ci.org/serpapi/google-search-results-python)
 
-This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using [SERP API](https://serpapi.com). 
+This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using [SerpApi](https://serpapi.com). 
+
 The following services are provided:
 - [Search API](https://serpapi.com/search-api)
 - [Search Archive API](https://serpapi.com/search-archive-api)
@@ -56,7 +57,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
   - [Installation](#installation)
   - [Quick start](#quick-start)
   - [Example](#example)
-    - [Search API capability](#search-api-capability)
+    - [Google Search API capability](#google-search-api-capability)
     - [How to set SERP API key](#how-to-set-serp-api-key)
     - [Example by specification](#example-by-specification)
     - [Location API](#location-api)
@@ -77,39 +78,36 @@ See the [playground to generate your code.](https://serpapi.com/playground)
   - [Change log](#change-log)
   - [Conclusion](#conclusion)
 
-### Search API capability
+### Google Search API capability
 Source code.
-```
-client_params = {
-"q": "client",
-"google_domain": "Google Domain", 
-"location": "Location Requested", 
-"device": "desktop|mobile|tablet",
-"hl": "Google UI Language",
-"gl": "Google Country",
-"safe": "Safe Search Flag",
-"num": "Number of Results",
-"start": "Pagination Offset",
-"serp_api_key": "Your SERP API Key", 
-# To be match
-"tbm": "nws|isch|shop", 
-# To be search
-"tbs": "custom to be search criteria",
-# allow async request
-"async": "true|false",
-# output format
-"output": "json|html",
-# set search engine
-"engine": "google|bing|baidu"
+```python
+params = {
+  "q": "client",
+  "google_domain": "Google Domain", 
+  "location": "Location Requested", 
+  "device": "desktop|mobile|tablet",
+  "hl": "Google UI Language",
+  "gl": "Google Country",
+  "safe": "Safe Search Flag",
+  "num": "Number of Results",
+  "start": "Pagination Offset",
+  "serp_api_key": "Your SERP API Key", 
+  # To be match
+  "tbm": "nws|isch|shop", 
+  # To be search
+  "tbs": "custom to be search criteria",
+  # allow async request
+  "async": "true|false",
+  # output format
+  "output": "json|html"
 }
 
 # define the search client
-client = GoogleSearchResults(query_params)
+client = GoogleSearchResults(params)
 # override an existing parameter
 client.params_dict["location"] = "Portland"
 # search format return as raw html
 html_results = client.get_html()
-
 # parse results
 dict_results = client.get_dict()
 json_results = client.get_json()
