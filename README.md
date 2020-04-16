@@ -117,11 +117,14 @@ json_results = client.get_json()
 see below for more hands on examples.
 
 ### How to set SERP API key
-The SerpApi api_key can be set globally using a singleton pattern.
+
+You can get an API key here if you don't already have one: https://serpapi.com/users/sign_up
+
+The SerpApi `api_key` can be set globally:
 ```python
 GoogleSearchResults.SERP_API_KEY = "Your Private Key"
 ```
-The SerpApi api_key can be provided for each client.
+The SerpApi `api_key` can be provided for each client:
 ```python
 query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
 ```
