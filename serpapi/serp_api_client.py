@@ -80,7 +80,10 @@ class SerpApiClient(object):
         Returns:
             dict|string: search result from the archive
         """
-        return json.loads(self.get_results("/searches/{0}.{1}".format(search_id, format)))
+        result = self.get_results("/searches/{0}.{1}".format(search_id, format))
+        if format == 'json':
+            result = json.loads(result)
+        return result
 
     def get_account(self):
         """Get account information using Account API
