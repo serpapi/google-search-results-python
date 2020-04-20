@@ -207,6 +207,8 @@ data = client.get_json()
 ```
 this code prints baidu search results for coffee as JSON. 
 
+https://serpapi.com/bing-search-api
+
 ### Search Baidu
 ```python
 from serpapi.baidu_search_results import BaiduSearchResults
@@ -214,30 +216,38 @@ client = BaiduSearchResults({"q": "Coffee"})
 data = client.get_json()
 ```
 this code prints baidu search results for coffee as JSON. 
+https://serpapi.com/baidu-search-api
 
 ### Search Yandex
 ```python
 from serpapi.yandex_search_results import YandexSearchResults
-client = YandexSearchResults({"q": "Coffee"})
+client = YandexSearchResults({"text": "Coffee"})
 data = client.get_json()
 ```
 this code prints yandex search results for coffee as JSON. 
 
+https://serpapi.com/yandex-search-api
+
 ### Search Yahoo
 ```python
 from serpapi.yahoo_search_results import YahooSearchResults
-client = YahooSearchResults({"q": "Coffee"})
+client = YahooSearchResults({"p": "Coffee"})
 data = client.get_json()
 ```
 this code prints yahoo search results for coffee as JSON. 
 
+https://serpapi.com/yahoo-search-api
+
+
 ### Search Ebay
 ```python
 from serpapi.ebay_search_results import EbaySearchResults
-client = EbaySearchResults({"q": "Coffee"})
+client = EbaySearchResults({"_nkw": "Coffee"})
 data = client.get_json()
 ```
 this code prints ebay search results for coffee as JSON. 
+
+https://serpapi.com/ebay-search-api
 
 ### Search Google Scholar
 ```python
@@ -250,9 +260,8 @@ this code prints Google Scholar search results.
 ### Generic search with SerpApiClient
 ```python
 from serpapi.serp_api_client import SerpApiClient
-query = {"q": "Coffee", "location": "Austin,Texas"}
-engine = "google"
-client = SerpApiClient(query, engine)
+query = {"q": "Coffee", "location": "Austin,Texas", "engine": "google"}
+client = SerpApiClient(query)
 data = client.get_json()
 ```
 This class enables to interact with any search engine supported by SerpApi.com 
