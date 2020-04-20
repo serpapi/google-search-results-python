@@ -23,7 +23,7 @@ class SerpApiClient(object):
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
-    def __init__(self, params_dict, engine):
+    def __init__(self, params_dict, engine = None):
         self.params_dict = params_dict
         self.engine = engine
 
@@ -34,6 +34,9 @@ class SerpApiClient(object):
         if self.engine:
             if not 'engine' in self.params_dict:
                 self.params_dict['engine'] = self.engine
+        if not 'engine' in self.params_dict:
+            raise "engine must be defined in params_dict or engine"
+
         return self.BACKEND + path, self.params_dict
 
     def get_results(self, path = '/search'):
