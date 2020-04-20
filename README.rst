@@ -19,7 +19,7 @@ SerpApi provides a `script builder <https://serpapi.com/demo/>`_ to get you star
 Installation
 -------------
 
-Compatible with Python 2.7 or 3.7. 
+Compatible with Python 3.7+
 
 .. code-block:: shell
 

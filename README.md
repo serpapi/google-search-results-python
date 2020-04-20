@@ -15,7 +15,7 @@ SerpApi provides a [script builder](https://serpapi.com/demo) to get you started
 
 ## Installation
 
-Python 2.7 or 3.7 
+Python 3.7+
 ```bash
 pip install google-search-results
 ```
