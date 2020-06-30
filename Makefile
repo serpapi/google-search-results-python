@@ -1,5 +1,6 @@
+# Automate pip package development
+#
 # current version
-
 version=$(shell grep version setup.py | cut -d"'" -f2)
 
 .PHONY: build
@@ -17,10 +18,6 @@ install:
 test:
 	pytest
 
-# Test with python 2.7
-test2:
-	py.test-2.7
-
 # run example only
 example:
 	pytest -s "tests/test_example.py::TestExample::test_async"
@@ -32,7 +29,11 @@ build_dep:
 build:
 	python3 setup.py sdist
 
-check: build
+oobt: build
+	pip3 install ./dist/google_search_results-$(version).tar.gz
+	python3 oobt/oobt.py
+
+check: oobt
 	twine check dist/google_search_results-$(version).tar.gz
 
 release: check
