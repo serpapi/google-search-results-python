@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: google-search-results
-Version: 1.7.1
-Summary: Scrape and search localized results from Google, Bing, Baidu at scale using SerpApi.com
+Version: 1.8.2
+Summary: Scrape and search localized results from Google, Bing, Baidu, Yahoo, Yandex, Ebay at scale using SerpApi.com
 Home-page: https://github.com/serpapi/google-search-results-python
 Author: vikoky
 Author-email: victor@serpapi.com
@@ -13,7 +13,7 @@ Description: ===============================================
         .. image:: https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master
             :target: https://travis-ci.org/serpapi/google-search-results-python
         
-        This Python package is meant to scrape and parse Google, Bing, Baidu results using `SerpApi <https://serpapi.com>`_. 
+        This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using `SerpApi <https://serpapi.com>`_. 
         The following services are provided:
         
         * `Search API <https://serpapi.com/search-api>`_ 
@@ -23,11 +23,11 @@ Description: ===============================================
         
         SerpApi provides a `script builder <https://serpapi.com/demo/>`_ to get you started quickly.
         
-                
+        
         Installation
         -------------
         
-        Compatible with Python 2.7 or 3.7. 
+        Compatible with Python 3.7+
         
         .. code-block:: shell
         
@@ -62,19 +62,24 @@ Description: ===============================================
         
         Alternatively, you can search:
         
-        * Bing using BingSearchResults class
-        * Baidu using BaiduSearchResults class
+        - Bing using BingSearchResults class
+        - Baidu using BaiduSearchResults class
+        - Yahoo using YahooSearchResults class
+        - Ebay using EbaySearchResults class
+        - Yandex using YandexSearchResults class
+        - GoogleScholar using GoogleScholarSearchResults class
         
         See the `playground to generate your code. <https://serpapi.com/playground>`_
         
         `Documentation available here <https://github.com/serpapi/google-search-results-python/blob/master/README.md>`_
         
-Keywords: scrape,serp,api,json,search,localized,rank,google,bing,baidu,scale,datamining,training,machine
+Keywords: scrape,serp,api,json,search,localized,rank,google,bing,baidu,yandex,yahoo,ebay,scale,datamining,training,machine,ml
 Platform: UNKNOWN
 Classifier: License :: OSI Approved :: MIT License
-Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
 Classifier: Programming Language :: Python :: 3.7
 Classifier: Natural Language :: English
 Classifier: Topic :: Utilities
-Requires-Python: >=2.6, >=3.6
+Requires-Python: >=3.5
 Description-Content-Type: text/x-rst
