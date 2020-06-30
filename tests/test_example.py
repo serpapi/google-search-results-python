@@ -32,11 +32,13 @@ class TestExample(unittest.TestCase):
     def test_search_google_images(self):
         client = GoogleSearchResults({"q": "coffe", "tbm": "isch"})
         for image_result in client.get_json()['images_results']:
-            link = image_result["original"]
             try:
-                print("link: " + link)
+                link = image_result["original"]
+                print("link is found: " + link)
+                # uncomment the line below to down the original image
                 # wget.download(link, '.')
             except:
+                print("link is not found.")
                 pass
             # https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training/blob/master/fetch.py
 
