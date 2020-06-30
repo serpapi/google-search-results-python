@@ -10,14 +10,19 @@ EBAY_ENGINE = 'ebay'
 YAHOO_ENGINE = 'yahoo'
 
 class SerpApiClient(object):
-    """GoogleSearchResults enables to search google and parse the result.
+    """SerpApiClient enables to search any engine support by SerpApi and parse the result.
     ```python
     from serpapi.google_search_results import GoogleSearchResults
-    query = SerpApiClient({"q": "coffee", "location": "Austin,Texas"}, "google")
-    data = query.get_json()
+    client = SerpApiClient({
+        "q": "Coffee", 
+        "location": "Austin,Texas", 
+        "engine": "google",
+        "api_key": "<your private key>"
+        })
+	data = client.get_json()
     ```
 
-    https://github.com/serpapi/google-search-results-python
+    https://serpapi.com/search-api
     """
 
     BACKEND = "https://serpapi.com"
@@ -58,7 +63,7 @@ class SerpApiClient(object):
 
     def get_json(self):
         """Returns:
-            Formatted JSON search result
+            Formatted search result as JSON
         """
         self.params_dict["output"] = "json"
         return json.loads(self.get_results())
@@ -72,6 +77,7 @@ class SerpApiClient(object):
     def get_dict(self):
         """Returns:
             Dict with the formatted response content
+            (alias for get_dictionary)
         """
         return self.get_dictionary()
 

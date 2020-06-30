@@ -8,7 +8,7 @@ class GoogleScholarSearchResults(SerpApiClient):
     data = query.get_json()
     ```
 
-    doc: https://serpapi.com/baidu-search-api
+    doc: https://serpapi.com/google-scholar-api
     """
 
     def __init__(self, params_dict):
