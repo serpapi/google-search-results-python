@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from serpapi.google_scholar_search_results import GoogleScholarSearchResults
+from serpapi import GoogleScholarSearchResults
    
 class TestGoogleScholarSearchResults(unittest.TestCase):
 

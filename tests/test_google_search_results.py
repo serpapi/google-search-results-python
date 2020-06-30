@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from serpapi.google_search_results import GoogleSearchResults
+from serpapi import GoogleSearchResults
 
 class TestSearchApi(unittest.TestCase):
 

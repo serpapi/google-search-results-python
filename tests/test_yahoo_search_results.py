@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from serpapi.yahoo_search_results import YahooSearchResults
+from serpapi import YahooSearchResults
 
 class TestYahooSearchApi(unittest.TestCase):
 

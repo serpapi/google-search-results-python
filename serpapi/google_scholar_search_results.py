@@ -3,7 +3,7 @@ from serpapi.serp_api_client import *
 class GoogleScholarSearchResults(SerpApiClient):
     """GoogleScholarSearchResults enables to search google scholar and parse the result.
     ```python
-    from serpapi.google_scholar_search_results import GoogleScholarSearchResults
+    from serpapi import GoogleScholarSearchResults
     query = GoogleScholarSearchResults({"q": "coffee"})
     data = query.get_json()
     ```

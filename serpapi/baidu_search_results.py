@@ -3,7 +3,7 @@ from serpapi.serp_api_client import *
 class BaiduSearchResults(SerpApiClient):
     """BaiduSearchResults enables to search baidu and parse the result.
     ```python
-    from serpapi.baidu_search_results import BaiduSearchResults
+    from serpapi import BaiduSearchResults
     query = BaiduSearchResults({"q": "coffee"})
     data = query.get_json()
     ```

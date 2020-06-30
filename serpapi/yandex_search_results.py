@@ -3,7 +3,7 @@ from serpapi.serp_api_client import *
 class YandexSearchResults(SerpApiClient):
     """YandexSearchResults enables to search yandex and parse the result.
     ```python
-    from serpapi.yandex_search_results import YandexSearchResults
+    from serpapi import YandexSearchResults
     query = YandexSearchResults({"text": "coffee"})
     data = query.get_json()
     ```

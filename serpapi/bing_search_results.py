@@ -3,7 +3,7 @@ from serpapi.serp_api_client import *
 class BingSearchResults(SerpApiClient):
     """BingSearchResults enables to search bing and parse the result.
     ```python
-    from serpapi.bing_search_results import BingSearchResults
+    from serpapi import BingSearchResults
     query = BingSearchResults({"q": "coffee", "location": "Austin,Texas"})
     data = query.get_json()
     ```

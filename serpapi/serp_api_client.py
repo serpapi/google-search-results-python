@@ -12,7 +12,7 @@ YAHOO_ENGINE = 'yahoo'
 class SerpApiClient(object):
     """SerpApiClient enables to search any engine support by SerpApi and parse the result.
     ```python
-    from serpapi.google_search_results import GoogleSearchResults
+    from serpapi import GoogleSearchResults
     client = SerpApiClient({
         "q": "Coffee", 
         "location": "Austin,Texas", 

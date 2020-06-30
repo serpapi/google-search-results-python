@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from serpapi.serp_api_client import SerpApiClient
+from serpapi import SerpApiClient
 
 # This test shows how to extends SerpApiClient
 #  without using search engine wrapper.

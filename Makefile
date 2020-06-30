@@ -10,6 +10,7 @@ all: clean install test test2
 clean:
 	find . -name '*.pyc' -delete
 	find . -type d -name "__pycache__" -delete
+	pip3 uninstall google_search_results
 
 install:
 	pip3 install -r requirements.txt

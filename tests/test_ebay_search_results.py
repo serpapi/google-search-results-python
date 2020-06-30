@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-from serpapi.ebay_search_results import EbaySearchResults
+from serpapi import EbaySearchResults
 
 class TestEbaySearchApi(unittest.TestCase):
 
