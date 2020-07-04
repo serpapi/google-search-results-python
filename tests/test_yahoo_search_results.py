@@ -11,8 +11,8 @@ class TestYahooSearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				client = YahooSearchResults({"p": "Coffee"})
-				data = client.get_json()
+				search = YahooSearchResults({"p": "Coffee"})
+				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["yahoo_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

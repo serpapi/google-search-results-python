@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: google-search-results
-Version: 1.8.2
+Version: 1.8.3
 Summary: Scrape and search localized results from Google, Bing, Baidu, Yahoo, Yandex, Ebay at scale using SerpApi.com
 Home-page: https://github.com/serpapi/google-search-results-python
 Author: vikoky
@@ -40,7 +40,7 @@ Description: ===============================================
         
         .. code-block:: python
         
-            from serpapi.google_search_results import GoogleSearchResults
+            from serpapi import GoogleSearchResults
             client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas", "api_key": "secretKey"})
             result = client.get_dict()
         

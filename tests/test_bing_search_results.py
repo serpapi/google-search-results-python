@@ -11,8 +11,8 @@ class TestBingSearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				client = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
-				data = client.get_json()
+				search = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
+				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["bing_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

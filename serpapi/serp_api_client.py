@@ -13,13 +13,13 @@ class SerpApiClient(object):
     """SerpApiClient enables to search any engine support by SerpApi and parse the result.
     ```python
     from serpapi import GoogleSearchResults
-    client = SerpApiClient({
+    search = SerpApiClient({
         "q": "Coffee", 
         "location": "Austin,Texas", 
         "engine": "google",
         "api_key": "<your private key>"
         })
-	data = client.get_json()
+	data = search.get_json()
     ```
 
     https://serpapi.com/search-api

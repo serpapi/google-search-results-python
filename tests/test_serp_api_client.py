@@ -11,13 +11,13 @@ class TestSerpSearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				client = SerpApiClient({
+				search = SerpApiClient({
 					"q": "Coffee", 
 					"location": "Austin,Texas", 
 					"engine": "google_scholar",
 					"api_key": os.getenv("API_KEY", "demo")
 					})
-				data = client.get_json()
+				data = search.get_json()
 				self.assertIsNotNone(data["organic_results"][0]["title"])
 				pp = pprint.PrettyPrinter(indent=2)
 				pp.pprint(data)

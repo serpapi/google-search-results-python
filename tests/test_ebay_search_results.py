@@ -11,8 +11,8 @@ class TestEbaySearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				client = EbaySearchResults({"_nkw": "Coffee"})
-				data = client.get_json()
+				search = EbaySearchResults({"_nkw": "Coffee"})
+				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["ebay_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

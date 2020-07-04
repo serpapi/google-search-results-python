@@ -33,14 +33,14 @@ Quick start
 .. code-block:: python
 
     from serpapi import GoogleSearchResults
-    client = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas", "api_key": "secretKey"})
-    result = client.get_dict()
+    search = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas", "api_key": "secretKey"})
+    result = search.get_dict()
 
 This example runs a search about "coffee" using your secret api key.
 
 The Serp API service (backend)
 
-* searches on Google using the client: q = "coffee"
+* searches on Google using the query: q = "coffee"
 * parses the messy HTML responses
 * return a standardizes JSON response
 

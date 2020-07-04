@@ -10,8 +10,8 @@ class TestAccountApi(unittest.TestCase):
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_get_account(self):
-        client = GoogleSearchResults({})
-        account = client.get_account()
+        search = GoogleSearchResults({})
+        account = search.get_account()
         self.assertIsNotNone(account.get("account_id"))
         self.assertEqual(account.get("api_key"), GoogleSearchResults.SERP_API_KEY)
 

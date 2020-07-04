@@ -11,8 +11,8 @@ class TestYandexSearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				client = YandexSearchResults({"text": "Coffee"})
-				data = client.get_json()
+				search = YandexSearchResults({"text": "Coffee"})
+				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["yandex_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

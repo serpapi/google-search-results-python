@@ -11,8 +11,8 @@ class TestGoogleScholarSearchResults(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				client = GoogleScholarSearchResults({"q": "Coffee"})
-				data = client.get_json()
+				search = GoogleScholarSearchResults({"q": "Coffee"})
+				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])

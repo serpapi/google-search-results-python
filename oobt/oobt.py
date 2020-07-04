@@ -7,14 +7,14 @@ from serpapi import GoogleSearchResults
 #  Run simple query
 #
 import pprint
-print("initialize serpapi client")
-client = GoogleSearchResults({
+print("initialize serpapi search")
+search = GoogleSearchResults({
 	"q": "coffee",
         "location": "Austin,Texas", 
         "api_key": os.getenv("API_KEY","demo")
 })
 print("execute search")
-result = client.get_dict()
+result = search.get_dict()
 print("display result")
 pp = pprint.PrettyPrinter(indent=2)
 pp.pprint(result)

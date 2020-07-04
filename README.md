@@ -26,18 +26,18 @@ pip install google-search-results
 
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({
+search = GoogleSearchResults({
     "q": "coffee", 
     "location": "Austin,Texas",
     "api_key": "<your secret api key>"
   })
-result = client.get_dict()
+result = search.get_dict()
 ```
 
 This example runs a search about "coffee" using your secret api key.
 
 The SerpApi service (backend)
-- searches on Google using the client: q = "coffee"
+- searches on Google using the search: q = "coffee"
 - parses the messy HTML responses
 - return a standardizes JSON response
 The GoogleSearchResults class
@@ -105,15 +105,15 @@ params = {
   "output": "json|html"
 }
 
-# define the search client
-client = GoogleSearchResults(params)
+# define the search search
+search = GoogleSearchResults(params)
 # override an existing parameter
-client.params_dict["location"] = "Portland"
+search.params_dict["location"] = "Portland"
 # search format return as raw html
-html_results = client.get_html()
+html_results = search.get_html()
 # parse results
-dict_results = client.get_dict()
-json_results = client.get_json()
+dict_results = search.get_dict()
+json_results = search.get_json()
 ```
 [Link to the full documentation](https://serpapi.com/search-api)
 
@@ -127,7 +127,7 @@ The SerpApi `api_key` can be set globally:
 ```python
 GoogleSearchResults.SERP_API_KEY = "Your Private Key"
 ```
-The SerpApi `api_key` can be provided for each client:
+The SerpApi `api_key` can be provided for each search:
 ```python
 query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
 ```
@@ -153,8 +153,8 @@ make test
 
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({})
-location_list = client.get_location("Austin", 3)
+search = GoogleSearchResults({})
+location_list = search.get_location("Austin", 3)
 print(location_list)
 ```
 
@@ -180,8 +180,8 @@ The previous search can be retrieve from the the cache for free.
 
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
-search_result = client.get_dictionary()
+search = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
+search_result = search.get_dictionary()
 search_id = search_result.get("search_metadata").get("id")
 print(search_id)
 ```
@@ -197,16 +197,16 @@ it prints the search result from the archive.
 ### Account API
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({})
-account = client.get_account()
+search = GoogleSearchResults({})
+account = search.get_account()
 ```
 it prints your account information.
 
 ### Search Bing
 ```python
 from serpapi import BingSearchResults
-client = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
-data = client.get_json()
+search = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
+data = search.get_json()
 ```
 this code prints baidu search results for coffee as JSON. 
 
@@ -215,8 +215,8 @@ https://serpapi.com/bing-search-api
 ### Search Baidu
 ```python
 from serpapi import BaiduSearchResults
-client = BaiduSearchResults({"q": "Coffee"})
-data = client.get_json()
+search = BaiduSearchResults({"q": "Coffee"})
+data = search.get_json()
 ```
 this code prints baidu search results for coffee as JSON. 
 https://serpapi.com/baidu-search-api
@@ -224,8 +224,8 @@ https://serpapi.com/baidu-search-api
 ### Search Yandex
 ```python
 from serpapi import YandexSearchResults
-client = YandexSearchResults({"text": "Coffee"})
-data = client.get_json()
+search = YandexSearchResults({"text": "Coffee"})
+data = search.get_json()
 ```
 this code prints yandex search results for coffee as JSON. 
 
@@ -234,8 +234,8 @@ https://serpapi.com/yandex-search-api
 ### Search Yahoo
 ```python
 from serpapi import YahooSearchResults
-client = YahooSearchResults({"p": "Coffee"})
-data = client.get_json()
+search = YahooSearchResults({"p": "Coffee"})
+data = search.get_json()
 ```
 this code prints yahoo search results for coffee as JSON. 
 
@@ -245,8 +245,8 @@ https://serpapi.com/yahoo-search-api
 ### Search Ebay
 ```python
 from serpapi import EbaySearchResults
-client = EbaySearchResults({"_nkw": "Coffee"})
-data = client.get_json()
+search = EbaySearchResults({"_nkw": "Coffee"})
+data = search.get_json()
 ```
 this code prints ebay search results for coffee as JSON. 
 
@@ -255,8 +255,8 @@ https://serpapi.com/ebay-search-api
 ### Search Google Scholar
 ```python
 from serpapi import GoogleScholarSearchResults
-client = GoogleScholarSearchResults({"q": "Coffee"})
-data = client.get_json()
+search = GoogleScholarSearchResults({"q": "Coffee"})
+data = search.get_json()
 ```
 this code prints Google Scholar search results.
 
@@ -264,8 +264,8 @@ this code prints Google Scholar search results.
 ```python
 from serpapi import SerpApiClient
 query = {"q": "Coffee", "location": "Austin,Texas", "engine": "google"}
-client = SerpApiClient(query)
-data = client.get_json()
+search = SerpApiClient(query)
+data = search.get_json()
 ```
 This class enables to interact with any search engine supported by SerpApi.com 
 
@@ -273,8 +273,8 @@ This class enables to interact with any search engine supported by SerpApi.com
 
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({"q": "coffe", "tbm": "isch"})
-for image_result in client.get_json()['images_results']:
+search = GoogleSearchResults({"q": "coffe", "tbm": "isch"})
+for image_result in search.get_json()['images_results']:
     link = image_result["original"]
     try:
         print("link: " + link)
@@ -293,15 +293,15 @@ https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training
 
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({
-    "q": "coffe",   # search client
+search = GoogleSearchResults({
+    "q": "coffe",   # search search
     "tbm": "nws",  # news
     "tbs": "qdr:d", # last 24h
     "num": 10
 })
 for offset in [0,1,2]:
-    client.params_dict["start"] = offset * 10
-    data = client.get_json()
+    search.params_dict["start"] = offset * 10
+    data = search.get_json()
     for news_result in data['news_results']:
         print(str(news_result['position'] + offset * 10) + " - " + news_result['title'])
 ```
@@ -312,13 +312,13 @@ this script prints the first 3 pages of the news title for the last 24h.
 
 ```python
 from serpapi import GoogleSearchResults
-client = GoogleSearchResults({
-    "q": "coffe",   # search client
+search = GoogleSearchResults({
+    "q": "coffe",   # search search
     "tbm": "shop",  # news
     "tbs": "p_ord:rv", # last 24h
     "num": 100
 })
-data = client.get_json()
+data = search.get_json()
 for shopping_result in data['shopping_results']:
     print(shopping_result['position']) + " - " + shopping_result['title'])
 
@@ -335,20 +335,20 @@ This code is looking for the best coffee shop per city.
 from serpapi import GoogleSearchResults
 for city in ["new york", "paris", "berlin"]:
   location = GoogleSearchResults({}).get_location(city, 1)[0]["canonical_name"]
-  client = GoogleSearchResults({
-      "q": "best coffee shop",   # search client
+  search = GoogleSearchResults({
+      "q": "best coffee shop",   # search search
       "location": location,
       "num": 1,
       "start": 0
   })
-  data = client.get_json()
+  data = search.get_json()
   top_result = data["organic_results"][0]["title"]
 ```
 
 ### Batch Asynchronous Searches
 
 We do offer two ways to boost your searches thanks to `async` parameter.
- - Blocking - async=false - it's more compute intensive because the client would need to hold many connections. (default) 
+ - Blocking - async=false - it's more compute intensive because the search would need to hold many connections. (default) 
   - Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
 
 ```python
@@ -367,14 +367,14 @@ from queue import Queue
 # Time utility
 import time
 
-# SerpApi client
+# SerpApi search
 from serpapi import GoogleSearchResults
 
 # store searches
 search_queue = Queue()
         
-# SerpApi client
-client = GoogleSearchResults({
+# SerpApi search
+search = GoogleSearchResults({
     "location": "Austin,Texas",
     "async": True
 })
@@ -382,23 +382,23 @@ client = GoogleSearchResults({
 # loop through a list of companies
 for company in ['amd','nvidia','intel']:
   print("execute async search: q = " + company)
-  client.params_dict["q"] = company
-  search = client.get_dict()
+  search.params_dict["q"] = company
+  search = search.get_dict()
   print("add search to the queue where id: " + search['search_metadata']['id'])
   # add search to the search_queue
   search_queue.put(search)
 
 print("wait until all search statuses are cached or success")
 
-# Create regular client
-client = GoogleSearchResults({"async": True})
+# Create regular search
+search = GoogleSearchResults({"async": True})
 while not search_queue.empty():
   search = search_queue.get()
   search_id = search['search_metadata']['id']
 
   # retrieve search from the archive - blocker
   print(search_id + ": get search from archive")
-  search_archived =  client.get_search_archive(search_id)
+  search_archived =  search.get_search_archive(search_id)
   print(search_id + ": status = " + search_archived['search_metadata']['status'])
   
   # check status
@@ -451,7 +451,7 @@ To enable a type of search, the field tbm (to be matched) must be set to:
  * nws: Google News API.
  * shop: Google Shopping API.
  * any other Google service should work out of the box.
- * (no tbm parameter): regular Google client.
+ * (no tbm parameter): regular Google search.
 
 The field `tbs` allows to customize the search even more.
 
