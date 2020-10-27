@@ -91,7 +91,7 @@ class TestExample(unittest.TestCase):
     def test_search_google_news(self):
         search = GoogleSearch({
             "q": "coffe",   # search search
-            "tbm": "nws",  # news
+            "tbm": "nws",   # news
             "tbs": "qdr:d", # last 24h
             "num": 10
         })
