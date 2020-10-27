@@ -1,6 +1,6 @@
 import sys
 import os
-from serpapi import GoogleSearchResults
+from serpapi import GoogleSearch
 
 # Run Out Of Box testing
 #  Load package
@@ -8,8 +8,8 @@ from serpapi import GoogleSearchResults
 #
 import pprint
 print("initialize serpapi search")
-search = GoogleSearchResults({
-	"q": "coffee",
+search = GoogleSearch({
+        "q": "coffee",
         "location": "Austin,Texas", 
         "api_key": os.getenv("API_KEY","demo")
 })
@@ -20,8 +20,8 @@ pp = pprint.PrettyPrinter(indent=2)
 pp.pprint(result)
 print("------")
 if len(result) > 0:
-        print("OK: Out out box testing is passing")
+        print("OK: Out of box tests passed")
         sys.exit(0)
 
-print("FAIL: Out box testing is failing: no result")
+print("FAIL: Out of box tests failed: no result")
 sys.exit(1)
