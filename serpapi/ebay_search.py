@@ -1,10 +1,10 @@
 from serpapi.serp_api_client import *
 
-class EbaySearchResults(SerpApiClient):
-    """EbaySearchResults enables to search ebay and parse the result.
+class EbaySearch(SerpApiClient):
+    """EbaySearch enables to search ebay and parse the result.
     ```python
-    from serpapi import EbaySearchResults
-    query = EbaySearchResults({"_nkw": "coffee"})
+    from serpapi import EbaySearch
+    query = EbaySearch({"_nkw": "coffee"})
     data = query.get_json()
     ```
 
@@ -12,7 +12,7 @@ class EbaySearchResults(SerpApiClient):
     """
 
     def __init__(self, params_dict):
-        super(EbaySearchResults, self).__init__(params_dict, EBAY_ENGINE)
+        super(EbaySearch, self).__init__(params_dict, EBAY_ENGINE)
 
     def get_location(self, q, limit = 5):
         raise "location is not supported by Ebay search engine at this time"

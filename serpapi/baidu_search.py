@@ -1,10 +1,10 @@
 from serpapi.serp_api_client import *
 
-class BaiduSearchResults(SerpApiClient):
-    """BaiduSearchResults enables to search baidu and parse the result.
+class BaiduSearch(SerpApiClient):
+    """BaiduSearch enables to search baidu and parse the result.
     ```python
-    from serpapi import BaiduSearchResults
-    query = BaiduSearchResults({"q": "coffee"})
+    from serpapi import BaiduSearch
+    query = BaiduSearch({"q": "coffee"})
     data = query.get_json()
     ```
 
@@ -12,7 +12,7 @@ class BaiduSearchResults(SerpApiClient):
     """
 
     def __init__(self, params_dict):
-        super(BaiduSearchResults, self).__init__(params_dict, BAIDU_ENGINE)
+        super(BaiduSearch, self).__init__(params_dict, BAIDU_ENGINE)
 
     def get_location(self, q, limit = 5):
         raise "location is not supported by Baidu search engine at this time"

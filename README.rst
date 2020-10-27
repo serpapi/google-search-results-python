@@ -32,8 +32,8 @@ Quick start
 
 .. code-block:: python
 
-    from serpapi import GoogleSearchResults
-    search = GoogleSearchResults({"q": "coffee", "location": "Austin,Texas", "api_key": "secretKey"})
+    from serpapi import GoogleSearch
+    search = GoogleSearch({"q": "coffee", "location": "Austin,Texas", "api_key": "secretKey"})
     result = search.get_dict()
 
 This example runs a search about "coffee" using your secret api key.
@@ -44,7 +44,7 @@ The Serp API service (backend)
 * parses the messy HTML responses
 * return a standardizes JSON response
 
-The GoogleSearchResults class
+The GoogleSearch class
 
 * Format the request
 * Execute GET http request against Serp API service
@@ -54,12 +54,12 @@ Et voila..
 
 Alternatively, you can search:
 
-- Bing using BingSearchResults class
-- Baidu using BaiduSearchResults class
-- Yahoo using YahooSearchResults class
-- Ebay using EbaySearchResults class
-- Yandex using YandexSearchResults class
-- GoogleScholar using GoogleScholarSearchResults class
+- Bing using BingSearch class
+- Baidu using BaiduSearch class
+- Yahoo using YahooSearch class
+- Ebay using EbaySearch class
+- Yandex using YandexSearch class
+- GoogleScholar using GoogleScholarSearch class
 
 See the `playground to generate your code. <https://serpapi.com/playground>`_
 

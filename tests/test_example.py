@@ -18,7 +18,7 @@ else:
 import time
 
 # Serp API search
-from serpapi import GoogleSearchResults
+from serpapi import GoogleSearch
 
 # download file with wget
 #import wget
@@ -26,11 +26,11 @@ from serpapi import GoogleSearchResults
 class TestExample(unittest.TestCase):
 
     def setUp(self):
-        GoogleSearchResults.SERP_API_KEY = os.getenv("API_KEY","demo")
+        GoogleSearch.SERP_API_KEY = os.getenv("API_KEY","demo")
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_google_images(self):
-        search = GoogleSearchResults({"q": "coffe", "tbm": "isch"})
+        search = GoogleSearch({"q": "coffe", "tbm": "isch"})
         for image_result in search.get_json()['images_results']:
             try:
                 link = image_result["original"]
@@ -48,7 +48,7 @@ class TestExample(unittest.TestCase):
         search_queue = Queue()
         
         # Serp API search
-        search = GoogleSearchResults({
+        search = GoogleSearch({
             "location": "Austin,Texas",
             "async": True
         })
@@ -65,7 +65,7 @@ class TestExample(unittest.TestCase):
         print("wait until all search statuses are cached or success")
         
         # Create regular search
-        search = GoogleSearchResults({"async": True})
+        search = GoogleSearch({"async": True})
         while not search_queue.empty():
           data = search_queue.get()
           search_id = data['search_metadata']['id']
@@ -89,7 +89,7 @@ class TestExample(unittest.TestCase):
         
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_google_news(self):
-        search = GoogleSearchResults({
+        search = GoogleSearch({
             "q": "coffe",   # search search
             "tbm": "nws",  # news
             "tbs": "qdr:d", # last 24h
@@ -103,7 +103,7 @@ class TestExample(unittest.TestCase):
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_google_shopping(self):
-        search = GoogleSearchResults({
+        search = GoogleSearch({
             "q": "coffe",   # search search
             "tbm": "shop",  # news
             "tbs": "p_ord:rv", # last 24h
@@ -116,8 +116,8 @@ class TestExample(unittest.TestCase):
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_by_location(self):
         for city in ["new york", "paris", "berlin"]:
-            location = GoogleSearchResults({}).get_location(city, 1)[0]["canonical_name"]
-            search = GoogleSearchResults({
+            location = GoogleSearch({}).get_location(city, 1)[0]["canonical_name"]
+            search = GoogleSearch({
                 "q": "best coffee shop",   # search search
                 "location": location,
                 "num": 10,

@@ -2,16 +2,16 @@ import random
 import unittest
 import os
 import pprint
-from serpapi import GoogleScholarSearchResults
+from serpapi import GoogleScholarSearch
    
-class TestGoogleScholarSearchResults(unittest.TestCase):
+class TestGoogleScholarSearch(unittest.TestCase):
 
 		def setUp(self):
-				GoogleScholarSearchResults.SERP_API_KEY = os.getenv("API_KEY", "demo")
+				GoogleScholarSearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				search = GoogleScholarSearchResults({"q": "Coffee"})
+				search = GoogleScholarSearch({"q": "Coffee"})
 				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["id"])

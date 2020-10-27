@@ -25,8 +25,8 @@ pip install google-search-results
 ## Quick start
 
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({
+from serpapi import GoogleSearch
+search = GoogleSearch({
     "q": "coffee", 
     "location": "Austin,Texas",
     "api_key": "<your secret api key>"
@@ -40,19 +40,19 @@ The SerpApi service (backend)
 - searches on Google using the search: q = "coffee"
 - parses the messy HTML responses
 - return a standardizes JSON response
-The GoogleSearchResults class
+The GoogleSearch class
 - Format the request
 - Execute GET http request against SerpApi service
 - Parse JSON response into a dictionary
 Et voila..
 
 Alternatively, you can search:
-- Bing using BingSearchResults class
-- Baidu using BaiduSearchResults class
-- Yahoo using YahooSearchResults class
-- Ebay using EbaySearchResults class
-- Yandex using YandexSearchResults class
-- GoogleScholar using GoogleScholarSearchResults class
+- Bing using BingSearch class
+- Baidu using BaiduSearch class
+- Yahoo using YahooSearch class
+- Ebay using EbaySearch class
+- Yandex using YandexSearch class
+- GoogleScholar using GoogleScholarSearch class
 
 See the [playground to generate your code.](https://serpapi.com/playground)
 
@@ -106,7 +106,7 @@ params = {
 }
 
 # define the search search
-search = GoogleSearchResults(params)
+search = GoogleSearch(params)
 # override an existing parameter
 search.params_dict["location"] = "Portland"
 # search format return as raw html
@@ -125,11 +125,11 @@ You can get an API key here if you don't already have one: https://serpapi.com/u
 
 The SerpApi `api_key` can be set globally:
 ```python
-GoogleSearchResults.SERP_API_KEY = "Your Private Key"
+GoogleSearch.SERP_API_KEY = "Your Private Key"
 ```
 The SerpApi `api_key` can be provided for each search:
 ```python
-query = GoogleSearchResults({"q": "coffee", "serp_api_key": "Your Private Key"})
+query = GoogleSearch({"q": "coffee", "serp_api_key": "Your Private Key"})
 ```
 
 ### Example by specification
@@ -152,8 +152,8 @@ make test
 ### Location API
 
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({})
+from serpapi import GoogleSearch
+search = GoogleSearch({})
 location_list = search.get_location("Austin", 3)
 print(location_list)
 ```
@@ -179,8 +179,8 @@ The search result are stored in temporary cached.
 The previous search can be retrieve from the the cache for free.
 
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({"q": "Coffee", "location": "Austin,Texas"})
+from serpapi import GoogleSearch
+search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
 search_result = search.get_dictionary()
 search_id = search_result.get("search_metadata").get("id")
 print(search_id)
@@ -189,23 +189,23 @@ print(search_id)
 Now let retrieve the previous search from the archive.
 
 ```python
-archived_search_result = GoogleSearchResults({}).get_search_archive(search_id, 'json')
+archived_search_result = GoogleSearch({}).get_search_archive(search_id, 'json')
 print(archived_search_result.get("search_metadata").get("id"))
 ```
 it prints the search result from the archive.
 
 ### Account API
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({})
+from serpapi import GoogleSearch
+search = GoogleSearch({})
 account = search.get_account()
 ```
 it prints your account information.
 
 ### Search Bing
 ```python
-from serpapi import BingSearchResults
-search = BingSearchResults({"q": "Coffee", "location": "Austin,Texas"})
+from serpapi import BingSearch
+search = BingSearch({"q": "Coffee", "location": "Austin,Texas"})
 data = search.get_json()
 ```
 this code prints baidu search results for coffee as JSON. 
@@ -214,8 +214,8 @@ https://serpapi.com/bing-search-api
 
 ### Search Baidu
 ```python
-from serpapi import BaiduSearchResults
-search = BaiduSearchResults({"q": "Coffee"})
+from serpapi import BaiduSearch
+search = BaiduSearch({"q": "Coffee"})
 data = search.get_json()
 ```
 this code prints baidu search results for coffee as JSON. 
@@ -223,8 +223,8 @@ https://serpapi.com/baidu-search-api
 
 ### Search Yandex
 ```python
-from serpapi import YandexSearchResults
-search = YandexSearchResults({"text": "Coffee"})
+from serpapi import YandexSearch
+search = YandexSearch({"text": "Coffee"})
 data = search.get_json()
 ```
 this code prints yandex search results for coffee as JSON. 
@@ -233,8 +233,8 @@ https://serpapi.com/yandex-search-api
 
 ### Search Yahoo
 ```python
-from serpapi import YahooSearchResults
-search = YahooSearchResults({"p": "Coffee"})
+from serpapi import YahooSearch
+search = YahooSearch({"p": "Coffee"})
 data = search.get_json()
 ```
 this code prints yahoo search results for coffee as JSON. 
@@ -244,8 +244,8 @@ https://serpapi.com/yahoo-search-api
 
 ### Search Ebay
 ```python
-from serpapi import EbaySearchResults
-search = EbaySearchResults({"_nkw": "Coffee"})
+from serpapi import EbaySearch
+search = EbaySearch({"_nkw": "Coffee"})
 data = search.get_json()
 ```
 this code prints ebay search results for coffee as JSON. 
@@ -254,8 +254,8 @@ https://serpapi.com/ebay-search-api
 
 ### Search Google Scholar
 ```python
-from serpapi import GoogleScholarSearchResults
-search = GoogleScholarSearchResults({"q": "Coffee"})
+from serpapi import GoogleScholarSearch
+search = GoogleScholarSearch({"q": "Coffee"})
 data = search.get_json()
 ```
 this code prints Google Scholar search results.
@@ -272,8 +272,8 @@ This class enables to interact with any search engine supported by SerpApi.com
 ### Search Google Images
 
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({"q": "coffe", "tbm": "isch"})
+from serpapi import GoogleSearch
+search = GoogleSearch({"q": "coffe", "tbm": "isch"})
 for image_result in search.get_json()['images_results']:
     link = image_result["original"]
     try:
@@ -292,8 +292,8 @@ https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training
 ### Search Google News
 
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({
+from serpapi import GoogleSearch
+search = GoogleSearch({
     "q": "coffe",   # search search
     "tbm": "nws",  # news
     "tbs": "qdr:d", # last 24h
@@ -311,8 +311,8 @@ this script prints the first 3 pages of the news title for the last 24h.
 ### Search Google Shopping
 
 ```python
-from serpapi import GoogleSearchResults
-search = GoogleSearchResults({
+from serpapi import GoogleSearch
+search = GoogleSearch({
     "q": "coffe",   # search search
     "tbm": "shop",  # news
     "tbs": "p_ord:rv", # last 24h
@@ -332,10 +332,10 @@ With SerpApi, we can build Google search from anywhere in the world.
 This code is looking for the best coffee shop per city.
 
 ```python
-from serpapi import GoogleSearchResults
+from serpapi import GoogleSearch
 for city in ["new york", "paris", "berlin"]:
-  location = GoogleSearchResults({}).get_location(city, 1)[0]["canonical_name"]
-  search = GoogleSearchResults({
+  location = GoogleSearch({}).get_location(city, 1)[0]["canonical_name"]
+  search = GoogleSearch({
       "q": "best coffee shop",   # search search
       "location": location,
       "num": 1,
@@ -368,13 +368,13 @@ from queue import Queue
 import time
 
 # SerpApi search
-from serpapi import GoogleSearchResults
+from serpapi import GoogleSearch
 
 # store searches
 search_queue = Queue()
         
 # SerpApi search
-search = GoogleSearchResults({
+search = GoogleSearch({
     "location": "Austin,Texas",
     "async": True
 })
@@ -391,7 +391,7 @@ for company in ['amd','nvidia','intel']:
 print("wait until all search statuses are cached or success")
 
 # Create regular search
-search = GoogleSearchResults({"async": True})
+search = GoogleSearch({"async": True})
 while not search_queue.empty():
   search = search_queue.get()
   search_id = search['search_metadata']['id']
@@ -428,6 +428,9 @@ To keep thing simple, this example does only explore search result one at a time
 [See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
 ## Change log
+2020-10-26 @ 2.0.0
+ - Reduce class name to <engine>Search
+ - Add get_raw_json
 2020-06-30 @ 1.8.3
  - simplify import
  - improve package for python 3.5+
@@ -438,7 +441,7 @@ To keep thing simple, this example does only explore search result one at a time
 2019-11-10 @ 1.7.1
  - increase engine parameter priority over engine value set in the class
 2019-09-12 @ 1.7
- - Change  namespace "from lib." instead: "from serpapi import GoogleSearchResults"
+ - Change  namespace "from lib." instead: "from serpapi import GoogleSearch"
  - Support for Bing and Baidu
 2019-06-25 @ 1.6
  - New search engine supported: Baidu and Bing

@@ -10,9 +10,9 @@ EBAY_ENGINE = 'ebay'
 YAHOO_ENGINE = 'yahoo'
 
 class SerpApiClient(object):
-    """SerpApiClient enables to search any engine support by SerpApi and parse the result.
+    """SerpApiClient enables to query any any search engines supported by SerpApi and parse the result.
     ```python
-    from serpapi import GoogleSearchResults
+    from serpapi import GoogleSearch
     search = SerpApiClient({
         "q": "Coffee", 
         "location": "Austin,Texas", 
@@ -63,10 +63,17 @@ class SerpApiClient(object):
 
     def get_json(self):
         """Returns:
-            Formatted search result as JSON
+            Formatted JSON search result
         """
         self.params_dict["output"] = "json"
         return json.loads(self.get_results())
+
+    def get_raw_json(self):
+        """Returns:
+            Formatted JSON search result as string
+        """
+        self.params_dict["output"] = "json"
+        return self.get_results()
 
     def get_dictionary(self):
         """Returns:
@@ -107,7 +114,7 @@ class SerpApiClient(object):
             q (string): location (like: city name..)
             limit (int): number of matches returned
         Returns:
-            Dict: Location matching q
+            dict: Location matching q
         """
         self.params_dict = {}
         self.params_dict["output"] = "json"

@@ -2,19 +2,19 @@ import random
 import unittest
 import os
 import pprint
-from serpapi import YahooSearchResults
+from serpapi import YandexSearch
 
-class TestYahooSearchApi(unittest.TestCase):
+class TestYandexSearchApi(unittest.TestCase):
 
 		def setUp(self):
-				YahooSearchResults.SERP_API_KEY = os.getenv("API_KEY", "demo")
+				YandexSearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				search = YahooSearchResults({"p": "Coffee"})
+				search = YandexSearch({"text": "Coffee"})
 				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
-				self.assertIsNotNone(data["search_metadata"]["yahoo_url"])
+				self.assertIsNotNone(data["search_metadata"]["yandex_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])
 				pp = pprint.PrettyPrinter(indent=2)
