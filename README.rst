@@ -2,9 +2,6 @@
 Google / Bing / Baidu Search Results in Python
 ===============================================
 
-.. image:: https://travis-ci.org/serpapi/google-search-results-python.svg?branch=master
-    :target: https://travis-ci.org/serpapi/google-search-results-python
-
 This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using `SerpApi <https://serpapi.com>`_. 
 The following services are provided:
 

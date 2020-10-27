@@ -34,7 +34,7 @@ oobt: build
 	pip3 install ./dist/google_search_results-$(version).tar.gz
 	python3 oobt/oobt.py
 
-check: oobt
+check: #oobt
 	twine check dist/google_search_results-$(version).tar.gz
 
 release: check
