@@ -352,9 +352,6 @@ We do offer two ways to boost your searches thanks to `async` parameter.
   - Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
 
 ```python
-# Python 3.6+ (tested)
-#
-
 # Operating system
 import os
 
@@ -372,47 +369,52 @@ from serpapi import GoogleSearch
 
 # store searches
 search_queue = Queue()
-        
+
 # SerpApi search
 search = GoogleSearch({
     "location": "Austin,Texas",
-    "async": True
+    "async": True,
+    "api_key": os.getenv("API_KEY")
 })
 
 # loop through a list of companies
-for company in ['amd','nvidia','intel']:
-  print("execute async search: q = " + company)
-  search.params_dict["q"] = company
-  search = search.get_dict()
-  print("add search to the queue where id: " + search['search_metadata']['id'])
-  # add search to the search_queue
-  search_queue.put(search)
+for company in ['amd', 'nvidia', 'intel']:
+    print("execute async search: q = " + company)
+    search.params_dict["q"] = company
+    result = search.get_dict()
+    if "error" in result:
+        print("oops error: ", result["error"])
+        continue
+    print("add search to the queue where id: ", result['search_metadata'])
+    # add search to the search_queue
+    search_queue.put(result)
 
 print("wait until all search statuses are cached or success")
 
 # Create regular search
-search = GoogleSearch({"async": True})
 while not search_queue.empty():
-  search = search_queue.get()
-  search_id = search['search_metadata']['id']
+    result = search_queue.get()
+    search_id = result['search_metadata']['id']
 
-  # retrieve search from the archive - blocker
-  print(search_id + ": get search from archive")
-  search_archived =  search.get_search_archive(search_id)
-  print(search_id + ": status = " + search_archived['search_metadata']['status'])
-  
-  # check status
-  if re.search('Cached|Success', search_archived['search_metadata']['status']):
-    print(search_id + ": search done with q = " + search_archived['search_parameters']['q'])
-  else:
-    # requeue search_queue
-    print(search_id + ": requeue search")
-    search_queue.put(search)
-    
-    # wait 1s
-    time.sleep(1)
+    # retrieve search from the archive - blocker
+    print(search_id + ": get search from archive")
+    search_archived = search.get_search_archive(search_id)
+    print(search_id + ": status = " +
+          search_archived['search_metadata']['status'])
 
-# self.assertIsNotNone(results["local_results"][0]["title"])
+    # check status
+    if re.search('Cached|Success',
+                 search_archived['search_metadata']['status']):
+        print(search_id + ": search done with q = " +
+              search_archived['search_parameters']['q'])
+    else:
+        # requeue search_queue
+        print(search_id + ": requeue search")
+        search_queue.put(search)
+
+        # wait 1s
+        time.sleep(1)
+
 print('all searches completed')
 ```
 
