@@ -9,4 +9,8 @@ build/
 /dist/
 
 # Python egg metadata, regenerated from source files by setuptools.
-/*.egg-info
+/*.egg-info/*
+google_search_results.egg-info/PKG-INFO
+google_search_results.egg-info/SOURCES.txt
+
+.env

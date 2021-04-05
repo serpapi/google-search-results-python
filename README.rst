@@ -56,6 +56,7 @@ Alternatively, you can search:
 - Yahoo using YahooSearch class
 - Ebay using EbaySearch class
 - Yandex using YandexSearch class
+- Home depot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
 
 See the `playground to generate your code. <https://serpapi.com/playground>`_

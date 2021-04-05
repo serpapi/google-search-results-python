@@ -44,5 +44,17 @@ class TestSearchApi(unittest.TestCase):
 				data = search.get_html()
 				self.assertGreater(len(data), 10)
 
+		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+		def test_get_object(self):
+				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
+				r = search.get_object()
+				self.assertEqual(type(r.organic_results), list)
+				self.assertIsNotNone(r.organic_results[0].title)
+				self.assertIsNotNone(r.search_metadata.id)
+				self.assertIsNotNone(r.search_metadata.google_url)
+				self.assertEqual(r.search_parameters.q, "Coffee")
+				self.assertEqual(r.search_parameters.engine, "google")
+				self.assertGreater(r.search_information.total_results, 10)
+
 if __name__ == '__main__':
 		unittest.main()

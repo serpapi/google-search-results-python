@@ -8,6 +8,7 @@ GOOGLE_SCHOLAR_ENGINE = 'google_scholar'
 YANDEX_ENGINE = 'yandex'
 EBAY_ENGINE = 'ebay'
 YAHOO_ENGINE = 'yahoo'
+HOME_DEPOT_ENGINE = 'home_depot'
 
 class SerpApiClient(object):
     """SerpApiClient enables to query any any search engines supported by SerpApi and parse the result.
@@ -63,7 +64,7 @@ class SerpApiClient(object):
 
     def get_json(self):
         """Returns:
-            Formatted JSON search result
+            Formatted JSON search results using json package
         """
         self.params_dict["output"] = "json"
         return json.loads(self.get_results())
@@ -87,6 +88,38 @@ class SerpApiClient(object):
             (alias for get_dictionary)
         """
         return self.get_dictionary()
+
+    def get_object(self):
+        """Returns a dynamically created python object wrapping the data structure
+        """
+        # iterative over response hash
+        node = self.get_dictionary()
+        # create dynamic python object
+        return self.make_pyobj("response", node)
+
+    def make_pyobj(self, name, node):
+        pytype = type(name, (object, ), {})
+        pyobj = pytype()
+
+        if isinstance(node, list):
+            setattr(pyobj, name, [])
+            for el in node:
+                getattr(pyobj, name).append(self.make_pyobj(name, el))
+            return pyobj
+        elif isinstance(node, dict):
+            for name, child in node.items():
+                if isinstance(child, list):
+                    setattr(pyobj, name, [])
+                    for el in child:
+                        getattr(pyobj, name).append(self.make_pyobj(name, el))
+                elif isinstance(child, dict):
+                    setattr(pyobj, name, self.make_pyobj(name, child))
+                else:
+                    setattr(pyobj, name, child)
+        else:
+            setattr(pyobj, name, node)
+
+        return pyobj
 
     def get_search_archive(self, search_id, format = 'json'):
         """Retrieve search result from the Search Archive API

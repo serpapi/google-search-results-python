@@ -52,6 +52,7 @@ Alternatively, you can search:
 - Yahoo using YahooSearch class
 - Ebay using EbaySearch class
 - Yandex using YandexSearch class
+- HomeDepot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
 
 See the [playground to generate your code.](https://serpapi.com/playground)
@@ -72,6 +73,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Search Yandex](#search-yandex)
     - [Search Yahoo](#search-yahoo)
     - [Search Ebay](#search-ebay)
+    - [Search Home depot](#search-home-depot)
     - [Search Google Scholar](#search-google-scholar)
     - [Generic search with SerpApiClient](#generic-search-with-serpapiclient)
     - [Search Google Images](#search-google-images)
@@ -79,6 +81,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Search Google Shopping](#search-google-shopping)
     - [Google Search By Location](#google-search-by-location)
     - [Batch Asynchronous Searches](#batch-asynchronous-searches)
+    - [Python object as a result](#python-object-as-a-result)
   - [Change log](#change-log)
   - [Conclusion](#conclusion)
 
@@ -112,8 +115,12 @@ search.params_dict["location"] = "Portland"
 # search format return as raw html
 html_results = search.get_html()
 # parse results
+#  as python Dictionary
 dict_results = search.get_dict()
+#  as JSON using json package
 json_results = search.get_json()
+#  as dynamic Python object
+object_result = search.get_object()
 ```
 [Link to the full documentation](https://serpapi.com/search-api)
 
@@ -206,9 +213,9 @@ it prints your account information.
 ```python
 from serpapi import BingSearch
 search = BingSearch({"q": "Coffee", "location": "Austin,Texas"})
-data = search.get_json()
+data = search.get_dict()
 ```
-this code prints baidu search results for coffee as JSON. 
+this code prints baidu search results for coffee as a Dictionary. 
 
 https://serpapi.com/bing-search-api
 
@@ -216,18 +223,18 @@ https://serpapi.com/bing-search-api
 ```python
 from serpapi import BaiduSearch
 search = BaiduSearch({"q": "Coffee"})
-data = search.get_json()
+data = search.get_dict()
 ```
-this code prints baidu search results for coffee as JSON. 
+this code prints baidu search results for coffee as a Dictionary. 
 https://serpapi.com/baidu-search-api
 
 ### Search Yandex
 ```python
 from serpapi import YandexSearch
 search = YandexSearch({"text": "Coffee"})
-data = search.get_json()
+data = search.get_dict()
 ```
-this code prints yandex search results for coffee as JSON. 
+this code prints yandex search results for coffee as a Dictionary. 
 
 https://serpapi.com/yandex-search-api
 
@@ -235,9 +242,9 @@ https://serpapi.com/yandex-search-api
 ```python
 from serpapi import YahooSearch
 search = YahooSearch({"p": "Coffee"})
-data = search.get_json()
+data = search.get_dict()
 ```
-this code prints yahoo search results for coffee as JSON. 
+this code prints yahoo search results for coffee as a Dictionary. 
 
 https://serpapi.com/yahoo-search-api
 
@@ -246,17 +253,27 @@ https://serpapi.com/yahoo-search-api
 ```python
 from serpapi import EbaySearch
 search = EbaySearch({"_nkw": "Coffee"})
-data = search.get_json()
+data = search.get_dict()
 ```
-this code prints ebay search results for coffee as JSON. 
+this code prints ebay search results for coffee as a Dictionary. 
 
 https://serpapi.com/ebay-search-api
+
+### Search Home depot
+```python
+from serpapi import HomeDepotSearch
+search = HomeDepotSearch({"q": "chair"})
+data = search.get_dict()
+```
+this code prints home depot search results for chair as Dictionary. 
+
+https://serpapi.com/home-depot-search-api
 
 ### Search Google Scholar
 ```python
 from serpapi import GoogleScholarSearch
 search = GoogleScholarSearch({"q": "Coffee"})
-data = search.get_json()
+data = search.get_dict()
 ```
 this code prints Google Scholar search results.
 
@@ -265,7 +282,7 @@ this code prints Google Scholar search results.
 from serpapi import SerpApiClient
 query = {"q": "Coffee", "location": "Austin,Texas", "engine": "google"}
 search = SerpApiClient(query)
-data = search.get_json()
+data = search.get_dict()
 ```
 This class enables to interact with any search engine supported by SerpApi.com 
 
@@ -274,7 +291,7 @@ This class enables to interact with any search engine supported by SerpApi.com
 ```python
 from serpapi import GoogleSearch
 search = GoogleSearch({"q": "coffe", "tbm": "isch"})
-for image_result in search.get_json()['images_results']:
+for image_result in search.get_dict()['images_results']:
     link = image_result["original"]
     try:
         print("link: " + link)
@@ -301,7 +318,7 @@ search = GoogleSearch({
 })
 for offset in [0,1,2]:
     search.params_dict["start"] = offset * 10
-    data = search.get_json()
+    data = search.get_dict()
     for news_result in data['news_results']:
         print(str(news_result['position'] + offset * 10) + " - " + news_result['title'])
 ```
@@ -318,7 +335,7 @@ search = GoogleSearch({
     "tbs": "p_ord:rv", # last 24h
     "num": 100
 })
-data = search.get_json()
+data = search.get_dict()
 for shopping_result in data['shopping_results']:
     print(shopping_result['position']) + " - " + shopping_result['title'])
 
@@ -341,7 +358,7 @@ for city in ["new york", "paris", "berlin"]:
       "num": 1,
       "start": 0
   })
-  data = search.get_json()
+  data = search.get_dict()
   top_result = data["organic_results"][0]["title"]
 ```
 
@@ -349,7 +366,7 @@ for city in ["new york", "paris", "berlin"]:
 
 We do offer two ways to boost your searches thanks to `async` parameter.
  - Blocking - async=false - it's more compute intensive because the search would need to hold many connections. (default) 
-  - Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
+- Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
 
 ```python
 # Operating system
@@ -429,7 +446,27 @@ To keep thing simple, this example does only explore search result one at a time
 
 [See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
+## Python object as a result
+
+The search results can be automatically wrapped in dynamically generated Python object.
+This solution offers a more dynamic solution fully Oriented Object Programming approach over the regular Dictionary / JSON data structure.
+
+```python
+from serpapi import GoogleSearch
+search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
+r = search.get_object()
+assert type(r.organic_results), list
+assert r.organic_results[0].title
+assert r.search_metadata.id
+assert r.search_metadata.google_url
+assert r.search_parameters.q, "Coffee"
+assert r.search_parameters.engine, "google"
+```
+
 ## Change log
+2021-04-04 @ 2.1.0
+ - Add home depot search engine
+ - get_object() returns dynamic Python object
 2020-10-26 @ 2.0.0
  - Reduce class name to <engine>Search
  - Add get_raw_json

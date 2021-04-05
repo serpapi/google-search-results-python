@@ -6,3 +6,4 @@ from .bing_search import BingSearch
 from .yandex_search import YandexSearch
 from .google_scholar_search import GoogleScholarSearch
 from .ebay_search import EbaySearch
+from .home_depot_search import HomeDepotSearch
