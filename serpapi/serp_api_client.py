@@ -11,7 +11,7 @@ YAHOO_ENGINE = 'yahoo'
 HOME_DEPOT_ENGINE = 'home_depot'
 
 class SerpApiClient(object):
-    """SerpApiClient enables to query any any search engines supported by SerpApi and parse the result.
+    """SerpApiClient enables to query any search engines supported by SerpApi and parse the results.
     ```python
     from serpapi import GoogleSearch
     search = SerpApiClient({
@@ -45,16 +45,25 @@ class SerpApiClient(object):
 
         return self.BACKEND + path, self.params_dict
 
-    def get_results(self, path = '/search'):
+    def get_response(self, path = '/search'):
+        """Returns:
+            Response object provided by requests.get
+        """
         url = None
         try:
             url, parameter = self.construct_url(path)
             response = requests.get(url, parameter, timeout=60000)
-            return response.text
+            return response
         except requests.HTTPError as e:
             print("fail: " + url)
             print(e, e.response.status_code)
             raise e
+
+    def get_results(self, path='/search'):
+        """Returns:
+            Response text field
+        """
+        return self.get_response(path).text
 
     def get_html(self):
         """Returns:
@@ -90,7 +99,8 @@ class SerpApiClient(object):
         return self.get_dictionary()
 
     def get_object(self):
-        """Returns a dynamically created python object wrapping the data structure
+        """Returns: 
+            Dynamically created python object wrapping the result data structure
         """
         # iterative over response hash
         node = self.get_dictionary()
@@ -153,5 +163,6 @@ class SerpApiClient(object):
         self.params_dict["output"] = "json"
         self.params_dict["q"] = q
         self.params_dict["limit"] = limit
-        return json.loads(self.get_results('/locations.json'))
+        buffer = self.get_results('/locations.json')
+        return json.loads(buffer)
 

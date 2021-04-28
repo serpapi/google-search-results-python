@@ -2,6 +2,7 @@ import random
 import unittest
 import os
 import pprint
+import requests
 from serpapi import GoogleSearch
 
 class TestSearchApi(unittest.TestCase):
@@ -43,6 +44,13 @@ class TestSearchApi(unittest.TestCase):
 				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
 				data = search.get_html()
 				self.assertGreater(len(data), 10)
+
+		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+		def test_get_response(self):
+				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
+				response = search.get_response()
+				self.assertEqual(type(response), requests.Response)
+				self.assertGreater(len(response.text), 10)
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_object(self):
