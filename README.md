@@ -427,7 +427,7 @@ while not search_queue.empty():
     else:
         # requeue search_queue
         print(search_id + ": requeue search")
-        search_queue.put(search)
+        search_queue.put(result)
 
         # wait 1s
         time.sleep(1)
