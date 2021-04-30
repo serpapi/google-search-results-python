@@ -464,6 +464,8 @@ assert r.search_parameters.engine, "google"
 ```
 
 ## Change log
+2021-04-28 @ 2.2.0
+ - add get_response method to provide raw requests.Response object
 2021-04-04 @ 2.1.0
  - Add home depot search engine
  - get_object() returns dynamic Python object
