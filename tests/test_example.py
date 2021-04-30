@@ -58,6 +58,9 @@ class TestExample(unittest.TestCase):
           print("execute async search: q = " + company)
           search.params_dict["q"] = company
           data = search.get_dict()
+          if data is not None:
+              print("oops data is empty for: " + company)
+              continue
           print("add search to the queue where id: " + data['search_metadata']['id'])
           # add search to the search_queue
           search_queue.put(data)

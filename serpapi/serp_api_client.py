@@ -1,5 +1,6 @@
 import requests
 import json
+from serpapi.pagination import Pagination
 
 GOOGLE_ENGINE = 'google'
 BING_ENGINE = 'bing'
@@ -165,4 +166,9 @@ class SerpApiClient(object):
         self.params_dict["limit"] = limit
         buffer = self.get_results('/locations.json')
         return json.loads(buffer)
-
+    
+    def pagination(self, start = 0, end = 1000000000):
+        """Return:
+            Generator to iterate the search results pagination
+        """
+        return Pagination(self, start, end)
