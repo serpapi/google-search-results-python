@@ -16,9 +16,9 @@ class TestYandexSearchApi(unittest.TestCase):
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["yandex_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
-				self.assertIsNotNone(data["organic_results"][0]["title"])
 				pp = pprint.PrettyPrinter(indent=2)
-				pp.pprint(data)
+				pp.pprint(data["organic_results"])
+				self.assertIsNotNone(data["organic_results"][1]["title"])
 
 if __name__ == '__main__':
 		unittest.main()

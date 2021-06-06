@@ -3,7 +3,7 @@
 [![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml)
 
-This Python package is meant to scrape and parse Google, Google Scholar, Bing, Baidu, Yandex, Yahoo, Ebay results using [SerpApi](https://serpapi.com). 
+This Python package is meant to scrape and parse search resutls from Google, Bing, Baidu, Yandex, Yahoo, Home depot, Ebay and more.. using [SerpApi](https://serpapi.com). 
 
 The following services are provided:
 - [Search API](https://serpapi.com/search-api)
@@ -82,6 +82,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Google Search By Location](#google-search-by-location)
     - [Batch Asynchronous Searches](#batch-asynchronous-searches)
     - [Python object as a result](#python-object-as-a-result)
+    - [Python paginate using iterator](#python-paginate-using-iterator)
   - [Change log](#change-log)
   - [Conclusion](#conclusion)
 
@@ -446,7 +447,7 @@ To keep thing simple, this example does only explore search result one at a time
 
 [See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
-## Python object as a result
+### Python object as a result
 
 The search results can be automatically wrapped in dynamically generated Python object.
 This solution offers a more dynamic solution fully Oriented Object Programming approach over the regular Dictionary / JSON data structure.
@@ -463,7 +464,45 @@ assert r.search_parameters.q, "Coffee"
 assert r.search_parameters.engine, "google"
 ```
 
+### Pagination using iterator
+Let's collect links accross multiple search result pages.
+```python
+# to get 2 pages
+start = 0
+end = 20
+# basic search parameters
+params = {
+"q": "coca cola",
+"tbm": "nws",
+"api_key": os.getenv("API_KEY"),
+"start": start,
+"end": end
+}
+# as proof of concept 
+#  urls collects
+urls = []
+# initialize a search
+search = GoogleSearch(params)
+# create a python generator
+pages = search.pagination()
+# fetch one search result per iteration 
+#  using a basic python for loop 
+#   which invokes python iterator under the hood.
+for page in pages:
+print(f"Current page: {page['serpapi_pagination']['current']}")
+for news_result in page["news_results"]:
+    print(f"Title: {news_result['title']}\nLink: {news_result['link']}\n")
+    urls.append(news_result['link'])
+# check if the total number pages is as expected
+# note: the exact number if variable depending on the search engine backend
+self.assertGreater(len(urls), 200)
+```
+[example: fetch links per page](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example_paginate.py)
+[example: fetch links, reusable code from replit](https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi)
+
 ## Change log
+2021-06-05 @ 2.3.0
+ - add pagination support
 2021-04-28 @ 2.2.0
  - add get_response method to provide raw requests.Response object
 2021-04-04 @ 2.1.0

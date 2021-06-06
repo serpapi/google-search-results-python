@@ -15,7 +15,11 @@ class Pagination:
     self.client.params_dict['start'] = self.start
     result = self.client.get_dict()
     
-    # quit if no next page
+    # stop if backend miss to return serpapi_pagination
+    if not 'serpapi_pagination' in result:
+      raise StopIteration
+
+    # stop if no next page
     if not 'next' in result['serpapi_pagination']:
         raise StopIteration
 
