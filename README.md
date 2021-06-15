@@ -82,7 +82,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Google Search By Location](#google-search-by-location)
     - [Batch Asynchronous Searches](#batch-asynchronous-searches)
     - [Python object as a result](#python-object-as-a-result)
-    - [Python paginate using iterator](#python-paginate-using-iterator)
+    - [Python paginate using iterator](#pagination-using-iterator)
   - [Change log](#change-log)
   - [Conclusion](#conclusion)
 
@@ -470,35 +470,42 @@ Let's collect links accross multiple search result pages.
 # to get 2 pages
 start = 0
 end = 20
+
 # basic search parameters
 params = {
-"q": "coca cola",
-"tbm": "nws",
-"api_key": os.getenv("API_KEY"),
-"start": start,
-"end": end
+  "q": "coca cola",
+  "tbm": "nws",
+  "api_key": os.getenv("API_KEY"),
+  "start": start,
+  "end": end
 }
+
 # as proof of concept 
-#  urls collects
+# urls collects
 urls = []
+
 # initialize a search
 search = GoogleSearch(params)
+
 # create a python generator
 pages = search.pagination()
+
 # fetch one search result per iteration 
-#  using a basic python for loop 
-#   which invokes python iterator under the hood.
+# using a basic python for loop 
+# which invokes python iterator under the hood.
 for page in pages:
-print(f"Current page: {page['serpapi_pagination']['current']}")
-for news_result in page["news_results"]:
+  print(f"Current page: {page['serpapi_pagination']['current']}")
+  
+  for news_result in page["news_results"]:
     print(f"Title: {news_result['title']}\nLink: {news_result['link']}\n")
     urls.append(news_result['link'])
+  
 # check if the total number pages is as expected
 # note: the exact number if variable depending on the search engine backend
 self.assertGreater(len(urls), 200)
 ```
-[example: fetch links per page](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example_paginate.py)
-[example: fetch links, reusable code from replit](https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi)
+
+Examples to fetch links with pagination: [test file](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example_paginate.py), [online IDE](https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi)
 
 ## Change log
 2021-06-05 @ 2.3.0
