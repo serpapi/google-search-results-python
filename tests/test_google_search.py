@@ -13,14 +13,13 @@ class TestSearchApi(unittest.TestCase):
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_paginate(self):
 				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
-				pages = search.pagination(0, 20)
-				print("display generated")
+				pages = search.pagination(0, 20, 10)
 				urls = []
-				for result in pages:
-					urls.append(result['serpapi_pagination']['next'])
+				for page in pages:
+					urls.append(page['serpapi_pagination']['next'])
 				self.assertEqual(len(urls), 2)
-				self.assertTrue("start=10" in urls[0])
-				self.assertTrue("start=20" in urls[1])
+				self.assertTrue("start=11" in urls[0])
+				self.assertTrue("start=21" in urls[1])
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):

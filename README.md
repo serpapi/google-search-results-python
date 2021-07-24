@@ -469,15 +469,19 @@ Let's collect links accross multiple search result pages.
 ```python
 # to get 2 pages
 start = 0
-end = 20
+end = 40
+page_size = 10
 
 # basic search parameters
-params = {
+parameter = {
   "q": "coca cola",
   "tbm": "nws",
   "api_key": os.getenv("API_KEY"),
+  # optional pagination parameter
+  #  the pagination method can take argument directly
   "start": start,
-  "end": end
+  "end": end,
+  "num": page_size
 }
 
 # as proof of concept 
@@ -485,29 +489,35 @@ params = {
 urls = []
 
 # initialize a search
-search = GoogleSearch(params)
+search = GoogleSearch(parameter)
 
-# create a python generator
+# create a python generator using parameter
 pages = search.pagination()
+# or set custom parameter
+pages = search.pagination(start, end, page_size)
 
 # fetch one search result per iteration 
 # using a basic python for loop 
 # which invokes python iterator under the hood.
 for page in pages:
   print(f"Current page: {page['serpapi_pagination']['current']}")
-  
   for news_result in page["news_results"]:
     print(f"Title: {news_result['title']}\nLink: {news_result['link']}\n")
     urls.append(news_result['link'])
   
 # check if the total number pages is as expected
 # note: the exact number if variable depending on the search engine backend
-self.assertGreater(len(urls), 200)
+if len(urls) == (end - start):
+  print("all search results count match!")
+if len(urls) == len(set(urls)):
+  print("all search results are unique!")
 ```
 
 Examples to fetch links with pagination: [test file](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example_paginate.py), [online IDE](https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi)
 
 ## Change log
+2021-06-05 @ 2.4.0
+ - add page size support using num parameter
 2021-06-05 @ 2.3.0
  - add pagination support
 2021-04-28 @ 2.2.0

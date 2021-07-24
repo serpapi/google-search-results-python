@@ -30,9 +30,10 @@ class SerpApiClient(object):
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
-    def __init__(self, params_dict, engine = None):
+    def __init__(self, params_dict, engine = None, timeout = 60000):
         self.params_dict = params_dict
         self.engine = engine
+        self.timeout = timeout
 
     def construct_url(self, path = "/search"):
         self.params_dict['source'] = 'python'
@@ -53,7 +54,7 @@ class SerpApiClient(object):
         url = None
         try:
             url, parameter = self.construct_url(path)
-            response = requests.get(url, parameter, timeout=60000)
+            response = requests.get(url, parameter, timeout=self.timeout)
             return response
         except requests.HTTPError as e:
             print("fail: " + url)
@@ -167,8 +168,8 @@ class SerpApiClient(object):
         buffer = self.get_results('/locations.json')
         return json.loads(buffer)
     
-    def pagination(self, start = 0, end = 1000000000):
+    def pagination(self, start = 0, end = 1000000000, page_size = 10):
         """Return:
             Generator to iterate the search results pagination
         """
-        return Pagination(self, start, end)
+        return Pagination(self, start, end, page_size)
