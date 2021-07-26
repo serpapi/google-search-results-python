@@ -527,7 +527,7 @@ if len(urls) == len(set(urls)):
 Examples to fetch links with pagination: [test file](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example_paginate.py), [online IDE](https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi)
 
 ## Change log
-2021-06-05 @ 2.4.0
+2021-07-26 @ 2.4.0
  - add page size support using num parameter
  - add youtube search engine
 2021-06-05 @ 2.3.0
