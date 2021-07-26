@@ -61,10 +61,10 @@ class TestExamplePaginate(unittest.TestCase):
       count = 0
       for page in pages:
         page_count += 1
-        #print(f"Current page: {page['serpapi_pagination']['current']}")
+        # print(f"Current page: {page['serpapi_pagination']['current']}")
         for news_result in page["news_results"]:
             count += 1
-            print(f"{count} - title: {news_result['title']}")
+            # print(f"{count} - title: {news_result['title']}")
             urls.append(news_result['link'])
             
       # check number of pages match
