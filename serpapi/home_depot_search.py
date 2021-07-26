@@ -1,7 +1,7 @@
 from serpapi.serp_api_client import *
 
 class HomeDepotSearch(SerpApiClient):
-    """GoogleScholarSearch enables to search google scholar and parse the result.
+    """HomeDepotSearch enables to search home depot and parse the result.
     ```python
     from serpapi import HomeDepotSearch
     query = HomeDepotSearch({"q": "chair"})

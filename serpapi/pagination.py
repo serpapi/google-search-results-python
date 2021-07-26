@@ -39,8 +39,6 @@ class Pagination:
   def update(self):
     self.client.params_dict['start'] = self.start
     self.client.params_dict['num'] = self.num
-    if self.start == 0:
-      self.client.params_dict['num'] += 1
     if self.start > 0:
       self.client.params_dict['start'] += 1
 

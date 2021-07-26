@@ -18,7 +18,8 @@ class TestSearchApi(unittest.TestCase):
 				for page in pages:
 					urls.append(page['serpapi_pagination']['next'])
 				self.assertEqual(len(urls), 2)
-				self.assertTrue("start=11" in urls[0])
+				self.assertTrue("start=10" in urls[0])
+				print(urls[1])
 				self.assertTrue("start=21" in urls[1])
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")

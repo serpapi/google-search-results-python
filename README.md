@@ -74,6 +74,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Search Yahoo](#search-yahoo)
     - [Search Ebay](#search-ebay)
     - [Search Home depot](#search-home-depot)
+    - [Search Youtube](#search-youtube)
     - [Search Google Scholar](#search-google-scholar)
     - [Generic search with SerpApiClient](#generic-search-with-serpapiclient)
     - [Search Google Images](#search-google-images)
@@ -269,6 +270,16 @@ data = search.get_dict()
 this code prints home depot search results for chair as Dictionary. 
 
 https://serpapi.com/home-depot-search-api
+
+### Search Youtube
+```python
+from serpapi import HomeDepotSearch
+search = YoutubeSearch({"q": "chair"})
+data = search.get_dict()
+```
+this code prints youtube search results for chair as Dictionary. 
+
+https://serpapi.com/youtube-search-api
 
 ### Search Google Scholar
 ```python
@@ -518,6 +529,7 @@ Examples to fetch links with pagination: [test file](https://github.com/serpapi/
 ## Change log
 2021-06-05 @ 2.4.0
  - add page size support using num parameter
+ - add youtube search engine
 2021-06-05 @ 2.3.0
  - add pagination support
 2021-04-28 @ 2.2.0

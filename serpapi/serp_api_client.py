@@ -10,6 +10,7 @@ YANDEX_ENGINE = 'yandex'
 EBAY_ENGINE = 'ebay'
 YAHOO_ENGINE = 'yahoo'
 HOME_DEPOT_ENGINE = 'home_depot'
+YOUTUBE_ENGINE = 'youtube'
 
 class SerpApiClient(object):
     """SerpApiClient enables to query any search engines supported by SerpApi and parse the results.
