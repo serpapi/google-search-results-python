@@ -1,4 +1,5 @@
 from serpapi.serp_api_client import *
+from serpapi.serp_api_client_exception import SerpApiClientException
 
 class HomeDepotSearch(SerpApiClient):
     """HomeDepotSearch enables to search home depot and parse the result.
@@ -15,4 +16,4 @@ class HomeDepotSearch(SerpApiClient):
         super(HomeDepotSearch, self).__init__(params_dict, HOME_DEPOT_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise "location is not supported by Home Depot search engine"
+        raise SerpApiClientException("location is not supported by Home Depot search engine")

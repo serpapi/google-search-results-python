@@ -13,6 +13,7 @@ class TestBingSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				search = BingSearch({"q": "Coffee", "location": "Austin,Texas"})
 				data = search.get_json()
+				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["bing_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

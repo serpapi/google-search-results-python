@@ -19,7 +19,8 @@ install:
 test:
 	pytest
 
-# run example only
+# run example only 
+#  and display output (-s)
 example:
 	pytest -s "tests/test_example.py::TestExample::test_async"
 

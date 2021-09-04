@@ -1,4 +1,5 @@
 from serpapi.serp_api_client import *
+from serpapi.serp_api_client_exception import SerpApiClientException
 
 class GoogleScholarSearch(SerpApiClient):
     """GoogleScholarSearch enables to search google scholar and parse the result.
@@ -15,4 +16,4 @@ class GoogleScholarSearch(SerpApiClient):
         super(GoogleScholarSearch, self).__init__(params_dict, GOOGLE_SCHOLAR_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise "location is not supported by Google scholar search engine"
+        raise SerpApiClientException("location is not supported by Google scholar search engine")

@@ -1,4 +1,5 @@
 from serpapi.serp_api_client import *
+from serpapi.serp_api_client_exception import SerpApiClientException
 
 class YahooSearch(SerpApiClient):
     """YahooSearch enables to search yahoo and parse the result.
@@ -15,4 +16,4 @@ class YahooSearch(SerpApiClient):
         super(YahooSearch, self).__init__(params_dict, YAHOO_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise "location is not supported by Yahoo search engine at this time"
+        raise SerpApiClientException("location is not supported by Yahoo search engine at this time")

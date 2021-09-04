@@ -127,6 +127,7 @@ class TestExample(unittest.TestCase):
                 "start": 0
             })
             data = search.get_json()
+            self.assertIsNone(data.get("error"))
             top_result = data['organic_results'][0]["title"]
             print("top coffee result for " + location + " is: " + top_result)
 

@@ -1,4 +1,4 @@
-import pprint
+from serpapi.serp_api_client_exception import SerpApiClientException
 
 DEFAULT_START = 0 
 DEFAULT_END = 1000000000
@@ -28,9 +28,9 @@ class Pagination:
 
     # basic check
     if self.start > self.end:
-        raise "start: {} must be less than end: {}".format(self.start, self.end)
+        raise SerpApiClientException("start: {} must be less than end: {}".format(self.start, self.end))
     if(self.start + self.num) > self.end:
-        raise "start + num: {} + {} must be less than end: {}".format(self.start, self.num, self.end)
+        raise SerpApiClientException("start + num: {} + {} must be less than end: {}".format(self.start, self.num, self.end))
 
   def __iter__(self):
     self.update()

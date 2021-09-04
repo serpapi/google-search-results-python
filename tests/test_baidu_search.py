@@ -13,6 +13,7 @@ class TestBaiduSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				search = BaiduSearch({"q": "Coffee"})
 				data = search.get_json()
+				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["baidu_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

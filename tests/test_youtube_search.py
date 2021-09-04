@@ -13,6 +13,7 @@ class TestYoutubeSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				search = YoutubeSearch({"search_query": "chair"})
 				data = search.get_dict()
+				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["youtube_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
@@ -20,13 +21,13 @@ class TestYoutubeSearchApi(unittest.TestCase):
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_object(self):
 				search = YoutubeSearch({"search_query": "chair"})
-				r = search.get_object()
-				self.assertEqual(r.search_metadata.status, "Success")
-				self.assertIsNotNone(r.search_metadata.id)
-				self.assertIsNotNone(r.search_metadata.youtube_url)
-				self.assertEqual(r.search_parameters.search_query, "chair")
-				self.assertEqual(r.search_parameters.engine, "youtube")
-				self.assertGreater(r.search_information.total_results, 10)
+				data = search.get_object()
+				self.assertEqual(data.search_metadata.status, "Success")
+				self.assertIsNotNone(data.search_metadata.id)
+				self.assertIsNotNone(data.search_metadata.youtube_url)
+				self.assertEqual(data.search_parameters.search_query, "chair")
+				self.assertEqual(data.search_parameters.engine, "youtube")
+				self.assertGreater(data.search_information.total_results, 10)
 
 if __name__ == '__main__':
 		unittest.main()

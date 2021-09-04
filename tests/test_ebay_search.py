@@ -13,6 +13,7 @@ class TestEbaySearchApi(unittest.TestCase):
 		def test_get_json(self):
 				search = EbaySearch({"_nkw": "Coffee"})
 				data = search.get_json()
+				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["ebay_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

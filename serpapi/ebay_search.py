@@ -1,4 +1,5 @@
 from serpapi.serp_api_client import *
+from serpapi.serp_api_client_exception import SerpApiClientException
 
 class EbaySearch(SerpApiClient):
     """EbaySearch enables to search ebay and parse the result.
@@ -15,4 +16,4 @@ class EbaySearch(SerpApiClient):
         super(EbaySearch, self).__init__(params_dict, EBAY_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise "location is not supported by Ebay search engine at this time"
+        raise SerpApiClientException("location is not supported by Ebay search engine at this time")

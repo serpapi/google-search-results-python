@@ -13,6 +13,7 @@ class TestGoogleScholarSearch(unittest.TestCase):
 		def test_get_json(self):
 				search = GoogleScholarSearch({"q": "Coffee"})
 				data = search.get_json()
+				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])

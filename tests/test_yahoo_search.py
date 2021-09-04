@@ -13,12 +13,11 @@ class TestYahooSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				search = YahooSearch({"p": "Coffee"})
 				data = search.get_json()
+				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				self.assertIsNotNone(data["search_metadata"]["yahoo_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])
-				pp = pprint.PrettyPrinter(indent=2)
-				pp.pprint(data)
 
 if __name__ == '__main__':
 		unittest.main()

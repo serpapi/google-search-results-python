@@ -27,10 +27,9 @@ class TestSearchApi(unittest.TestCase):
 				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
 				data = search.get_json()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
+				self.assertIsNone(data.get("error"))
 				self.assertIsNotNone(data["search_metadata"]["google_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
-				# pp = pprint.PrettyPrinter(indent=2)
-				# pp.pprint(data['local_results'])
 				self.assertIsNotNone(data['local_results']['places'][0])
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")

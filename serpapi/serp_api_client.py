@@ -1,6 +1,7 @@
 import requests
 import json
 from serpapi.pagination import Pagination
+from serpapi.serp_api_client_exception import SerpApiClientException
 
 GOOGLE_ENGINE = 'google'
 BING_ENGINE = 'bing'
@@ -28,7 +29,8 @@ class SerpApiClient(object):
     https://serpapi.com/search-api
     """
 
-    BACKEND = "https://serpapi.com"
+    #BACKEND = "https://serpapi.com"
+    BACKEND = "http://localhost:3000"
     SERP_API_KEY = None
 
     def __init__(self, params_dict, engine = None, timeout = 60000):
@@ -44,8 +46,7 @@ class SerpApiClient(object):
             if not 'engine' in self.params_dict:
                 self.params_dict['engine'] = self.engine
         if not 'engine' in self.params_dict:
-            raise "engine must be defined in params_dict or engine"
-
+            raise SerpApiClientException("engine must be defined in params_dict or engine")
         return self.BACKEND + path, self.params_dict
 
     def get_response(self, path = '/search'):

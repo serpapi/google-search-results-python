@@ -84,6 +84,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
     - [Batch Asynchronous Searches](#batch-asynchronous-searches)
     - [Python object as a result](#python-object-as-a-result)
     - [Python paginate using iterator](#pagination-using-iterator)
+    - [Error management](#error-management)
   - [Change log](#change-log)
   - [Conclusion](#conclusion)
 
@@ -191,6 +192,7 @@ The previous search can be retrieve from the the cache for free.
 from serpapi import GoogleSearch
 search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
 search_result = search.get_dictionary()
+assert search_result.get("error") == None
 search_id = search_result.get("search_metadata").get("id")
 print(search_id)
 ```
@@ -526,7 +528,27 @@ if len(urls) == len(set(urls)):
 
 Examples to fetch links with pagination: [test file](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example_paginate.py), [online IDE](https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi)
 
+### Error management
+
+SerpAPI keeps error mangement very basic.
+ - backend service error or search fail
+ - client error
+
+If it's a backend error, a simple message error is returned as string in the server response.
+```python
+from serpapi import GoogleSearch
+search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas", "api_key": "<secret_key>"})
+data = search.get_json()
+assert data["error"] == None
+```
+In some case, there is more details availabel in the data object.
+
+If it's client error, then a SerpApiClientException is raised.
+
 ## Change log
+2021-09-01 @ 2.4.1
+ - raise SerpApiClientException instead of raw string in order to follow Python guideline 3.5+
+ - add more unit error tests for serp_api_client
 2021-07-26 @ 2.4.0
  - add page size support using num parameter
  - add youtube search engine
