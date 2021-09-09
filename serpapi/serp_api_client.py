@@ -29,8 +29,7 @@ class SerpApiClient(object):
     https://serpapi.com/search-api
     """
 
-    #BACKEND = "https://serpapi.com"
-    BACKEND = "http://localhost:3000"
+    BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
     def __init__(self, params_dict, engine = None, timeout = 60000):
