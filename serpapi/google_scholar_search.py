@@ -1,12 +1,13 @@
 from serpapi.serp_api_client import *
 from serpapi.serp_api_client_exception import SerpApiClientException
+from serpapi.constant import *
 
 class GoogleScholarSearch(SerpApiClient):
     """GoogleScholarSearch enables to search google scholar and parse the result.
     ```python
     from serpapi import GoogleScholarSearch
-    query = GoogleScholarSearch({"q": "coffee"})
-    data = query.get_json()
+    search = GoogleScholarSearch({"q": "coffee"})
+    data = search.get_json()
     ```
 
     doc: https://serpapi.com/google-scholar-api

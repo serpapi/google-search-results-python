@@ -1,11 +1,12 @@
 from serpapi.serp_api_client import *
+from serpapi.constant import *
 
 class GoogleSearch(SerpApiClient):
     """GoogleSearch enables to search google and parse the result.
     ```python
     from serpapi import GoogleSearch
-    query = GoogleSearch({"q": "coffee", "location": "Austin,Texas"})
-    data = query.get_json()
+    search = GoogleSearch({"q": "coffee", "location": "Austin,Texas"})
+    data = search.get_json()
     ```
 
     https://github.com/serpapi/google-search-results-python

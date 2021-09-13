@@ -1,12 +1,13 @@
 from serpapi.serp_api_client import *
 from serpapi.serp_api_client_exception import SerpApiClientException
+from serpapi.constant import *
 
 class YahooSearch(SerpApiClient):
     """YahooSearch enables to search yahoo and parse the result.
     ```python
     from serpapi import YahooSearch
-    query = YahooSearch({"p": "coffee"})
-    data = query.get_json()
+    search = YahooSearch({"p": "coffee"})
+    data = search.get_json()
     ```
 
     doc: https://serpapi.com/yahoo-search-api

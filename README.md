@@ -546,6 +546,10 @@ In some case, there is more details availabel in the data object.
 If it's client error, then a SerpApiClientException is raised.
 
 ## Change log
+2021-09-12 @ 2.5.0
+ - Fix pagination to support all search engine
+ - Add duckduckgo support
+ - Move constant to one file
 2021-09-01 @ 2.4.1
  - raise SerpApiClientException instead of raw string in order to follow Python guideline 3.5+
  - add more unit error tests for serp_api_client

@@ -113,9 +113,12 @@ class TestExample(unittest.TestCase):
             "num": 100
         })
         data = search.get_json()
-        for shopping_result in data['shopping_results']:
-            print(str(shopping_result['position']) + " - " + shopping_result['title'])
-
+        if 'shopping_results' in data:
+            for shopping_result in data['shopping_results']:
+                print(str(shopping_result['position']) + " - " + shopping_result['title'])
+        else:
+            print("WARNING: oops shopping_results is missing from search result with tbm=shop")
+    
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_search_by_location(self):
         for city in ["new york", "paris", "berlin"]:

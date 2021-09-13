@@ -2,32 +2,31 @@ import random
 import unittest
 import os
 import pprint
-from serpapi import EbaySearch
+from serpapi import DuckDuckGoSearch
 
-class TestEbaySearchApi(unittest.TestCase):
+class TestDuckDuckGoSearch(unittest.TestCase):
 
 		def setUp(self):
-				EbaySearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
+				DuckDuckGoSearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
-				search = EbaySearch({"_nkw": "Coffee"})
+				search = DuckDuckGoSearch({"q": "Coffee"})
 				data = search.get_json()
 				self.assertIsNone(data.get("error"))
 				self.assertEqual(data["search_metadata"]["status"], "Success")
-				self.assertIsNotNone(data["search_metadata"]["ebay_url"])
+				self.assertIsNotNone(data["search_metadata"]["duckduckgo_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
-				self.assertIsNotNone(data["organic_results"][0]["title"])
+				if "organic_results" in data:
+					self.assertIsNotNone(data["organic_results"][1]["title"])
 				# pp = pprint.PrettyPrinter(indent=2)
 				# pp.pprint(data)
+				self.assertTrue(len(data.keys()) > 10)
+
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_paginate(self):
-			params = {
-				"_nkw": "coffee",
-				"api_key": os.getenv("API_KEY")
-			}
-			search = EbaySearch(params)
+			search = DuckDuckGoSearch({"q": "coffee",})
 			pages = search.pagination(20, 60)
 			page_count = 0
 			result_count = 0

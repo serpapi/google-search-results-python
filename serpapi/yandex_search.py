@@ -1,12 +1,13 @@
 from serpapi.serp_api_client import *
 from serpapi.serp_api_client_exception import SerpApiClientException
+from serpapi.constant import *
 
 class YandexSearch(SerpApiClient):
     """YandexSearch enables to search yandex and parse the result.
     ```python
     from serpapi import YandexSearch
-    query = YandexSearch({"text": "coffee"})
-    data = query.get_json()
+    search = YandexSearch({"text": "coffee"})
+    data = search.get_json()
     ```
 
     doc: https://serpapi.com/yandex-search-api

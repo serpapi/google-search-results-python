@@ -1,12 +1,13 @@
 from serpapi.serp_api_client import *
 from serpapi.serp_api_client_exception import SerpApiClientException
+from serpapi.constant import *
 
 class EbaySearch(SerpApiClient):
     """EbaySearch enables to search ebay and parse the result.
     ```python
     from serpapi import EbaySearch
-    query = EbaySearch({"_nkw": "coffee"})
-    data = query.get_json()
+    search = EbaySearch({"_nkw": "coffee"})
+    data = search.get_json()
     ```
 
     doc: https://serpapi.com/ebay-search-api

@@ -1,12 +1,13 @@
 from serpapi.serp_api_client import *
 from serpapi.serp_api_client_exception import SerpApiClientException
+from serpapi.constant import *
 
 class BaiduSearch(SerpApiClient):
     """BaiduSearch enables to search baidu and parse the result.
     ```python
     from serpapi import BaiduSearch
-    query = BaiduSearch({"q": "coffee"})
-    data = query.get_json()
+    search = BaiduSearch({"q": "coffee"})
+    data = search.get_json()
     ```
 
     doc: https://serpapi.com/baidu-search-api

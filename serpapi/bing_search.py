@@ -1,11 +1,12 @@
 from serpapi.serp_api_client import *
+from serpapi.constant import *
 
 class BingSearch(SerpApiClient):
     """BingSearch enables to search bing and parse the result.
     ```python
     from serpapi import BingSearch
-    query = BingSearch({"q": "coffee", "location": "Austin,Texas"})
-    data = query.get_json()
+    search = BingSearch({"q": "coffee", "location": "Austin,Texas"})
+    data = search.get_json()
     ```
 
     doc: https://serpapi.com/bing-search-api

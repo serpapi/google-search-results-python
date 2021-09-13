@@ -1,3 +1,4 @@
+# register all the clients
 from .serp_api_client import SerpApiClient
 from .baidu_search import BaiduSearch
 from .google_search import GoogleSearch
@@ -8,3 +9,5 @@ from .google_scholar_search import GoogleScholarSearch
 from .ebay_search import EbaySearch
 from .home_depot_search import HomeDepotSearch
 from .youtube_search import YoutubeSearch
+from .duck_duck_go_search import DuckDuckGoSearch
+

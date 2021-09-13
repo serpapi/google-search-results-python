@@ -5,7 +5,7 @@ from serpapi import GoogleSearch
 # original code: https://replit.com/@DimitryZub1/Scrape-Google-News-with-Pagination-python-serpapi
 class TestExamplePaginate(unittest.TestCase):
     
-    @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+    # @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_paginate(self):
       # to get 2 pages
       start = 0
@@ -61,21 +61,20 @@ class TestExamplePaginate(unittest.TestCase):
       # parameter start,end,page_size will be used instead of pagination
       pages = search.pagination()
       page_count = 0
-      count = 0
+      result_count = 0
       for page in pages:
         page_count += 1
         # print(f"Current page: {page['serpapi_pagination']['current']}")
         for news_result in page["news_results"]:
-            count += 1
+            result_count += 1
             i = 0
             for t in title:
               i += 1
               if t == news_result['title']:
-                print(("%d duplicated title: %s at index: %d" % (count, t, i)))
+                print(("%d duplicated title: %s at index: %d" % (result_count, t, i)))
             #print(f"{count} - title: {news_result['title']}")
             title.append(news_result['title'])
-
-        self.assertEqual(count%2, 0, ("page %s does not contain 20 elements" % page_count))
+        self.assertEqual(result_count%2, 0, ("page %s does not contain 20 elements" % page_count))
       
       # check number of pages match
       self.assertEqual(page_count, 4)
