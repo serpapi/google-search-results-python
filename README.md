@@ -3,7 +3,7 @@
 [![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml)
 
-This Python package is meant to scrape and parse search resutls from Google, Bing, Baidu, Yandex, Yahoo, Home depot, Ebay and more.. using [SerpApi](https://serpapi.com). 
+This Python package is meant to scrape and parse search results from Google, Bing, Baidu, Yandex, Yahoo, Home depot, Ebay and more.. using [SerpApi](https://serpapi.com). 
 
 The following services are provided:
 - [Search API](https://serpapi.com/search-api)
