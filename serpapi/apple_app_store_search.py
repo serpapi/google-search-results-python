@@ -6,8 +6,8 @@ class AppleAppStoreSearch(SerpApiClient):
     """AppleAppStoreSearch enables to search google scholar and parse the result.
     ```python
     from serpapi import AppleAppStoreSearch
-    search = AppleAppStoreSearch({"q": "chair"})
-    data = search.get_json()
+    search = AppleAppStoreSearch({"term": "ipad"})
+    data = search.get_dct()
     ```
     
     doc: https://serpapi.com/apple-app-store

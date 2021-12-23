@@ -7,7 +7,7 @@ class WalmartSearch(SerpApiClient):
     ```python
     from serpapi import WalmartSearch
     search = WalmartSearch({"query": "chair"})
-    data = search.get_json()
+    data = search.get_dict()
     ```
 
     doc: https://serpapi.com/walmart-search-api

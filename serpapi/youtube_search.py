@@ -5,8 +5,8 @@ class YoutubeSearch(SerpApiClient):
     """YoutubeSearch enables to search google scholar and parse the result.
     ```python
     from serpapi import YoutubeSearch
-    query = YoutubeSearch({"q": "chair"})
-    data = query.get_json()
+    query = YoutubeSearch({"search_query": "chair"})
+    data = query.get_dict()
     ```
 
     doc: https://serpapi.com/youtube-search-api

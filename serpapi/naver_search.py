@@ -7,7 +7,7 @@ class NaverSearch(SerpApiClient):
     ```python
     from serpapi import NaverSearch
     search = NaverSearch({"query": "chair"})
-    data = search.get_json()
+    data = search.get_dict()
     ```
 
     doc: https://serpapi.com/naver-search-api

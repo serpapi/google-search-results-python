@@ -22,21 +22,21 @@ class TestEbaySearchApi(unittest.TestCase):
 				# pp.pprint(data)
 
     # TODO fix universal pagination
-		# @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
-		# def test_paginate(self):
-		# 	params = {
-		# 		"_nkw": "coffee",
-		# 		"api_key": os.getenv("API_KEY")
-		# 	}
-		# 	search = EbaySearch(params)
-		# 	pages = search.pagination(20, 60)
-		# 	page_count = 0
-		# 	result_count = 0
-		# 	for page in pages:
-		# 		page_count += 1
-		# 		result_count += len(page["organic_results"])
-		# 	self.assertEqual(page_count, 2)
-		# 	self.assertEqual(page_count, 40)
+		@unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
+		def test_paginate(self):
+			params = {
+				"_nkw": "coffee",
+				"api_key": os.getenv("API_KEY")
+			}
+			search = EbaySearch(params)
+			pages = search.pagination(20, 60)
+			page_count = 0
+			result_count = 0
+			for page in pages:
+				page_count += 1
+				result_count += len(page["organic_results"])
+			self.assertEqual(page_count, 2)
+			self.assertEqual(page_count, 40)
 
 if __name__ == '__main__':
 		unittest.main()

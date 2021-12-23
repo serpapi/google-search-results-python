@@ -12,7 +12,7 @@ class TestAppleAppStoreSearch(unittest.TestCase):
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
 				search = AppleAppStoreSearch({"term": "Coffee"})
-				data = search.get_json()
+				data = search.get_dict()
 				self.assertEqual(data["search_metadata"]["status"], "Success")
 				#self.assertIsNotNone(data["search_metadata"]["app_store_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])

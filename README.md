@@ -55,7 +55,6 @@ Alternatively, you can search:
 - Yandex using YandexSearch class
 - HomeDepot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
-
 - youtube using YoutubeSearch class
 - walmart using WalmartSearch
 - apple_app_store using AppleAppStoreSearch class
@@ -294,6 +293,38 @@ https://serpapi.com/youtube-search-api
 ```python
 from serpapi import GoogleScholarSearch
 search = GoogleScholarSearch({"q": "Coffee"})
+data = search.get_dict()
+```
+this code prints Google Scholar search results.
+
+### Search Walmart
+```python
+from serpapi import WalmartSearch
+search = WalmartSearch({"query": "chair"})
+data = search.get_dict()
+```
+this code prints Google Scholar search results.
+
+### Search Youtube
+```python
+from serpapi import YoutubeSearch
+search = YoutubeSearch({"search_query": "chair"})
+data = search.get_dict()
+```
+this code prints Google Scholar search results.
+
+### Search Apple Store
+```python
+from serpapi import AppleAppStoreSearch
+search = AppleAppStoreSearch({"term": "Coffee"})
+data = search.get_dict()
+```
+this code prints Google Scholar search results.
+
+### Search Naver
+```python
+from serpapi import NaverSearch
+search = NaverSearch({"query": "chair"})
 data = search.get_dict()
 ```
 this code prints Google Scholar search results.
@@ -553,19 +584,12 @@ In some case, there is more details availabel in the data object.
 If it's client error, then a SerpApiClientException is raised.
 
 ## Change log
-2021-12-22 @ 2.5.1
+2021-12-22 @ 2.4.1
  - add more search engine 
    - youtube
    - walmart
    - apple_app_store
    - naver 
-
-2021-09-12 @ 2.5.0
- - Fix pagination to support all search engine
- - Add duckduckgo support
- - Move constant to one file
-
-2021-09-01 @ 2.4.1
  - raise SerpApiClientException instead of raw string in order to follow Python guideline 3.5+
  - add more unit error tests for serp_api_client
 
