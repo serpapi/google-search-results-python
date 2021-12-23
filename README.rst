@@ -54,10 +54,15 @@ Alternatively, you can search:
 - Bing using BingSearch class
 - Baidu using BaiduSearch class
 - Yahoo using YahooSearch class
+- duckduckgo using DuckDuckGoSearch class
 - Ebay using EbaySearch class
 - Yandex using YandexSearch class
-- Home depot using HomeDepotSearch class
+- HomeDepot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
+- Youtube using YoutubeSearch class
+- Walmart using WalmartSearch
+- Apple App Store using AppleAppStoreSearch class
+- Naver using NaverSearch class
 
 See the `playground to generate your code. <https://serpapi.com/playground>`_
 

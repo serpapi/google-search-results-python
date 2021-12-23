@@ -55,10 +55,10 @@ Alternatively, you can search:
 - Yandex using YandexSearch class
 - HomeDepot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
-- youtube using YoutubeSearch class
-- walmart using WalmartSearch
-- apple_app_store using AppleAppStoreSearch class
-- naver using NaverSearch class
+- Youtube using YoutubeSearch class
+- Walmart using WalmartSearch
+- Apple App Store using AppleAppStoreSearch class
+- Naver using NaverSearch class
 
 
 See the [playground to generate your code.](https://serpapi.com/playground)
