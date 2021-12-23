@@ -29,6 +29,19 @@ class TestExample(unittest.TestCase):
         GoogleSearch.SERP_API_KEY = os.getenv("API_KEY","demo")
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+    def test_get_json(self):
+        search = GoogleSearch({"q": "Coffee", "engine": "google_scholar"})
+        data = search.get_json()
+        print(data['search_metadata'])
+        search_id = data['search_metadata']['id']
+        # retrieve search from the archive - blocker
+        print(search_id + ": get search from archive")
+        raw_html =  search.get_search_archive(search_id, 'html')
+        # print(search_id + ": status = " + search_archived['search_metadata']['status'])
+        print(raw_html)
+        #print(search_html)
+
+    @unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
     def test_search_google_images(self):
         search = GoogleSearch({"q": "coffe", "tbm": "isch"})
         for image_result in search.get_json()['images_results']:
@@ -42,7 +55,7 @@ class TestExample(unittest.TestCase):
                 pass
             # https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training/blob/master/fetch.py
 
-    @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+    @unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
     def test_async(self):
         # store searches
         search_queue = Queue()
@@ -90,7 +103,7 @@ class TestExample(unittest.TestCase):
         # search is over.
         print('all searches completed')
         
-    @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+    @unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
     def test_search_google_news(self):
         search = GoogleSearch({
             "q": "coffe",   # search search
@@ -104,7 +117,7 @@ class TestExample(unittest.TestCase):
             for news_result in data['news_results']:
                 print(str(news_result['position'] + offset * 10) + " - " + news_result['title'])
 
-    @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+    @unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
     def test_search_google_shopping(self):
         search = GoogleSearch({
             "q": "coffe",   # search search
@@ -113,10 +126,20 @@ class TestExample(unittest.TestCase):
             "num": 100
         })
         data = search.get_json()
+<<<<<<< Updated upstream
         for shopping_result in data['shopping_results']:
             print(str(shopping_result['position']) + " - " + shopping_result['title'])
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+=======
+        if 'shopping_results' in data:
+            for shopping_result in data['shopping_results']:
+                print(str(shopping_result['position']) + " - " + shopping_result['title'])
+        else:
+            print("WARNING: oops shopping_results is missing from search result with tbm=shop")
+    
+    @unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
+>>>>>>> Stashed changes
     def test_search_by_location(self):
         for city in ["new york", "paris", "berlin"]:
             location = GoogleSearch({}).get_location(city, 1)[0]["canonical_name"]

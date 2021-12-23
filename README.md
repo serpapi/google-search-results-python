@@ -50,10 +50,17 @@ Alternatively, you can search:
 - Bing using BingSearch class
 - Baidu using BaiduSearch class
 - Yahoo using YahooSearch class
+- duckduckgo using DuckDuckGoSearch class
 - Ebay using EbaySearch class
 - Yandex using YandexSearch class
 - HomeDepot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
+
+- youtube using YoutubeSearch class
+- walmart using WalmartSearch
+- apple_app_store using AppleAppStoreSearch class
+- naver using NaverSearch class
+
 
 See the [playground to generate your code.](https://serpapi.com/playground)
 
@@ -546,34 +553,56 @@ In some case, there is more details availabel in the data object.
 If it's client error, then a SerpApiClientException is raised.
 
 ## Change log
+2021-12-22 @ 2.5.1
+ - add more search engine 
+   - youtube
+   - walmart
+   - apple_app_store
+   - naver 
+
+2021-09-12 @ 2.5.0
+ - Fix pagination to support all search engine
+ - Add duckduckgo support
+ - Move constant to one file
+
 2021-09-01 @ 2.4.1
  - raise SerpApiClientException instead of raw string in order to follow Python guideline 3.5+
  - add more unit error tests for serp_api_client
+
 2021-07-26 @ 2.4.0
  - add page size support using num parameter
  - add youtube search engine
+
 2021-06-05 @ 2.3.0
  - add pagination support
+
 2021-04-28 @ 2.2.0
  - add get_response method to provide raw requests.Response object
+
 2021-04-04 @ 2.1.0
  - Add home depot search engine
  - get_object() returns dynamic Python object
+ 
 2020-10-26 @ 2.0.0
  - Reduce class name to <engine>Search
  - Add get_raw_json
+
 2020-06-30 @ 1.8.3
  - simplify import
  - improve package for python 3.5+
  - add support for python 3.5 and 3.6
+
 2020-03-25 @ 1.8
  - add support for Yandex, Yahoo, Ebay
  - clean-up test
+
 2019-11-10 @ 1.7.1
  - increase engine parameter priority over engine value set in the class
+
 2019-09-12 @ 1.7
  - Change  namespace "from lib." instead: "from serpapi import GoogleSearch"
  - Support for Bing and Baidu
+
 2019-06-25 @ 1.6
  - New search engine supported: Baidu and Bing
 

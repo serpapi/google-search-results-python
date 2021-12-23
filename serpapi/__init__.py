@@ -8,3 +8,8 @@ from .google_scholar_search import GoogleScholarSearch
 from .ebay_search import EbaySearch
 from .home_depot_search import HomeDepotSearch
 from .youtube_search import YoutubeSearch
+from .duck_duck_go_search import DuckDuckGoSearch
+from .walmart_search import WalmartSearch
+from .naver_search import NaverSearch
+from .apple_app_store_search import AppleAppStoreSearch
+

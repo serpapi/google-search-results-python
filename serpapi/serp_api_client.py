@@ -55,6 +55,7 @@ class SerpApiClient(object):
         url = None
         try:
             url, parameter = self.construct_url(path)
+            print(url)
             response = requests.get(url, parameter, timeout=self.timeout)
             return response
         except requests.HTTPError as e:
