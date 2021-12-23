@@ -126,12 +126,6 @@ class TestExample(unittest.TestCase):
             "num": 100
         })
         data = search.get_json()
-<<<<<<< Updated upstream
-        for shopping_result in data['shopping_results']:
-            print(str(shopping_result['position']) + " - " + shopping_result['title'])
-
-    @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
-=======
         if 'shopping_results' in data:
             for shopping_result in data['shopping_results']:
                 print(str(shopping_result['position']) + " - " + shopping_result['title'])
@@ -139,7 +133,6 @@ class TestExample(unittest.TestCase):
             print("WARNING: oops shopping_results is missing from search result with tbm=shop")
     
     @unittest.skipIf((os.getenv("DEBUGAPI_KEY") == None), "no api_key provided")
->>>>>>> Stashed changes
     def test_search_by_location(self):
         for city in ["new york", "paris", "berlin"]:
             location = GoogleSearch({}).get_location(city, 1)[0]["canonical_name"]

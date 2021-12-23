@@ -18,10 +18,6 @@ class TestEbaySearchApi(unittest.TestCase):
 				self.assertIsNotNone(data["search_metadata"]["ebay_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])
-<<<<<<< Updated upstream
-				pp = pprint.PrettyPrinter(indent=2)
-				pp.pprint(data)
-=======
 				# pp = pprint.PrettyPrinter(indent=2)
 				# pp.pprint(data)
 
@@ -41,7 +37,6 @@ class TestEbaySearchApi(unittest.TestCase):
 		# 		result_count += len(page["organic_results"])
 		# 	self.assertEqual(page_count, 2)
 		# 	self.assertEqual(page_count, 40)
->>>>>>> Stashed changes
 
 if __name__ == '__main__':
 		unittest.main()
