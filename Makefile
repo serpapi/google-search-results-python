@@ -38,5 +38,5 @@ oobt: build
 check: oobt
 	twine check dist/google_search_results-$(version).tar.gz
 
-release: check
-	twine upload dist/google_search_results-$(version).tar.gz -u vikoky -p ${TWINE_PASSWORD}
+release: # check
+	twine upload dist/google_search_results-$(version).tar.gz
