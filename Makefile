@@ -25,7 +25,7 @@ example:
 	pytest -s "tests/test_example.py::TestExample::test_async"
 
 build_dep:
-	pip3 install -U setuptools
+	pip3 install -U setuptools pytest
 
 # https://packaging.python.org/tutorials/packaging-projects/
 build:

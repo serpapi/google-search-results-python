@@ -1,3 +1,4 @@
+from urllib import parse
 from serpapi.serp_api_client_exception import SerpApiClientException
 
 DEFAULT_START = 0 
@@ -11,57 +12,68 @@ class Pagination:
     # serp api client
     self.client = client
     # range
-    self.start = start
-    self.end = end
-    self.num = num
+    # self.start = start
+    # self.end = end
+    # self.num = num
 
-    # use value from the client
-    if self.start == DEFAULT_START:
-      if 'start' in self.client.params_dict:
-        self.start = self.client.params_dict['start']
-    if self.end == DEFAULT_END:
-      if 'end' in self.client.params_dict:
-        self.end = self.client.params_dict['end']
-    if self.num == DEFAULT_num:
-      if 'num' in self.client.params_dict:
-        self.num = self.client.params_dict['num']
+    # # use value from the client
+    # if self.start == DEFAULT_START:
+    #   if 'start' in self.client.params_dict:
+    #     self.start = self.client.params_dict['start']
+    # if self.end == DEFAULT_END:
+    #   if 'end' in self.client.params_dict:
+    #     self.end = self.client.params_dict['end']
+    # if self.num == DEFAULT_num:
+    #   if 'num' in self.client.params_dict:
+    #     self.num = self.client.params_dict['num']
 
-    # basic check
-    if self.start > self.end:
-        raise SerpApiClientException("start: {} must be less than end: {}".format(self.start, self.end))
-    if(self.start + self.num) > self.end:
-        raise SerpApiClientException("start + num: {} + {} must be less than end: {}".format(self.start, self.num, self.end))
+    # # basic check
+    # if self.start > self.end:
+    #     raise SerpApiClientException("start: {} must be less than end: {}".format(self.start, self.end))
+    # if(self.start + self.num) > self.end:
+    #     raise SerpApiClientException("start + num: {} + {} must be less than end: {}".format(self.start, self.num, self.end))
 
   def __iter__(self):
-    self.update()
+    # self.update()
     return self
 
-  def update(self):
-    self.client.params_dict['start'] = self.start
-    self.client.params_dict['num'] = self.num
-    if self.start > 0:
-      self.client.params_dict['start'] += 1
+  # def update(self):
+  #   self.client.params_dict['start'] = self.start
+  #   self.client.params_dict['num'] = self.num
+  #   if self.start > 0:
+  #     self.client.params_dict['start'] += 1
 
   def __next__(self):
     # update parameter
-    self.update()
+    # self.update()
 
     # execute request
     result = self.client.get_dict()
 
+    pagination = result.get('serpapi_pagination', result.get('pagination'))
+
     # stop if backend miss to return serpapi_pagination
-    if not 'serpapi_pagination' in result:
+    if not pagination:
       raise StopIteration
 
     # stop if no next page
-    if not 'next' in result['serpapi_pagination']:
+    if not 'next' in pagination:
         raise StopIteration
 
-    # ends if no next page
-    if self.start + self.num > self.end:
+    # Get actual parameters from next page of target website
+    params_from_target_website = dict(parse.parse_qsl(parse.urlsplit(pagination['next']).query))
+
+    # stop if parameters from the target website were not changed
+    if params_from_target_website == self.client.params_dict:
         raise StopIteration
-    
-    # increment start page
-    self.start += self.num
+
+    self.client.params_dict.update(params_from_target_website)
+
+    # ends if no next page
+    # if self.start + self.num > self.end:
+    #     raise StopIteration
+    # 
+    # # increment start page
+    # self.start += self.num
 
     return result
