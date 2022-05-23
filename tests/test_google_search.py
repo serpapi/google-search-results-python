@@ -12,15 +12,18 @@ class TestSearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_paginate(self):
-				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
-				pages = search.pagination(0, 20, 10)
-				urls = []
+				page_size = 20
+				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas", "start": 10, "num": page_size})
+
+				limit = 2
+				pages = search.pagination(limit=limit)
+
+				page_count = 0
+
 				for page in pages:
-					urls.append(page['serpapi_pagination']['next'])
-				self.assertEqual(len(urls), 2)
-				self.assertTrue("start=10" in urls[0])
-				print(urls[1])
-				self.assertTrue("start=21" in urls[1])
+					page_count += 1
+
+				self.assertEqual(page_count, limit)
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
@@ -36,7 +39,9 @@ class TestSearchApi(unittest.TestCase):
 		def test_get_json(self):
 				search = GoogleSearch({"q": "Coffee", "engine": "google_scholar"})
 				data = search.get_json()
-				self.assertIsNotNone(data["organic_results"][0]["title"])
+
+				for organic_result in data["organic_results"]:
+					self.assertIsNotNone(organic_result["title"])
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_dict(self):

@@ -1,17 +1,9 @@
 import requests
 import json
+from serpapi.constant import *
 from serpapi.pagination import Pagination
 from serpapi.serp_api_client_exception import SerpApiClientException
 
-GOOGLE_ENGINE = 'google'
-BING_ENGINE = 'bing'
-BAIDU_ENGINE = 'baidu'
-GOOGLE_SCHOLAR_ENGINE = 'google_scholar'
-YANDEX_ENGINE = 'yandex'
-EBAY_ENGINE = 'ebay'
-YAHOO_ENGINE = 'yahoo'
-HOME_DEPOT_ENGINE = 'home_depot'
-YOUTUBE_ENGINE = 'youtube'
 
 class SerpApiClient(object):
     """SerpApiClient enables to query any search engines supported by SerpApi and parse the results.
@@ -170,8 +162,8 @@ class SerpApiClient(object):
         buffer = self.get_results('/locations.json')
         return json.loads(buffer)
     
-    def pagination(self, start = 0, end = 1000000000, page_size = 10):
+    def pagination(self, start = DEFAULT_START, end = DEFAULT_END, page_size = DEFAULT_PAGE_SIZE, limit = DEFAULT_LIMIT):
         """Return:
             Generator to iterate the search results pagination
         """
-        return Pagination(self, start, end, page_size)
+        return Pagination(self, start, end, page_size, limit)

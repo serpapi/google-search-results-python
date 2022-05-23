@@ -8,7 +8,7 @@ def test_query():
     params = {}
     if len(sys.argv) < 3 :
         raise NotEnoughArgsError(
-            "SERP API requires user to put in Query and Location as command-line arguments"
+            "SerpApi requires user to put in Query and Location as command-line arguments"
         )
     params['query'] = sys.argv[1]
     params['location'] = sys.argv[2]
