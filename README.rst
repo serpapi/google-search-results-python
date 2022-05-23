@@ -35,7 +35,7 @@ Quick start
 
 This example runs a search about "coffee" using your secret api key.
 
-The Serp API service (backend)
+The SerpApi service (backend)
 
 * searches on Google using the query: q = "coffee"
 * parses the messy HTML responses
@@ -44,7 +44,7 @@ The Serp API service (backend)
 The GoogleSearch class
 
 * Format the request
-* Execute GET http request against Serp API service
+* Execute GET http request against SerpApi service
 * Parse JSON response into a dictionary
 
 Et voila..
