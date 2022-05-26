@@ -47,16 +47,16 @@ class TestDuckDuckGoSearch(unittest.TestCase):
 				page_count += 1
 
 				for organic_results in page.get("organic_results", []):
-						count += 1
-						i = 0
+					count += 1
+					i = 0
 
-						for t in titles:
-							i += 1
+					for t in titles:
+						i += 1
 
-							if t == organic_results.get('title'):
-								print(f"{count} duplicated title: {t} at index: {i}")
+						if t == organic_results.get('title'):
+							print(f"{count} duplicated title: {t} at index: {i}")
 
-						titles.append(organic_results['title'])
+					titles.append(organic_results['title'])
 
 				self.assertEqual(count % 2, 0, f"page {page_count} does not contain 20 elements")
 

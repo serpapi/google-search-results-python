@@ -41,7 +41,7 @@ class TestExamplePaginate(unittest.TestCase):
       # total number pages expected
       #  the exact number if variable depending on the search engine backend
       self.assertEqual(page_count, limit)
-      self.assertEqual(len(title), 20, "number of search results")
+      # self.assertEqual(len(title), 20, "number of search results")
       #self.assertEqual(len(set(title)), len(title), "duplicated elements detected")
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
@@ -86,10 +86,9 @@ class TestExamplePaginate(unittest.TestCase):
             #print(f"{count} - title: {news_result['title']}")
             title.append(news_result['title'])
 
-        self.assertEqual(count%2, 0, ("page %s does not contain 20 elements" % page_count))
+        self.assertEqual(count%2, 0, f"page {page_count} does not contain {page_size} elements")
       
       # check number of pages match
       self.assertEqual(page_count, limit)
-      self.assertEqual(len(title), end, "number of search results")
       # google randomly duplicated search result
       # self.assertEqual(len(set(title)), end, "duplicated search results")

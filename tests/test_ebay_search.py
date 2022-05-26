@@ -18,6 +18,10 @@ class TestEbaySearchApi(unittest.TestCase):
 				self.assertIsNotNone(data["search_metadata"]["ebay_url"])
 				self.assertIsNotNone(data["search_metadata"]["id"])
 				self.assertIsNotNone(data["organic_results"][0]["title"])
+
+				for organic_result in data.get("organic_results", []):
+						self.assertIsNotNone(organic_result.get("title"))
+
 				# pp = pprint.PrettyPrinter(indent=2)
 				# pp.pprint(data)
 
