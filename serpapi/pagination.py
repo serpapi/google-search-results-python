@@ -54,7 +54,7 @@ class Pagination:
     params_from_target_website = dict(parse.parse_qsl(parse.urlsplit(pagination['next']).query))
 
     # stop if parameters from the target website were not changed
-    if params_from_target_website == self.client.params_dict:
+    if params_from_target_website.items() <= self.client.params_dict.items():
         raise StopIteration
 
     self.client.params_dict.update(params_from_target_website)
