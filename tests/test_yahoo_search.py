@@ -41,18 +41,18 @@ class TestYahooSearchApi(unittest.TestCase):
 								organic_results_count += 1
 								title_index = 0
 
-								for id in titles:
+								for title in titles:
 										title_index += 1
 
-										if id == organic_result.get("title"):
-												print(f"{organic_results_count} duplicated title: {id} at index: {title_index}")
+										if title == organic_result.get("title"):
+												print("%d duplicated title: %s at index: %d" % (organic_results_count, title, title_index))
 
 								titles.append(organic_result.get("title"))
 
 						self.assertEqual(
 								organic_results_count,
 								page_size,
-								f"page {page_number} does not contain {page_size} elements",
+								"page %d does not contain %d elements" % (page_number, page_size)
 						)
 
 				self.assertEqual(page_number, limit, "Number of pages doesn't match.")

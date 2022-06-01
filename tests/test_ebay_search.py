@@ -31,7 +31,6 @@ class TestEbaySearchApi(unittest.TestCase):
 
 			params = {
 				"_nkw": "coffee",
-				"api_key": os.getenv("API_KEY"),
 				"_ipg": page_size,
 			}
 

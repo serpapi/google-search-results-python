@@ -27,8 +27,8 @@ class TestWalmartSearchApi(unittest.TestCase):
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_paginate(self):
-				page_size = 50
-				search = WalmartSearch({"query": "Coffee", "page": 1, "ps": page_size})
+				page_size = 40
+				search = WalmartSearch({"query": "coffee", "ps": page_size})
 
 				limit = 4
 				pages = search.pagination(limit=limit)
@@ -48,7 +48,7 @@ class TestWalmartSearchApi(unittest.TestCase):
 										product_id_index += 1
 
 										if id == organic_result.get("product_id"):
-												print(f"{organic_results_count} duplicated product_id: {id} at index: {product_id_index}")
+												print("%d duplicated product_id: %s at index: %d" % (organic_results_count, id, product_id_index))
 
 								product_ids.append(organic_result.get("product_id"))
 

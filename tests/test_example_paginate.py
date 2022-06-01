@@ -86,8 +86,8 @@ class TestExamplePaginate(unittest.TestCase):
             #print(f"{count} - title: {news_result['title']}")
             title.append(news_result['title'])
 
-        self.assertEqual(count%2, 0, f"page {page_count} does not contain {page_size} elements")
-      
+        self.assertEqual(page_count, limit, "Number of pages doesn't match.")
+
       # check number of pages match
       self.assertEqual(page_count, limit)
       # google randomly duplicated search result

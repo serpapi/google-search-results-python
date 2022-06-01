@@ -36,7 +36,6 @@ class TestNaverSearchApi(unittest.TestCase):
 			# use parameters in
 			params = {
 				"query": "coffee",
-				"api_key": os.getenv("API_KEY"),
 				"start": start,
 			}
 
@@ -59,7 +58,7 @@ class TestNaverSearchApi(unittest.TestCase):
 						i += 1
 
 						if item == result.get('title'):
-							print(f"{count} duplicated title: {item} at index: {i}")
+							print("%d duplicated title: %s at index: %d" % (count, item, i))
 
 					titles.append(result['title'])
 

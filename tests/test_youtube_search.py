@@ -52,7 +52,7 @@ class TestYoutubeSearchApi(unittest.TestCase):
 										title_index += 1
 
 										if title == video_result.get("title"):
-												print(f"{count} duplicated title: {title} at index: {title_index}")
+												print("%d duplicated title: %s at index: %d" % (count, title, title_index))
 
 								titles.append(video_result.get("title"))
 

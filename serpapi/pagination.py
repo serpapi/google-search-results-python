@@ -48,14 +48,16 @@ class Pagination:
 
     # stop if no next page
     if not 'next' in pagination:
-        raise StopIteration
+      raise StopIteration
 
     # Get actual parameters from next page of target website
-    params_from_target_website = dict(parse.parse_qsl(parse.urlsplit(pagination['next']).query))
+    params_from_target_website = dict(
+      parse.parse_qsl(parse.urlsplit(pagination['next']).query)
+    )
 
     # stop if parameters from the target website were not changed
     if params_from_target_website.items() <= self.client.params_dict.items():
-        raise StopIteration
+      raise StopIteration
 
     self.client.params_dict.update(params_from_target_website)
 

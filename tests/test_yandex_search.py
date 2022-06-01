@@ -45,7 +45,7 @@ class TestYandexSearchApi(unittest.TestCase):
 										title_index += 1
 
 										if title == organic_result.get("title"):
-												print(f"{organic_results_count} duplicated title: {title} at index: {title_index}")
+												print("%d duplicated title: %s at index: %d" % (organic_results_count, title, title_index))
 
 								titles.append(organic_result.get("title"))
 

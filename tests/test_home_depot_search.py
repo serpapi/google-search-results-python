@@ -42,8 +42,7 @@ class TestHomeDepotSearchApi(unittest.TestCase):
 
 			# use parameters in
 			params = {
-				"q": "chair",
-				"api_key": os.getenv("API_KEY"),
+				"q": "coffee",
 				"start": start,
 			}
 
@@ -66,7 +65,7 @@ class TestHomeDepotSearchApi(unittest.TestCase):
 						i += 1
 
 						if t == product.get('title'):
-							print(f"{count} duplicated title: {t} at index: {i}")
+							print("%d duplicated title: %s at index: %d" % (count, t, i))
 
 					titles.append(product['title'])
 
