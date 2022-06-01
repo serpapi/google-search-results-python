@@ -5,7 +5,7 @@ version=$(shell grep version setup.py | cut -d"'" -f2)
 
 .PHONY: build
 
-all: clean install test test2
+all: clean install lint test
 
 clean:
 	find . -name '*.pyc' -delete
@@ -13,7 +13,14 @@ clean:
 	pip3 uninstall google_search_results
 
 install:
-	pip3 install -r requirements.txt
+	python3 -m pip install --upgrade pip
+	if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
+
+lint:
+	# stop the build if there are Python syntax errors or undefined names
+	flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+	# exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+	flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
 # Test with Python 3
 test:
@@ -25,7 +32,7 @@ example:
 	pytest -s "tests/test_example.py::TestExample::test_async"
 
 build_dep:
-	pip3 install -U setuptools pytest
+	pip3 install -U setuptools pytest flake8
 
 # https://packaging.python.org/tutorials/packaging-projects/
 build:
