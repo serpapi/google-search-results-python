@@ -134,7 +134,7 @@ print(image_results)
 | Engine                                                                       | Class name              |
 |------------------------------------------------------------------------------|-------------------------|
 | [Google Search Engine](https://serpapi.com/search-api)                       | `GoogleSearch()`        |
-| [Google Maps](https://serpapi.com/google-jobs-api)                           | `GoogleSearch()`        |
+| [Google Maps](https://serpapi.com/google-maps-api)                           | `GoogleSearch()`        |
 | [Google Jobs](https://serpapi.com/google-jobs-api)                           | `GoogleSearch()`        |
 | [Google Trends](https://serpapi.com/google-trends-api)                       | `GoogleSearch()`        |
 | [Google Autocomplete](https://serpapi.com/google-autocomplete-api)           | `GoogleScholarSearch()` |
