@@ -6,7 +6,7 @@
 
 ## About 
 
-[`google-search-results`](https://pypi.org/project/google-search-results) is a MIT-licensed [Python](https://www.python.org/) package that meant to [scrape](https://en.wikipedia.org/wiki/Web_scraping) search results from Google, Bing, Baidu, Yahoo and [10+ more search engines](#supported-engines) with a [SerpApi](https://serpapi.com) backend. SerpApi provides a [Playground](https://serpapi.com/playground) to get you started quickly by testing API interactively.
+[`google-search-results`](https://pypi.org/project/google-search-results) is a SerpApi API wrapper for Python that meant to [scrape](https://en.wikipedia.org/wiki/Web_scraping) search results from Google, Bing, Baidu, Yahoo and [10+ more search engines](#supported-engines) with a [SerpApi](https://serpapi.com) backend. SerpApi provides a [Playground](https://serpapi.com/playground) to get you started quickly by testing API interactively.
 
 Find SerpApi documentation at: https://serpapi.com/search-api
 
@@ -72,12 +72,12 @@ The `GoogleSearch()` class:
 
 This code prints all the image links, and downloads the images if you un-comment the line with [`wget`](https://www.gnu.org/software/wget/) (Linux/OS X tool to download files).
 
-This tutorial covers more ground on this topic at [serpapi/showcase-serpapi-tensorflow-keras-image-training](https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training).
+This tutorial covers more ground on this topic at [`serpapi/showcase-serpapi-tensorflow-keras-image-training`](https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training).
 
 ```python
 from serpapi import GoogleSearch
 
-search = GoogleSearch({"q": "coffe", "tbm": "isch"})
+search = GoogleSearch({"q": "coffee", "tbm": "isch", "api_key": "<your-serpapi-api-key>"})
 
 for image_result in search.get_dict()['images_results']:
     link = image_result["original"]
@@ -122,12 +122,12 @@ while True:
         # update to the next page
         params["ijn"] += 1
     else:
-        break
         print(results["error"])
+        break
 
 print(image_results)
 ```
-<h3 align="center">💡<a href="https://github.com/serpapi/google-search-results-python/tree/master/examples/pagination">Pagination examples for currently supported APIs</a>💡</h4>
+<h3 align="center">💡<a href="https://github.com/serpapi/google-search-results-python/tree/master/examples/pagination">Pagination examples for currently supported APIs</a>💡</h3>
 
 ## Supported Engines
 
@@ -180,10 +180,10 @@ params = {
     "num": "100",                                # Number of results per page.                                                                       
     "start": "20",                               # Pagination offset.                                                                                
     "ijn":"1",                                   # Page number for Google Images.                                                                    
-    "tbm": "nws|isch|shop",                      # Type of search: news, images, shopping.                                                         
+    "tbm": "nws|isch|shop|lcl|vid",              # Type of search: news, images, shopping, local and video results.                                                         
     "tbs": "custom to be search criteria",       # Advanced search for patents, dates, news, videos, images, apps, or text contents                  
     "async": True|False,                         # Allow async request.
-    "no_cache": True|False                       # Force SerpApi to fetch the Google results even if a cached version is already present             
+    "no_cache": True|False                       # Force SerpApi to fetch the results even if a cached version is already present             
 }                                                                    
 
 search = GoogleSearch(params)                  # Define the search.                                                                                
