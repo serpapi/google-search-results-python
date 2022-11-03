@@ -1,4 +1,4 @@
-# Google Search Results in Python
+﻿# Google Search Results in Python
 
 [![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml)
@@ -390,7 +390,7 @@ search = GoogleSearch({
 })
 data = search.get_dict()
 for shopping_result in data['shopping_results']:
-    print(shopping_result['position']) + " - " + shopping_result['title'])
+    print(str(shopping_result['position']) + " - " + shopping_result['title'])
 
 ```
 
