@@ -1,0 +1,7 @@
+[flake8]
+exclude =
+    build
+    dist
+    .git
+    .env
+    .pytest_cache
