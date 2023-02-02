@@ -4,12 +4,12 @@ import os
 import pprint
 from serpapi import DuckDuckGoSearch
 
+@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 class TestDuckDuckGoSearch(unittest.TestCase):
 
 		def setUp(self):
 				DuckDuckGoSearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
 
-		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_json(self):
 				search = DuckDuckGoSearch({"q": "Coffee"})
 				data = search.get_json()
@@ -25,7 +25,6 @@ class TestDuckDuckGoSearch(unittest.TestCase):
 				# pp.pprint(data)
 				self.assertTrue(len(data.keys()) > 3)
 
-		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_paginate_page_size(self):
 				limit = 3
 
