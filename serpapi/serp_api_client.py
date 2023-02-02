@@ -63,7 +63,7 @@ class SerpApiClient(object):
 
     def get_html(self):
         """Returns:
-            Raw HTML search result from Gooogle
+            Raw HTML search result from Google
         """
         return self.get_results()
 

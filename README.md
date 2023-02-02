@@ -590,7 +590,7 @@ If it's a client error, then a SerpApiClientException is raised.
    - youtube
    - walmart
    - apple_app_store
-   - naver 
+   - naver
  - raise SerpApiClientException instead of raw string in order to follow Python guideline 3.5+
  - add more unit error tests for serp_api_client
 
