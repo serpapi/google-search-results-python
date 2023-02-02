@@ -3,7 +3,7 @@
 [![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml)
 
-This Python package is meant to scrape and parse search results from Google, Bing, Baidu, Yandex, Yahoo, Home depot, Ebay and more.. using [SerpApi](https://serpapi.com). 
+This Python package is meant to scrape and parse search results from Google, Bing, Baidu, Yandex, Yahoo, Home Depot, eBay and more, using [SerpApi](https://serpapi.com). 
 
 The following services are provided:
 - [Search API](https://serpapi.com/search-api)
@@ -34,24 +34,25 @@ search = GoogleSearch({
 result = search.get_dict()
 ```
 
-This example runs a search about "coffee" using your secret api key.
+This example runs a search for "coffee" using your secret API key.
 
 The SerpApi service (backend)
-- searches on Google using the search: q = "coffee"
-- parses the messy HTML responses
-- return a standardizes JSON response
+- Searches Google using the search: q = "coffee"
+- Parses the messy HTML responses
+- Returns a standardized JSON response
 The GoogleSearch class
-- Format the request
-- Execute GET http request against SerpApi service
-- Parse JSON response into a dictionary
-Et voila..
+- Formats the request
+- Executes a GET http request against SerpApi service
+- Parses the JSON response into a dictionary
+
+Et voilà...
 
 Alternatively, you can search:
 - Bing using BingSearch class
 - Baidu using BaiduSearch class
 - Yahoo using YahooSearch class
-- duckduckgo using DuckDuckGoSearch class
-- Ebay using EbaySearch class
+- DuckDuckGo using DuckDuckGoSearch class
+- eBay using EbaySearch class
 - Yandex using YandexSearch class
 - HomeDepot using HomeDepotSearch class
 - GoogleScholar using GoogleScholarSearch class
@@ -133,7 +134,7 @@ object_result = search.get_object()
 ```
 [Link to the full documentation](https://serpapi.com/search-api)
 
-see below for more hands on examples.
+See below for more hands-on examples.
 
 ### How to set SerpApi key
 
@@ -150,12 +151,12 @@ query = GoogleSearch({"q": "coffee", "serp_api_key": "Your Private Key"})
 
 ### Example by specification
 
-We love true open source, continuous integration and Test Drive Development (TDD). 
- We are using RSpec to test [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-python) to achieve the best QoS (Quality Of Service).
+We love true open source, continuous integration and Test Driven Development (TDD). 
+ We are using RSpec to test [our infrastructure around the clock](https://travis-ci.org/serpapi/google-search-results-python) to achieve the best Quality of Service (QoS).
  
 The directory test/ includes specification/examples.
 
-Set your api key.
+Set your API key.
 ```bash
 export API_KEY="your secret key"
 ```
@@ -174,7 +175,7 @@ location_list = search.get_location("Austin", 3)
 print(location_list)
 ```
 
-it prints the first 3 location matching Austin (Texas, Texas, Rochester)
+This prints the first 3 locations matching Austin (Texas, Texas, Rochester).
 ```python
 [   {   'canonical_name': 'Austin,TX,Texas,United States',
         'country_code': 'US',
@@ -191,8 +192,8 @@ it prints the first 3 location matching Austin (Texas, Texas, Rochester)
 
 ### Search Archive API
 
-The search result are stored in temporary cached.
-The previous search can be retrieve from the the cache for free.
+The search results are stored in a temporary cache.
+The previous search can be retrieved from the cache for free.
 
 ```python
 from serpapi import GoogleSearch
@@ -203,13 +204,13 @@ search_id = search_result.get("search_metadata").get("id")
 print(search_id)
 ```
 
-Now let retrieve the previous search from the archive.
+Now let's retrieve the previous search from the archive.
 
 ```python
 archived_search_result = GoogleSearch({}).get_search_archive(search_id, 'json')
 print(archived_search_result.get("search_metadata").get("id"))
 ```
-it prints the search result from the archive.
+This prints the search result from the archive.
 
 ### Account API
 ```python
@@ -217,7 +218,7 @@ from serpapi import GoogleSearch
 search = GoogleSearch({})
 account = search.get_account()
 ```
-it prints your account information.
+This prints your account information.
 
 ### Search Bing
 ```python
@@ -225,7 +226,7 @@ from serpapi import BingSearch
 search = BingSearch({"q": "Coffee", "location": "Austin,Texas"})
 data = search.get_dict()
 ```
-this code prints baidu search results for coffee as a Dictionary. 
+This code prints Bing search results for coffee as a Dictionary. 
 
 https://serpapi.com/bing-search-api
 
@@ -235,7 +236,7 @@ from serpapi import BaiduSearch
 search = BaiduSearch({"q": "Coffee"})
 data = search.get_dict()
 ```
-this code prints baidu search results for coffee as a Dictionary. 
+This code prints Baidu search results for coffee as a Dictionary. 
 https://serpapi.com/baidu-search-api
 
 ### Search Yandex
@@ -244,7 +245,7 @@ from serpapi import YandexSearch
 search = YandexSearch({"text": "Coffee"})
 data = search.get_dict()
 ```
-this code prints yandex search results for coffee as a Dictionary. 
+This code prints Yandex search results for coffee as a Dictionary. 
 
 https://serpapi.com/yandex-search-api
 
@@ -254,28 +255,28 @@ from serpapi import YahooSearch
 search = YahooSearch({"p": "Coffee"})
 data = search.get_dict()
 ```
-this code prints yahoo search results for coffee as a Dictionary. 
+This code prints Yahoo search results for coffee as a Dictionary. 
 
 https://serpapi.com/yahoo-search-api
 
 
-### Search Ebay
+### Search eBay
 ```python
 from serpapi import EbaySearch
 search = EbaySearch({"_nkw": "Coffee"})
 data = search.get_dict()
 ```
-this code prints ebay search results for coffee as a Dictionary. 
+This code prints eBay search results for coffee as a Dictionary. 
 
 https://serpapi.com/ebay-search-api
 
-### Search Home depot
+### Search Home Depot
 ```python
 from serpapi import HomeDepotSearch
 search = HomeDepotSearch({"q": "chair"})
 data = search.get_dict()
 ```
-this code prints home depot search results for chair as Dictionary. 
+This code prints Home Depot search results for chair as Dictionary. 
 
 https://serpapi.com/home-depot-search-api
 
@@ -285,7 +286,7 @@ from serpapi import HomeDepotSearch
 search = YoutubeSearch({"q": "chair"})
 data = search.get_dict()
 ```
-this code prints youtube search results for chair as Dictionary. 
+This code prints Youtube search results for chair as Dictionary. 
 
 https://serpapi.com/youtube-search-api
 
@@ -295,7 +296,7 @@ from serpapi import GoogleScholarSearch
 search = GoogleScholarSearch({"q": "Coffee"})
 data = search.get_dict()
 ```
-this code prints Google Scholar search results.
+This code prints Google Scholar search results.
 
 ### Search Walmart
 ```python
@@ -303,7 +304,7 @@ from serpapi import WalmartSearch
 search = WalmartSearch({"query": "chair"})
 data = search.get_dict()
 ```
-this code prints Google Scholar search results.
+This code prints Walmart search results.
 
 ### Search Youtube
 ```python
@@ -311,15 +312,15 @@ from serpapi import YoutubeSearch
 search = YoutubeSearch({"search_query": "chair"})
 data = search.get_dict()
 ```
-this code prints Google Scholar search results.
+This code prints Youtube search results.
 
-### Search Apple Store
+### Search Apple App Store
 ```python
 from serpapi import AppleAppStoreSearch
 search = AppleAppStoreSearch({"term": "Coffee"})
 data = search.get_dict()
 ```
-this code prints Google Scholar search results.
+This code prints Apple App Store search results.
 
 ### Search Naver
 ```python
@@ -327,7 +328,7 @@ from serpapi import NaverSearch
 search = NaverSearch({"query": "chair"})
 data = search.get_dict()
 ```
-this code prints Google Scholar search results.
+This code prints Naver search results.
 
 ### Generic search with SerpApiClient
 ```python
@@ -336,7 +337,7 @@ query = {"q": "Coffee", "location": "Austin,Texas", "engine": "google"}
 search = SerpApiClient(query)
 data = search.get_dict()
 ```
-This class enables to interact with any search engine supported by SerpApi.com 
+This class enables interaction with any search engine supported by SerpApi.com 
 
 ### Search Google Images
 
@@ -352,8 +353,8 @@ for image_result in search.get_dict()['images_results']:
         pass
 ```
 
-this code prints all the images links, 
- and download image if you un-comment the line with wget (linux/osx tool to download image).
+This code prints all the image links, 
+ and downloads the images if you un-comment the line with wget (Linux/OS X tool to download files).
 
 This tutorial covers more ground on this topic.
 https://github.com/serpapi/showcase-serpapi-tensorflow-keras-image-training
@@ -375,7 +376,7 @@ for offset in [0,1,2]:
         print(str(news_result['position'] + offset * 10) + " - " + news_result['title'])
 ```
 
-this script prints the first 3 pages of the news title for the last 24h.
+This script prints the first 3 pages of the news headlines for the last 24 hours.
 
 ### Search Google Shopping
 
@@ -393,12 +394,12 @@ for shopping_result in data['shopping_results']:
 
 ```
 
-this script prints all the shopping results order by review order.
+This script prints all the shopping results, ordered by review order.
 
 ### Google Search By Location
 
-With SerpApi, we can build Google search from anywhere in the world.
-This code is looking for the best coffee shop per city.
+With SerpApi, we can build a Google search from anywhere in the world.
+This code looks for the best coffee shop for the given cities.
 
 ```python
 from serpapi import GoogleSearch
@@ -416,9 +417,9 @@ for city in ["new york", "paris", "berlin"]:
 
 ### Batch Asynchronous Searches
 
-We do offer two ways to boost your searches thanks to `async` parameter.
- - Blocking - async=false - it's more compute intensive because the search would need to hold many connections. (default) 
-- Non-blocking - async=true - it's way to go for large amount of query submitted by batch  (recommended)
+We offer two ways to boost your searches thanks to the`async` parameter.
+ - Blocking - async=false - more compute intensive because the search needs to maintain many connections. (default) 
+- Non-blocking - async=true - the way to go for large batches of queries  (recommended)
 
 ```python
 # Operating system
@@ -489,19 +490,19 @@ print('all searches completed')
 
 This code shows how to run searches asynchronously.
 The search parameters must have {async: True}. This indicates that the client shouldn't wait for the search to be completed.
-The current thread that executes the search is now non-blocking which allows to execute thousand of searches in seconds. The SerpApi backend will do the processing work.
-The actual search result is defer to a later call from the search archive using get_search_archive(search_id).
+The current thread that executes the search is now non-blocking, which allows it to execute thousands of searches in seconds. The SerpApi backend will do the processing work.
+The actual search result is deferred to a later call from the search archive using get_search_archive(search_id).
 In this example the non-blocking searches are persisted in a queue: search_queue.
-A loop through the search_queue allows to fetch individual search result.
-This process can be easily multithreaded to allow a large number of concurrent search requests.
-To keep thing simple, this example does only explore search result one at a time (single threaded).
+A loop through the search_queue allows it to fetch individual search results.
+This process can easily be multithreaded to allow a large number of concurrent search requests.
+To keep things simple, this example only explores search results one at a time (single threaded).
 
 [See example.](https://github.com/serpapi/google-search-results-python/blob/master/tests/test_example.py)
 
 ### Python object as a result
 
 The search results can be automatically wrapped in dynamically generated Python object.
-This solution offers a more dynamic solution fully Oriented Object Programming approach over the regular Dictionary / JSON data structure.
+This solution offers a more dynamic, fully Oriented Object Programming approach over the regular Dictionary / JSON data structure.
 
 ```python
 from serpapi import GoogleSearch
@@ -516,7 +517,7 @@ assert r.search_parameters.engine, "google"
 ```
 
 ### Pagination using iterator
-Let's collect links accross multiple search result pages.
+Let's collect links across multiple search results pages.
 ```python
 # to get 2 pages
 start = 0
@@ -568,20 +569,20 @@ Examples to fetch links with pagination: [test file](https://github.com/serpapi/
 
 ### Error management
 
-SerpAPI keeps error mangement very basic.
+SerpApi keeps error management simple.
  - backend service error or search fail
  - client error
 
-If it's a backend error, a simple message error is returned as string in the server response.
+If it's a backend error, a simple error message is returned as string in the server response.
 ```python
 from serpapi import GoogleSearch
 search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas", "api_key": "<secret_key>"})
 data = search.get_json()
 assert data["error"] == None
 ```
-In some case, there is more details availabel in the data object.
+In some cases, there are more details available in the data object.
 
-If it's client error, then a SerpApiClientException is raised.
+If it's a client error, then a SerpApiClientException is raised.
 
 ## Change log
 2021-12-22 @ 2.4.1
