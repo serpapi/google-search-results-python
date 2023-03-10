@@ -36,10 +36,10 @@ example:
 	pytest -s "tests/test_example.py::TestExample::test_async"
 
 build_dep:
-	pip3 install -U setuptools pytest py pytest-parallel flake8
+	pip3 install -U setuptools pytest py pytest-parallel flake8 twine
 
 # https://packaging.python.org/tutorials/packaging-projects/
-build:
+build: build_dep
 	python3 setup.py sdist
 
 oobt: build
