@@ -585,6 +585,9 @@ In some cases, there are more details available in the data object.
 If it's a client error, then a SerpApiClientException is raised.
 
 ## Change log
+2023-03-10 @ 2.4.2
+ - Change long description to README.md
+
 2021-12-22 @ 2.4.1
  - add more search engine 
    - youtube

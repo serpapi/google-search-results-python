@@ -4,11 +4,11 @@ from os import path
 
 here = path.abspath(path.dirname(__file__))
 
-with open('README.rst') as fp:
+with open('README.md', mode='r', encoding='utf-8') as fp:
     README = fp.read()
 
 setup(name='google_search_results',
-      version='2.4.1',
+      version='2.4.2',
       description='Scrape and search localized results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Homedepot, youtube at scale using SerpApi.com',
       url='https://github.com/serpapi/google-search-results-python',
       author='vikoky',
@@ -31,5 +31,5 @@ setup(name='google_search_results',
     packages=find_packages(),
     keywords='scrape,serp,api,json,search,localized,rank,google,bing,baidu,yandex,yahoo,ebay,scale,datamining,training,machine,ml,youtube,naver,walmart,apple,store,app',
     long_description=README,
-    long_description_content_type="text/x-rst",
+    long_description_content_type="text/markdown",
 )
