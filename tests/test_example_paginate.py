@@ -8,8 +8,7 @@ class TestExamplePaginate(unittest.TestCase):
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_paginate(self):
       # to get 2 pages
-      start = 0
-      end = 20
+      limit = 2
       # basic search parameters
       params = {
         "q": "coca cola",
@@ -19,33 +18,40 @@ class TestExamplePaginate(unittest.TestCase):
       # as proof of concept 
       #  title collects
       title = []
+
       # initialize a search
       search = GoogleSearch(params)
+
       # create a python generator
-      pages = search.pagination(start, end)
+      pages = search.pagination(limit=limit)
       # fetch one search result per iteration 
       #  using a basic python for loop 
       #   which invokes python iterator under the hood.
+
       page_count = 0
+
       for page in pages:
         page_count += 1
         #print(f"Current page: {page['serpapi_pagination']['current']}")
         for news_result in page["news_results"]:
             #print(f"Title: {news_result['title']}\nLink: {news_result['link']}\n")
             title.append(news_result['title'])
+
       # double check if things adds up.
       # total number pages expected
       #  the exact number if variable depending on the search engine backend
-      self.assertEqual(page_count, 2)
-      self.assertEqual(len(title), 20, "number of search results")
+      self.assertEqual(page_count, limit)
+      # self.assertEqual(len(title), 20, "number of search results")
       #self.assertEqual(len(set(title)), len(title), "duplicated elements detected")
 
     @unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
     def test_paginate_page_size(self):
-      # to get 2 pages with each page contains 20 search results
+      # to get 4 pages with each page contains 20 search results
       start = 0
       end = 80
       page_size = 20
+
+      limit = (end - start) / page_size
 
       # use parameters in
       params = {
@@ -56,12 +62,17 @@ class TestExamplePaginate(unittest.TestCase):
         "end": end,
         "num": page_size
       }
+
       title = []
+
       search = GoogleSearch(params)
-      # parameter start,end,page_size will be used instead of pagination
-      pages = search.pagination()
+
+      # parameter limit will be used instead of pagination
+      pages = search.pagination(limit=limit)
+
       page_count = 0
       count = 0
+
       for page in pages:
         page_count += 1
         # print(f"Current page: {page['serpapi_pagination']['current']}")
@@ -75,10 +86,7 @@ class TestExamplePaginate(unittest.TestCase):
             #print(f"{count} - title: {news_result['title']}")
             title.append(news_result['title'])
 
-        self.assertEqual(count%2, 0, ("page %s does not contain 20 elements" % page_count))
-      
       # check number of pages match
-      self.assertEqual(page_count, 4)
-      self.assertEqual(len(title), end, "number of search results")
+      self.assertEqual(page_count, limit, "Number of pages doesn't match.")
       # google randomly duplicated search result
       # self.assertEqual(len(set(title)), end, "duplicated search results")

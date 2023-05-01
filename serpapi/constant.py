@@ -1,8 +1,9 @@
 
 # Pagination constant
 DEFAULT_START = 0
-DEFAULT_END = 100
+DEFAULT_END = 1000000000
 DEFAULT_PAGE_SIZE = 10
+DEFAULT_LIMIT = 1000
 
 # Supported earch engine
 GOOGLE_ENGINE = 'google'

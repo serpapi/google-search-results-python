@@ -79,7 +79,7 @@ See the [playground to generate your code.](https://serpapi.com/playground)
   - [Quick start](#quick-start)
   - [Summary](#summary)
     - [Google Search API capability](#google-search-api-capability)
-    - [How to set SERP API key](#how-to-set-serp-api-key)
+    - [How to set SerpApi key](#how-to-set-serp-api-key)
     - [Example by specification](#example-by-specification)
     - [Location API](#location-api)
     - [Search Archive API](#search-archive-api)
@@ -116,7 +116,7 @@ params = {
   "safe": "Safe Search Flag",
   "num": "Number of Results",
   "start": "Pagination Offset",
-  "api_key": "Your SERP API Key", 
+  "api_key": "Your SerpApi Key", 
   # To be match
   "tbm": "nws|isch|shop", 
   # To be search
@@ -145,7 +145,7 @@ object_result = search.get_object()
 
 See below for more hands-on examples.
 
-### How to set SERP API key
+### How to set SerpApi key
 
 You can get an API key here if you don't already have one: https://serpapi.com/users/sign_up
 
@@ -602,7 +602,7 @@ If it's a client error, then a SerpApiClientException is raised.
    - youtube
    - walmart
    - apple_app_store
-   - naver 
+   - naver
  - raise SerpApiClientException instead of raw string in order to follow Python guideline 3.5+
  - add more unit error tests for serp_api_client
 
