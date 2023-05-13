@@ -17,4 +17,4 @@ class NaverSearch(SerpApiClient):
         super(NaverSearch, self).__init__(params_dict, NAVER_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by youtube search engine")
+        raise SerpApiClientException("location is not supported by Naver search engine")
