@@ -1,16 +1,7 @@
-<h1 align="center">Google Search Results in Python</h1>
+# Google Search Results in Python
 
-<div align="center">
-   <img src="https://user-images.githubusercontent.com/78694043/233921372-bb57c347-9005-4b59-8f09-993698a87eb6.svg" width="600" alt="google-search-results-logo">
-</div>
-
-<div align="center">
-
-  <a href="https://badge.fury.io/py/google-search-results">![Package](https://badge.fury.io/py/google-search-results.svg)</a>
-  <a href="https://pepy.tech/project/google-search-results">![Downloads](https://static.pepy.tech/personalized-badge/google-search-results?period=month&units=international_system&left_color=grey&right_color=brightgreen&left_text=Downloads)</a>
-  <a href="https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml">![Buiild](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)</a>
-
-</div>
+[![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
+[![Build](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml)
 
 This Python package is meant to scrape and parse search results from Google, Bing, Baidu, Yandex, Yahoo, Home Depot, eBay and more, using [SerpApi](https://serpapi.com). 
 
