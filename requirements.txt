@@ -1,5 +1,5 @@
 -i https://pypi.org/simple
-certifi==2022.5.18
+certifi==2023.7.22
 chardet==4.0.0
 -e .
 idna==2.10
