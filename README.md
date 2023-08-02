@@ -282,7 +282,7 @@ https://serpapi.com/home-depot-search-api
 
 ### Search Youtube
 ```python
-from serpapi import HomeDepotSearch
+from serpapi import YoutubeSearch
 search = YoutubeSearch({"q": "chair"})
 data = search.get_dict()
 ```
