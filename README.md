@@ -508,7 +508,7 @@ This solution offers a more dynamic, fully Oriented Object Programming approach 
 from serpapi import GoogleSearch
 search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
 r = search.get_object()
-assert type(r.organic_results), list
+assert type(r.organic_results) == list
 assert r.organic_results[0].title
 assert r.search_metadata.id
 assert r.search_metadata.google_url
