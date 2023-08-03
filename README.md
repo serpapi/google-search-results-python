@@ -385,7 +385,7 @@ from serpapi import GoogleSearch
 search = GoogleSearch({
     "q": "coffe",   # search search
     "tbm": "shop",  # shopping
-    "tbs": "p_ord:rv", # last 24h
+    "tbs": "p_ord:rv", # ordered by review
     "num": 100
 })
 data = search.get_dict()
