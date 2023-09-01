@@ -384,8 +384,8 @@ This script prints the first 3 pages of the news headlines for the last 24 hours
 from serpapi import GoogleSearch
 search = GoogleSearch({
     "q": "coffe",   # search search
-    "tbm": "shop",  # news
-    "tbs": "p_ord:rv", # last 24h
+    "tbm": "shop",  # shopping
+    "tbs": "p_ord:rv", # ordered by review
     "num": 100
 })
 data = search.get_dict()
