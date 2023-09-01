@@ -17,4 +17,4 @@ class DuckDuckGoSearch(SerpApiClient):
         super(DuckDuckGoSearch, self).__init__(params_dict, DUCKDUCKGO_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by walmart search engine")
+        raise SerpApiClientException("location is not supported by DuckDuckGo search engine")
