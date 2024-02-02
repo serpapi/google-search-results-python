@@ -9,12 +9,15 @@ class SerpApiClient(object):
     """SerpApiClient enables to query any search engines supported by SerpApi and parse the results.
     ```python
     from serpapi import GoogleSearch
-    search = SerpApiClient({
-        "q": "Coffee", 
-        "location": "Austin,Texas", 
-        "engine": "google",
-        "api_key": "<your private key>"
-        })
+    search = SerpApiClient(
+        {
+            "q": "Coffee", 
+            "location": "Austin,Texas", 
+            "engine": "google",
+            "api_key": "<your private key>",
+        },
+        timeout = 60,
+    )
 	data = search.get_json()
     ```
 
@@ -24,7 +27,7 @@ class SerpApiClient(object):
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
-    def __init__(self, params_dict, engine = None, timeout = 60000):
+    def __init__(self, params_dict, engine = None, timeout = 60):
         self.params_dict = params_dict
         self.engine = engine
         self.timeout = timeout
@@ -47,7 +50,6 @@ class SerpApiClient(object):
         url = None
         try:
             url, parameter = self.construct_url(path)
-            # print(url)
             response = requests.get(url, parameter, timeout=self.timeout)
             return response
         except requests.HTTPError as e:
