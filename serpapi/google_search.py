@@ -4,12 +4,18 @@ class GoogleSearch(SerpApiClient):
     """GoogleSearch enables to search google and parse the result.
     ```python
     from serpapi import GoogleSearch
-    query = GoogleSearch({"q": "coffee", "location": "Austin,Texas"})
+    query = GoogleSearch(
+        {
+            "q": "coffee",
+            "location": "Austin,Texas",
+        },
+        timeout = 60,
+    )
     data = query.get_json()
     ```
 
     https://github.com/serpapi/google-search-results-python
     """
 
-    def __init__(self, params_dict):
-        super(GoogleSearch, self).__init__(params_dict, GOOGLE_ENGINE)
+    def __init__(self, params_dict, timeout = 60):
+        super(GoogleSearch, self).__init__(params_dict, GOOGLE_ENGINE, timeout)
