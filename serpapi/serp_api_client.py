@@ -17,6 +17,7 @@ class SerpApiClient(object):
             "api_key": "<your private key>",
         },
         timeout = 60,
+        ssl_verify = True,
     )
 	data = search.get_json()
     ```
@@ -27,10 +28,11 @@ class SerpApiClient(object):
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
-    def __init__(self, params_dict, engine = None, timeout = 60):
+    def __init__(self, params_dict, engine = None, timeout = 60, ssl_verify = True):
         self.params_dict = params_dict
         self.engine = engine
         self.timeout = timeout
+        self.ssl_verify = ssl_verify
 
     def construct_url(self, path = "/search"):
         self.params_dict['source'] = 'python'
@@ -50,7 +52,7 @@ class SerpApiClient(object):
         url = None
         try:
             url, parameter = self.construct_url(path)
-            response = requests.get(url, parameter, timeout=self.timeout)
+            response = requests.get(url, parameter, timeout=self.timeout, verify=self.ssl_verify)
             return response
         except requests.HTTPError as e:
             print("fail: " + url)
