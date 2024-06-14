@@ -10,8 +10,8 @@ class SerpApiClient(object):
     ```python
     from serpapi import GoogleSearch
     search = SerpApiClient({
-        "q": "Coffee", 
-        "location": "Austin,Texas", 
+        "q": "Coffee",
+        "location": "Austin,Texas",
         "engine": "google",
         "api_key": "<your private key>"
         })
@@ -61,11 +61,15 @@ class SerpApiClient(object):
         """
         return self.get_response(path).text
 
-    def get_html(self):
+    def get_html(self, path='/search'):
         """Returns:
             Raw HTML search result from Google
         """
-        return self.get_results()
+        response = self.get_dictionary() # get search URL with query parameters
+        response = response['search_metadata']['raw_html_file']
+        response = requests.get(response).text
+        # print(response)
+        return response
 
     def get_json(self):
         """Returns:
@@ -95,7 +99,7 @@ class SerpApiClient(object):
         return self.get_dictionary()
 
     def get_object(self):
-        """Returns: 
+        """Returns:
             Dynamically created python object wrapping the result data structure
         """
         # iterative over response hash
@@ -130,7 +134,7 @@ class SerpApiClient(object):
     def get_search_archive(self, search_id, format = 'json'):
         """Retrieve search result from the Search Archive API
         Parameters:
-            search_id (int): unique identifier for the search provided by metadata.id 
+            search_id (int): unique identifier for the search provided by metadata.id
             format (string): search format: json or html [optional]
         Returns:
             dict|string: search result from the archive
@@ -161,7 +165,7 @@ class SerpApiClient(object):
         self.params_dict["limit"] = limit
         buffer = self.get_results('/locations.json')
         return json.loads(buffer)
-    
+
     def pagination(self, start = DEFAULT_START, end = DEFAULT_END, page_size = DEFAULT_PAGE_SIZE, limit = DEFAULT_LIMIT):
         """Return:
             Generator to iterate the search results pagination
