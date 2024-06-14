@@ -10,8 +10,8 @@ class SerpApiClient(object):
     ```python
     from serpapi import GoogleSearch
     search = SerpApiClient({
-        "q": "Coffee",
-        "location": "Austin,Texas",
+        "q": "Coffee", 
+        "location": "Austin,Texas", 
         "engine": "google",
         "api_key": "<your private key>"
         })
@@ -61,15 +61,11 @@ class SerpApiClient(object):
         """
         return self.get_response(path).text
 
-    def get_html(self, path='/search'):
+    def get_html(self, path='/search.html'):
         """Returns:
             Raw HTML search result from Google
         """
-        response = self.get_dictionary() # get search URL with query parameters
-        response = response['search_metadata']['raw_html_file']
-        response = requests.get(response).text
-        # print(response)
-        return response
+        return self.get_response(path).text
 
     def get_json(self):
         """Returns:
@@ -99,7 +95,7 @@ class SerpApiClient(object):
         return self.get_dictionary()
 
     def get_object(self):
-        """Returns:
+        """Returns: 
             Dynamically created python object wrapping the result data structure
         """
         # iterative over response hash
@@ -134,7 +130,7 @@ class SerpApiClient(object):
     def get_search_archive(self, search_id, format = 'json'):
         """Retrieve search result from the Search Archive API
         Parameters:
-            search_id (int): unique identifier for the search provided by metadata.id
+            search_id (int): unique identifier for the search provided by metadata.id 
             format (string): search format: json or html [optional]
         Returns:
             dict|string: search result from the archive
