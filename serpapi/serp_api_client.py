@@ -61,11 +61,12 @@ class SerpApiClient(object):
         """
         return self.get_response(path).text
 
-    def get_html(self, path='/search.html'):
+    def get_html(self):
         """Returns:
             Raw HTML search result from Google
         """
-        return self.get_response(path).text
+        self.params_dict["output"] = "html"
+        return self.get_results()
 
     def get_json(self):
         """Returns:
