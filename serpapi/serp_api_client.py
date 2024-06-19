@@ -65,6 +65,7 @@ class SerpApiClient(object):
         """Returns:
             Raw HTML search result from Google
         """
+        self.params_dict["output"] = "html"
         return self.get_results()
 
     def get_json(self):
@@ -161,7 +162,7 @@ class SerpApiClient(object):
         self.params_dict["limit"] = limit
         buffer = self.get_results('/locations.json')
         return json.loads(buffer)
-    
+
     def pagination(self, start = DEFAULT_START, end = DEFAULT_END, page_size = DEFAULT_PAGE_SIZE, limit = DEFAULT_LIMIT):
         """Return:
             Generator to iterate the search results pagination

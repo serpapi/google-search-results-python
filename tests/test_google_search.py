@@ -60,6 +60,11 @@ class TestSearchApi(unittest.TestCase):
 				search = GoogleSearch({"q": "Coffee", "location": "Austin,Texas"})
 				data = search.get_html()
 				self.assertGreater(len(data), 10)
+				self.assertIn("<html", data)
+				
+				data = search.get_dict()
+				self.assertEqual(data["search_metadata"]["status"], "Success")
+				self.assertIsNone(data.get("error"))
 
 		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
 		def test_get_response(self):
