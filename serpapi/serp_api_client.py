@@ -1,17 +1,15 @@
-import requests
+import niquests as requests
 import json
-from serpapi.constant import *
-from serpapi.pagination import Pagination
-from serpapi.serp_api_client_exception import SerpApiClientException
 from .constant import *
 from .pagination import Pagination
 from .serp_api_client_exception import SerpApiClientException
+from ._shared import DEFAULT_HTTP_CLIENT
 
 
 class SerpApiClient(object):
     """SerpApiClient enables to query any search engines supported by SerpApi and parse the results.
     ```python
-    from serpapi import GoogleSearch
+    from serpapi import SerpApiClient
     search = SerpApiClient({
         "q": "Coffee", 
         "location": "Austin,Texas", 
@@ -50,9 +48,7 @@ class SerpApiClient(object):
         url = None
         try:
             url, parameter = self.construct_url(path)
-            # print(url)
-            response = requests.get(url, parameter, timeout=self.timeout)
-            return response
+            return DEFAULT_HTTP_CLIENT.get(url, params=parameter, timeout=self.timeout)
         except requests.HTTPError as e:
             print("fail: " + url)
             print(e, e.response.status_code)
