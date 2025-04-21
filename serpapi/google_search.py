@@ -1,4 +1,6 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
+from .constant import GOOGLE_ENGINE
+
 
 class GoogleSearch(SerpApiClient):
     """GoogleSearch enables to search google and parse the result.

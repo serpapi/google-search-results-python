@@ -1,6 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from ..serp_api_client_exception import SerpApiClientException
-from ..constant import *
+from ..constant import WALMART_ENGINE
+
 
 class AsyncWalmartSearch(AsyncSerpApiClient):
     """AsyncWalmartSearch enables to search google scholar and parse the result.
@@ -16,5 +17,5 @@ class AsyncWalmartSearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncWalmartSearch, self).__init__(params_dict, WALMART_ENGINE)
 
-    def get_location(self, q, limit = 5):
+    async def get_location(self, q, limit = 5):
         raise SerpApiClientException("location is not supported by walmart search engine")

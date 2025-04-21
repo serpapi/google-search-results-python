@@ -1,4 +1,6 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
+from .constant import BING_ENGINE
+
 
 class BingSearch(SerpApiClient):
     """BingSearch enables to search bing and parse the result.

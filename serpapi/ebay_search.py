@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
+from .constant import EBAY_ENGINE
+
 
 class EbaySearch(SerpApiClient):
     """EbaySearch enables to search ebay and parse the result.

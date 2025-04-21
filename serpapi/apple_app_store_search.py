@@ -1,6 +1,6 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
-from .constant import *
+from .constant import APPLE_APP_STORE_ENGINE
 
 class AppleAppStoreSearch(SerpApiClient):
     """AppleAppStoreSearch enables to search google scholar and parse the result.

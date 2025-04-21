@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from ..serp_api_client_exception import SerpApiClientException
+from ..constant import YAHOO_ENGINE
+
 
 class AsyncYahooSearch(AsyncSerpApiClient):
     """AsyncYahooSearch enables to search yahoo and parse the result.

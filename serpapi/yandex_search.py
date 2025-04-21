@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
+from .constant import YANDEX_ENGINE
+
 
 class YandexSearch(SerpApiClient):
     """YandexSearch enables to search yandex and parse the result.

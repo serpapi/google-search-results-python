@@ -1,6 +1,6 @@
 import niquests as requests
 import json
-from ..constant import *
+from ..constant import DEFAULT_START, DEFAULT_END, DEFAULT_LIMIT, DEFAULT_PAGE_SIZE
 from ._shared import DEFAULT_HTTP_CLIENT
 from .pagination import AsyncPagination
 from ..serp_api_client import SerpApiClient

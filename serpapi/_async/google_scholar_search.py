@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from ..serp_api_client_exception import SerpApiClientException
+from ..constant import GOOGLE_SCHOLAR_ENGINE
+
 
 class AsyncGoogleScholarSearch(AsyncSerpApiClient):
     """AsyncGoogleScholarSearch enables to search google scholar and parse the result.

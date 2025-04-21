@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
+from .constant import YOUTUBE_ENGINE
+
 
 class YoutubeSearch(SerpApiClient):
     """YoutubeSearch enables to search google scholar and parse the result.

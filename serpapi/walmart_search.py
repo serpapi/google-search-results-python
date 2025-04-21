@@ -1,6 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
-from .constant import *
+from .constant import WALMART_ENGINE
+
 
 class WalmartSearch(SerpApiClient):
     """WalmartSearch enables to search google scholar and parse the result.

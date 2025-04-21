@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
+from .constant import HOME_DEPOT_ENGINE
+
 
 class HomeDepotSearch(SerpApiClient):
     """HomeDepotSearch enables to search home depot and parse the result.

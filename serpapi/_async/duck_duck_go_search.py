@@ -1,6 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from ..serp_api_client_exception import SerpApiClientException
-from ..constant import *
+from ..constant import DUCKDUCKGO_ENGINE
+
 
 class AsyncDuckDuckGoSearch(AsyncSerpApiClient):
     """AsyncDuckDuckGoSearch enables to search duckduckgo and parse the result.

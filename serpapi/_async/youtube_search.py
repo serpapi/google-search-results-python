@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from ..serp_api_client_exception import SerpApiClientException
+from ..constant import YOUTUBE_ENGINE
+
 
 class AsyncYoutubeSearch(AsyncSerpApiClient):
     """YoutubeSearch enables to search google scholar and parse the result.
@@ -15,5 +17,5 @@ class AsyncYoutubeSearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncYoutubeSearch, self).__init__(params_dict, YOUTUBE_ENGINE)
 
-    def get_location(self, q, limit = 5):
+    async def get_location(self, q, limit = 5):
         raise SerpApiClientException("location is not supported by youtube search engine")

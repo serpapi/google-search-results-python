@@ -1,5 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from serpapi.serp_api_client_exception import SerpApiClientException
+from ..constant import BAIDU_ENGINE
+
 
 class AsyncBaiduSearch(AsyncSerpApiClient):
     """BaiduSearch enables to search baidu and parse the result.

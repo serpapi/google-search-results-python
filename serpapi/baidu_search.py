@@ -1,4 +1,5 @@
-from .serp_api_client import *
+from .serp_api_client import SerpApiClient
+from .constant import BAIDU_ENGINE
 from .serp_api_client_exception import SerpApiClientException
 
 class BaiduSearch(SerpApiClient):

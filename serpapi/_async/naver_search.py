@@ -1,6 +1,7 @@
-from .serp_api_client import *
+from .serp_api_client import AsyncSerpApiClient
 from ..serp_api_client_exception import SerpApiClientException
-from ..constant import *
+from ..constant import NAVER_ENGINE
+
 
 class AsyncNaverSearch(AsyncSerpApiClient):
     """NaverSearch enables to search on naver and parse the result.
