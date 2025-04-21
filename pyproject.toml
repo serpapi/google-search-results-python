@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google-search-results"
+description = "Scrape and search localized results from Google, Bing, Baidu, Yahoo, Yandex, Ebay, Homedepot, youtube at scale using SerpApi.com"
+license = {text = "MIT"}
+keywords = ["scrape", "serp", "api", "json", "search", "localized", "rank", "google", "bing", "baidu", "yandex", "yahoo", "ebay", "scale", "datamining", "training", "machine", "ml", "youtube", "naver", "walmart", "apple", "store", "app"]
+authors = [
+  {name = "vikoky", email="victor@serpapi.com"},
+]
+maintainers = [
+  {name = "vikoky", email="victor@serpapi.com"},
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Natural Language :: English",
+  "Topic :: Utilities",
+]
+requires-python = ">=3.7"
+version = "3.0.0"
+dynamic = ["readme"]
+dependencies = [
+    "niquests>=3,<4",
+]
+
+[tool.setuptools]
+packages = ["serpapi", "serpapi._async"]
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+
+[project.urls]
+"Documentation" = "https://serpapi.com/search-api"
+"Code" = "https://github.com/serpapi/google-search-results-python"
+"Issue tracker" = "https://github.com/serpapi/google-search-results-python/issues"
+
+[tool.pytest.ini_options]
+log_level = "DEBUG"
+filterwarnings = [
+    "error",
+]
