@@ -2,7 +2,7 @@ import random
 import unittest
 import os
 import pprint
-import requests
+import niquests as requests
 from serpapi import GoogleSearch
 
 class TestSearchApi(unittest.TestCase):
