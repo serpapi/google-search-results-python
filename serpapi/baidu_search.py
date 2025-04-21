@@ -1,5 +1,5 @@
-from serpapi.serp_api_client import *
-from serpapi.serp_api_client_exception import SerpApiClientException
+from .serp_api_client import *
+from .serp_api_client_exception import SerpApiClientException
 
 class BaiduSearch(SerpApiClient):
     """BaiduSearch enables to search baidu and parse the result.

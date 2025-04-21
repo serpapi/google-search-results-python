@@ -1,6 +1,6 @@
-from serpapi.serp_api_client import *
-from serpapi.serp_api_client_exception import SerpApiClientException
-from serpapi.constant import *
+from .serp_api_client import *
+from .serp_api_client_exception import SerpApiClientException
+from .constant import *
 
 class DuckDuckGoSearch(SerpApiClient):
     """DuckDuckGoSearch enables to search google scholar and parse the result.

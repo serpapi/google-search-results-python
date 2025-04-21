@@ -1,5 +1,5 @@
 from urllib import parse
-from serpapi import constant
+from . import constant
 
 # Paginate response in SerpApi
 class Pagination:

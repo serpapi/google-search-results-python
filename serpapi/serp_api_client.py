@@ -3,6 +3,9 @@ import json
 from serpapi.constant import *
 from serpapi.pagination import Pagination
 from serpapi.serp_api_client_exception import SerpApiClientException
+from .constant import *
+from .pagination import Pagination
+from .serp_api_client_exception import SerpApiClientException
 
 
 class SerpApiClient(object):
