@@ -1,0 +1,59 @@
+import random
+import unittest
+import os
+import pprint
+from serpapi import AsyncWalmartSearch
+
+
+class TestAsyncWalmartSearchApi(unittest.TestCase):
+		def setUp(self):
+				AsyncWalmartSearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
+
+		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+		async def test_get_json(self):
+				search = AsyncWalmartSearch({"query": "Coffee"})
+				data = await search.get_json()
+				self.assertIsNone(data.get("error"))
+				self.assertEqual(data["search_metadata"]["status"], "Success")
+				self.assertIsNotNone(data["search_metadata"]["walmart_url"])
+				self.assertIsNotNone(data["search_metadata"]["id"])
+
+				for organic_result in data.get("organic_results", []):
+						self.assertIsNotNone(organic_result.get("title"))
+
+				pp = pprint.PrettyPrinter(indent=2)
+				pp.pprint(data)
+				print(data.keys())
+
+		@unittest.skipIf((os.getenv("API_KEY") == None), "no api_key provided")
+		async def test_paginate(self):
+				page_size = 40
+				search = AsyncWalmartSearch({"query": "coffee", "ps": page_size})
+
+				limit = 4
+				pages = search.pagination(limit=limit)
+
+				product_ids = []
+				page_number = 0
+
+				async for page in pages:
+						organic_results_count = 0
+						page_number += 1
+
+						for organic_result in page.get("organic_results", []):
+								organic_results_count += 1
+								product_id_index = 0
+
+								for id in product_ids:
+										product_id_index += 1
+
+										if id == organic_result.get("product_id"):
+												print("%d duplicated product_id: %s at index: %d" % (organic_results_count, id, product_id_index))
+
+								product_ids.append(organic_result.get("product_id"))
+
+				self.assertEqual(page_number, limit, "Number of pages doesn't match.")
+
+
+if __name__ == "__main__":
+		unittest.main()
