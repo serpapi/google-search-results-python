@@ -11,12 +11,12 @@ class SerpApiClient(object):
     ```python
     from serpapi import SerpApiClient
     search = SerpApiClient({
-        "q": "Coffee", 
-        "location": "Austin,Texas", 
+        "q": "Coffee",
+        "location": "Austin,Texas",
         "engine": "google",
         "api_key": "<your private key>"
         })
-	data = search.get_json()
+        data = search.get_json()
     ```
 
     https://serpapi.com/search-api
@@ -25,25 +25,27 @@ class SerpApiClient(object):
     BACKEND = "https://serpapi.com"
     SERP_API_KEY = None
 
-    def __init__(self, params_dict, engine = None, timeout = 60000):
+    def __init__(self, params_dict, engine=None, timeout=60000):
         self.params_dict = params_dict
         self.engine = engine
         self.timeout = timeout
 
-    def construct_url(self, path = "/search"):
-        self.params_dict['source'] = 'python'
+    def construct_url(self, path="/search"):
+        self.params_dict["source"] = "python"
         if self.SERP_API_KEY:
-            self.params_dict['serp_api_key'] = self.SERP_API_KEY
+            self.params_dict["serp_api_key"] = self.SERP_API_KEY
         if self.engine:
-            if not 'engine' in self.params_dict:
-                self.params_dict['engine'] = self.engine
-        if not 'engine' in self.params_dict:
-            raise SerpApiClientException("engine must be defined in params_dict or engine")
+            if "engine" not in self.params_dict:
+                self.params_dict["engine"] = self.engine
+        if not "engine" not in self.params_dict:
+            raise SerpApiClientException(
+                "engine must be defined in params_dict or engine"
+            )
         return self.BACKEND + path, self.params_dict
 
-    def get_response(self, path = '/search'):
+    def get_response(self, path="/search"):
         """Returns:
-            Response object provided by requests.get
+        Response object provided by requests.get
         """
         url = None
         try:
@@ -54,49 +56,49 @@ class SerpApiClient(object):
             print(e, e.response.status_code)
             raise e
 
-    def get_results(self, path='/search'):
+    def get_results(self, path="/search"):
         """Returns:
-            Response text field
+        Response text field
         """
         return self.get_response(path).text
 
     def get_html(self):
         """Returns:
-            Raw HTML search result from Google
+        Raw HTML search result from Google
         """
         self.params_dict["output"] = "html"
         return self.get_results()
 
     def get_json(self):
         """Returns:
-            Formatted JSON search results using json package
+        Formatted JSON search results using json package
         """
         self.params_dict["output"] = "json"
         return json.loads(self.get_results())
 
     def get_raw_json(self):
         """Returns:
-            Formatted JSON search result as string
+        Formatted JSON search result as string
         """
         self.params_dict["output"] = "json"
         return self.get_results()
 
     def get_dictionary(self):
         """Returns:
-            Dict with the formatted response content
+        Dict with the formatted response content
         """
         return dict(self.get_json())
 
     def get_dict(self):
         """Returns:
-            Dict with the formatted response content
-            (alias for get_dictionary)
+        Dict with the formatted response content
+        (alias for get_dictionary)
         """
         return self.get_dictionary()
 
     def get_object(self):
-        """Returns: 
-            Dynamically created python object wrapping the result data structure
+        """Returns:
+        Dynamically created python object wrapping the result data structure
         """
         # iterative over response hash
         node = self.get_dictionary()
@@ -104,7 +106,7 @@ class SerpApiClient(object):
         return self.make_pyobj("response", node)
 
     def make_pyobj(self, name, node):
-        pytype = type(name, (object, ), {})
+        pytype = type(name, (object,), {})
         pyobj = pytype()
 
         if isinstance(node, list):
@@ -127,16 +129,16 @@ class SerpApiClient(object):
 
         return pyobj
 
-    def get_search_archive(self, search_id, format = 'json'):
+    def get_search_archive(self, search_id, format="json"):
         """Retrieve search result from the Search Archive API
         Parameters:
-            search_id (int): unique identifier for the search provided by metadata.id 
+            search_id (int): unique identifier for the search provided by metadata.id
             format (string): search format: json or html [optional]
         Returns:
             dict|string: search result from the archive
         """
         result = self.get_results("/searches/{0}.{1}".format(search_id, format))
-        if format == 'json':
+        if format == "json":
             result = json.loads(result)
         return result
 
@@ -147,7 +149,7 @@ class SerpApiClient(object):
         """
         return json.loads(self.get_results("/account"))
 
-    def get_location(self, q, limit = 5):
+    def get_location(self, q, limit=5):
         """Get location using Location API
         Parameters:
             q (string): location (like: city name..)
@@ -159,11 +161,17 @@ class SerpApiClient(object):
         self.params_dict["output"] = "json"
         self.params_dict["q"] = q
         self.params_dict["limit"] = limit
-        buffer = self.get_results('/locations.json')
+        buffer = self.get_results("/locations.json")
         return json.loads(buffer)
 
-    def pagination(self, start = DEFAULT_START, end = DEFAULT_END, page_size = DEFAULT_PAGE_SIZE, limit = DEFAULT_LIMIT):
+    def pagination(
+        self,
+        start=DEFAULT_START,
+        end=DEFAULT_END,
+        page_size=DEFAULT_PAGE_SIZE,
+        limit=DEFAULT_LIMIT,
+    ):
         """Return:
-            Generator to iterate the search results pagination
+        Generator to iterate the search results pagination
         """
         return Pagination(self, start, end, page_size, limit)

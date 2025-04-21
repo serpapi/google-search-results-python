@@ -17,5 +17,7 @@ class AsyncEbaySearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncEbaySearch, self).__init__(params_dict, EBAY_ENGINE)
 
-    async def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Ebay search engine at this time")
+    async def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Ebay search engine at this time"
+        )

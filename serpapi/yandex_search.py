@@ -17,5 +17,7 @@ class YandexSearch(SerpApiClient):
     def __init__(self, params_dict):
         super(YandexSearch, self).__init__(params_dict, YANDEX_ENGINE)
 
-    def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Yandex search engine at this time")
+    def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Yandex search engine at this time"
+        )

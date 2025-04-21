@@ -1,13 +1,13 @@
-import random
 import unittest
 import pprint
 import os
 from serpapi import GoogleSearch
 
+
 class TestLocationApi(unittest.TestCase):
 
     def setUp(self):
-        GoogleSearch.SERP_API_KEY = os.getenv("API_KEY","demo")
+        GoogleSearch.SERP_API_KEY = os.getenv("API_KEY", "demo")
 
     def test_get_location(self):
         search = GoogleSearch({"q": None, "async": True})
@@ -16,5 +16,6 @@ class TestLocationApi(unittest.TestCase):
         pp.pprint(location_list)
         self.assertIsNotNone(location_list[0].get("id"))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

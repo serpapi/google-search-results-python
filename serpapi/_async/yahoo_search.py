@@ -17,5 +17,7 @@ class AsyncYahooSearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncYahooSearch, self).__init__(params_dict, YAHOO_ENGINE)
 
-    async def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Yahoo search engine at this time")
+    async def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Yahoo search engine at this time"
+        )

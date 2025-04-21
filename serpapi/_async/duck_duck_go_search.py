@@ -17,5 +17,5 @@ class AsyncDuckDuckGoSearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncDuckDuckGoSearch, self).__init__(params_dict, DUCKDUCKGO_ENGINE)
 
-    async def get_location(self, q, limit = 5):
+    async def get_location(self, q, limit=5):
         raise SerpApiClientException("location is not supported by duckduckgo engine")

@@ -13,6 +13,7 @@ from .duck_duck_go_search import DuckDuckGoSearch
 from .walmart_search import WalmartSearch
 from .naver_search import NaverSearch
 from .apple_app_store_search import AppleAppStoreSearch
+
 # asynchronous mirror counter part
 from ._async.serp_api_client import AsyncSerpApiClient
 from ._async.baidu_search import AsyncBaiduSearch

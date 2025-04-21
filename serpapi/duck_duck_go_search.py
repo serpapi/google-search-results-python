@@ -2,6 +2,7 @@ from .serp_api_client import SerpApiClient
 from .serp_api_client_exception import SerpApiClientException
 from .constant import DUCKDUCKGO_ENGINE
 
+
 class DuckDuckGoSearch(SerpApiClient):
     """DuckDuckGoSearch enables to search google scholar and parse the result.
     ```python
@@ -16,5 +17,7 @@ class DuckDuckGoSearch(SerpApiClient):
     def __init__(self, params_dict):
         super(DuckDuckGoSearch, self).__init__(params_dict, DUCKDUCKGO_ENGINE)
 
-    def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by walmart search engine")
+    def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by walmart search engine"
+        )

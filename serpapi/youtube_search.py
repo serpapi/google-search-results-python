@@ -17,5 +17,7 @@ class YoutubeSearch(SerpApiClient):
     def __init__(self, params_dict):
         super(YoutubeSearch, self).__init__(params_dict, YOUTUBE_ENGINE)
 
-    def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by youtube search engine")
+    def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by youtube search engine"
+        )

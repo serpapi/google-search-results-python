@@ -17,5 +17,7 @@ class AsyncYandexSearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncYandexSearch, self).__init__(params_dict, YANDEX_ENGINE)
 
-    async def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Yandex search engine at this time")
+    async def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Yandex search engine at this time"
+        )

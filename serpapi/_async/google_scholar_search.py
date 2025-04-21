@@ -15,7 +15,11 @@ class AsyncGoogleScholarSearch(AsyncSerpApiClient):
     """
 
     def __init__(self, params_dict):
-        super(AsyncGoogleScholarSearch, self).__init__(params_dict, GOOGLE_SCHOLAR_ENGINE)
+        super(AsyncGoogleScholarSearch, self).__init__(
+            params_dict, GOOGLE_SCHOLAR_ENGINE
+        )
 
-    async def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Google scholar search engine")
+    async def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Google scholar search engine"
+        )

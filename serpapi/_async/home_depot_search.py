@@ -17,5 +17,7 @@ class AsyncHomeDepotSearch(AsyncSerpApiClient):
     def __init__(self, params_dict):
         super(AsyncHomeDepotSearch, self).__init__(params_dict, HOME_DEPOT_ENGINE)
 
-    async def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Home Depot search engine")
+    async def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Home Depot search engine"
+        )

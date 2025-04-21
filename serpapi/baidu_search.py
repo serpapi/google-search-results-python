@@ -2,6 +2,7 @@ from .serp_api_client import SerpApiClient
 from .constant import BAIDU_ENGINE
 from .serp_api_client_exception import SerpApiClientException
 
+
 class BaiduSearch(SerpApiClient):
     """BaiduSearch enables to search baidu and parse the result.
     ```python
@@ -16,5 +17,7 @@ class BaiduSearch(SerpApiClient):
     def __init__(self, params_dict):
         super(BaiduSearch, self).__init__(params_dict, BAIDU_ENGINE)
 
-    def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by Baidu search engine at this time")
+    def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by Baidu search engine at this time"
+        )

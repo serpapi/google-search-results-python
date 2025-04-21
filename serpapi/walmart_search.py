@@ -17,5 +17,7 @@ class WalmartSearch(SerpApiClient):
     def __init__(self, params_dict):
         super(WalmartSearch, self).__init__(params_dict, WALMART_ENGINE)
 
-    def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by walmart search engine")
+    def get_location(self, q, limit=5):
+        raise SerpApiClientException(
+            "location is not supported by walmart search engine"
+        )
