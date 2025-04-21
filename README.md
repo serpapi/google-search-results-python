@@ -34,6 +34,27 @@ search = GoogleSearch({
 result = search.get_dict()
 ```
 
+or...using async/await!
+
+```python
+import asyncio
+from serpapi import AsyncGoogleSearch
+
+async def main():
+  search = AsyncGoogleSearch({
+    "q": "coffee",
+    "location": "Austin,Texas",
+    "api_key": "<your secret api key>"
+  })
+  result = await search.get_dict()
+
+  
+asyncio.run(main())
+```
+
+> [!NOTE]  
+> Every interface have its async mirror. e.g. `GoogleSearch` is also `AsyncGoogleSearch`.
+
 This example runs a search for "coffee" using your secret API key.
 
 The SerpApi service (backend)
@@ -585,6 +606,12 @@ In some cases, there are more details available in the data object.
 If it's a client error, then a SerpApiClientException is raised.
 
 ## Change log
+
+2024-04-21 @ 3.0.0
+ - Swap HTTP client Requests for Niquests
+ - Add asyncio support
+ - Session persistence by default
+
 2023-03-10 @ 2.4.2
  - Change long description to README.md
 
