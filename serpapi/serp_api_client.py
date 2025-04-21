@@ -37,7 +37,7 @@ class SerpApiClient(object):
         if self.engine:
             if "engine" not in self.params_dict:
                 self.params_dict["engine"] = self.engine
-        if not "engine" not in self.params_dict:
+        if "engine" not in self.params_dict:
             raise SerpApiClientException(
                 "engine must be defined in params_dict or engine"
             )
