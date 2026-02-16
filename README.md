@@ -1,4 +1,11 @@
 # Google Search Results in Python
+#
+
+> [!WARNING]
+> This package is **deprecated** in favor of [serpapi-python](https://github.com/serpapi/serpapi-python).
+> Please migrate to the newer implementation.
+
+----
 
 [![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
 [![Build](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml/badge.svg)](https://github.com/serpapi/google-search-results-python/actions/workflows/python-package.yml)
