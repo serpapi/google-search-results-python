@@ -476,7 +476,7 @@ while not search_queue.empty():
 
     # retrieve search from the archive - blocker
     print(search_id + ": get search from archive")
-    search_archived = search.get_search_archive(search_id)
+    search_archived = GoogleSearch({}).get_search_archive(search_id)
     print(search_id + ": status = " +
           search_archived['search_metadata']['status'])
 
