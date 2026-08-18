@@ -4,8 +4,6 @@
 > [!WARNING]
 > This package will soon be **deprecated** in favor of [serpapi-python](https://github.com/serpapi/serpapi-python).
 > We recommend migrating to the newer implementation to ensure continued support and access to the latest features and improvements.
-> 
-> Please note: the current documentation, examples, and integrations on https://serpapi.com/ are written for this (legacy) package and are not yet compatible with the new library. Updated documentation for `serpapi-python` will be published soon.
 ----
 
 [![Package](https://badge.fury.io/py/google-search-results.svg)](https://badge.fury.io/py/google-search-results)
