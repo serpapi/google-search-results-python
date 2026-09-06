@@ -17,4 +17,4 @@ class AppleAppStoreSearch(SerpApiClient):
         super(AppleAppStoreSearch, self).__init__(params_dict, APPLE_APP_STORE_ENGINE)
 
     def get_location(self, q, limit = 5):
-        raise SerpApiClientException("location is not supported by youtube search engine")
+        raise SerpApiClientException("location is not supported by Apple Search search engine")
