@@ -2,7 +2,7 @@
 #
 
 > [!WARNING]
-> This package will soon be **deprecated** in favor of [serpapi-python](https://github.com/serpapi/serpapi-python).
+> This package is **deprecated** in favor of [serpapi-python](https://github.com/serpapi/serpapi-python).
 > We recommend migrating to the newer implementation to ensure continued support and access to the latest features and improvements.
 ----
 
